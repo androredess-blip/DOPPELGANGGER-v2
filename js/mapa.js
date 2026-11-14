@@ -94,6 +94,29 @@ const OBJETIVOS = {
     L.rectangle([[-90, -180], [-84, 180]], { color: "#ffd166", weight: 2, fillOpacity: 0.15 })
       .bindTooltip("Polo sur: zona de las 9 regiones candidatas de Artemis III", { sticky: true })
       .addTo(m);
+
+    // Cráteres de control sin hielo (Magaña et al.): ecuatoriales y pre-nectarianos,
+    // donde no se pueden acumular volátiles congelados. Se comparan con los cráteres del polo sur.
+    // Longitudes positivas = Este.
+    const controles = [
+      { nombre: "Morozov F", lat: 4.92, lon: 130.2 },
+      { nombre: "Van Maanen", lat: 36.03, lon: 128.18 },
+      { nombre: "Fraunhofer E", lat: -43.2, lon: 61.57 },
+      { nombre: "Brisbane", lat: -49.2, lon: 68.76 },
+      { nombre: "Rosenberger C", lat: -52.28, lon: 42.2 },
+      { nombre: "Asclepi", lat: -55.19, lon: 25.52 },
+    ];
+    for (const c of controles) {
+      L.circleMarker([c.lat, c.lon], { radius: 6, color: "#ffffff", weight: 2, fillColor: "#4f9bf0", fillOpacity: 1 })
+        .bindTooltip(`${c.nombre}: cráter de control sin hielo`)
+        .addTo(m);
+    }
+
+    // Cráter Amundsen: sector iluminado (~220 km²) usado como análogo térmico
+    // de su sector en sombra permanente (~245 km²).
+    L.circleMarker([-84.44, 83.07], { radius: 8, color: "#ffffff", weight: 2, fillColor: "#ffd166", fillOpacity: 1 })
+      .bindTooltip("Cráter Amundsen: sector iluminado vs. sector en sombra permanente")
+      .addTo(m);
   },
   marte: (m) => {
     const sitios = [
