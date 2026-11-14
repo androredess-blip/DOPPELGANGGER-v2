@@ -1,0 +1,319 @@
+{
+  "indicadores": {
+    "frio": {
+      "nombre": "Frío extremo",
+      "fuente": "NASA POWER · T2M_MIN (°C)",
+      "tipo": "clima",
+      "campo": "T2M_MIN",
+      "min": 15,
+      "max": -40,
+      "que": "La temperatura mínima del año en el sitio.",
+      "luna": "En el polo sur lunar el Sol casi no calienta y algunos cráteres en sombra permanente están entre los lugares más fríos del sistema solar.",
+      "marte": "Marte tiene una temperatura media de unos −59 °C.",
+      "unidad": "°C",
+      "dec": 1
+    },
+    "oscilacion": {
+      "nombre": "Oscilación día/noche",
+      "fuente": "NASA POWER · T2M_RANGE (°C)",
+      "tipo": "clima",
+      "campo": "T2M_RANGE",
+      "min": 5,
+      "max": 20,
+      "que": "La diferencia promedio entre el día y la noche.",
+      "luna": "Sin atmósfera, el suelo lunar pasa de caliente a helado entre la luz y la sombra.",
+      "marte": "En el sitio del Viking 1 la temperatura pasa de −89 °C de noche a −31 °C de día.",
+      "unidad": "°C",
+      "dec": 1
+    },
+    "aridez": {
+      "nombre": "Aridez",
+      "fuente": "NASA POWER · PRECTOTCORR (mm/día)",
+      "tipo": "clima",
+      "campo": "PRECTOTCORR",
+      "min": 2,
+      "max": 0,
+      "que": "La lluvia promedio por día.",
+      "luna": "En la Luna nunca llueve; el agua solo existe como hielo en cráteres en sombra.",
+      "marte": "En Marte no llueve; el agua está como hielo o vapor.",
+      "unidad": "mm/día",
+      "dec": 2
+    },
+    "seco": {
+      "nombre": "Aire seco",
+      "fuente": "NASA POWER · RH2M (%)",
+      "tipo": "clima",
+      "campo": "RH2M",
+      "min": 80,
+      "max": 15,
+      "que": "La humedad relativa del aire.",
+      "luna": "La Luna no tiene atmósfera, así que no hay humedad.",
+      "marte": "El aire de Marte tiene muy poco vapor de agua (unas 210 partes por millón).",
+      "unidad": "%",
+      "dec": 0
+    },
+    "viento": {
+      "nombre": "Viento",
+      "fuente": "NASA POWER · WS10M (m/s)",
+      "tipo": "clima",
+      "campo": "WS10M",
+      "min": 2,
+      "max": 8,
+      "que": "La velocidad promedio del viento a 10 m de altura.",
+      "luna": "No aplica: la Luna no tiene viento.",
+      "marte": "En Marte el viento va de 2 a 7 m/s en verano y llega a 17–30 m/s en tormentas de polvo.",
+      "unidad": "m/s",
+      "dec": 1
+    },
+    "altitud": {
+      "nombre": "Aire delgado (altitud)",
+      "fuente": "NASA POWER · elevación del punto (m)",
+      "tipo": "clima",
+      "campo": "elev",
+      "min": 0,
+      "max": 4500,
+      "que": "La altura sobre el nivel del mar: a más altura, el aire es más delgado y hay más radiación UV.",
+      "luna": "No se usa para la Luna.",
+      "marte": "La presión en Marte es de unos 6 milibares, menos del 1 % de la de la Tierra.",
+      "unidad": "m",
+      "dec": 0
+    },
+    "sol_bajo": {
+      "nombre": "Sol bajo (latitud)",
+      "fuente": "Latitud del sitio (°)",
+      "tipo": "geo",
+      "campo": "lat_abs",
+      "min": 30,
+      "max": 75,
+      "que": "Qué tan lejos del ecuador está el sitio: entre más cerca de un polo, más bajo pasa el Sol.",
+      "luna": "En el polo sur lunar el Sol nunca sube más de 1.5° sobre el horizonte, así que las sombras son largas.",
+      "marte": "No se usa para Marte.",
+      "unidad": "°",
+      "dec": 1
+    },
+    "basalto": {
+      "nombre": "Basalto volcánico",
+      "tipo": "rasgo",
+      "que": "Si hay roca volcánica oscura, como la de los mares lunares y gran parte de Marte.",
+      "luna": "Sirve para practicar con roca volcánica. Ojo: el polo sur lunar es más de rocas claras (anortosita), algo que todavía no medimos.",
+      "marte": "La corteza de Marte es mayormente basáltica."
+    },
+    "crateres": {
+      "nombre": "Cráteres",
+      "tipo": "rasgo",
+      "que": "Si hay cráteres de impacto o volcánicos.",
+      "luna": "El polo sur lunar está lleno de cráteres, como Shackleton.",
+      "marte": "Los rovers exploran cráteres como Gale y Jezero."
+    },
+    "dunas": {
+      "nombre": "Dunas o formas eólicas",
+      "tipo": "rasgo",
+      "que": "Si hay dunas, yardangs u otras formas hechas por el viento.",
+      "luna": "No aplica: en la Luna no hay viento.",
+      "marte": "Marte tiene campos de dunas y crestas hechas por el viento."
+    },
+    "sales": {
+      "nombre": "Sales, sulfatos, percloratos",
+      "tipo": "rasgo",
+      "que": "Si hay sales, sulfatos o percloratos.",
+      "luna": "No se usa para la Luna.",
+      "marte": "En Marte se encontraron sulfatos como la jarosita y percloratos en el suelo."
+    },
+    "hielo": {
+      "nombre": "Hielo o permafrost",
+      "tipo": "rasgo",
+      "que": "Si hay hielo, glaciares o suelo congelado.",
+      "luna": "Hay hielo de agua en los cráteres en sombra del polo sur: es la razón para poner ahí la base.",
+      "marte": "Marte tiene hielo en los polos y bajo la superficie."
+    },
+    "paleolago": {
+      "nombre": "Sedimentos de agua antigua",
+      "tipo": "rasgo",
+      "que": "Si hay sedimentos que dejó el agua hace mucho (lagos o ríos antiguos).",
+      "luna": "No se usa para la Luna.",
+      "marte": "Jezero y Gale fueron lagos hace miles de millones de años."
+    },
+    "extremofilos": {
+      "nombre": "Vida extremófila",
+      "tipo": "rasgo",
+      "que": "Si viven ahí organismos adaptados a condiciones extremas.",
+      "luna": "No se usa para la Luna.",
+      "marte": "Sirve para probar cómo buscar vida pasada en Marte."
+    },
+    "cuevas": {
+      "nombre": "Cuevas o tubos de lava",
+      "tipo": "rasgo",
+      "que": "Si hay cuevas o tubos de lava.",
+      "luna": "Los tubos de lava podrían proteger a los astronautas de la radiación.",
+      "marte": "Las cuevas marcianas podrían servir de refugio y guardar hielo."
+    },
+    "aislamiento": {
+      "nombre": "Aislamiento",
+      "tipo": "rasgo",
+      "que": "Qué tan lejos está de ayuda y servicios.",
+      "luna": "En la Luna la tripulación depende de sí misma; ensayar aislados es parte del entrenamiento.",
+      "marte": "Desde Marte, un mensaje tarda hasta 20 minutos en llegar a la Tierra."
+    }
+  },
+  "dimensiones": [
+    {
+      "id": "geologia",
+      "nombre": "Geología y materiales",
+      "corto": "Geología",
+      "luna": [
+        "basalto",
+        "crateres"
+      ],
+      "marte": [
+        "basalto",
+        "sales"
+      ],
+      "icono": "roca"
+    },
+    {
+      "id": "terreno",
+      "nombre": "Terreno y topografía",
+      "corto": "Terreno",
+      "luna": [
+        "crateres"
+      ],
+      "marte": [
+        "crateres",
+        "dunas"
+      ],
+      "icono": "crater"
+    },
+    {
+      "id": "temperatura",
+      "nombre": "Temperatura e iluminación",
+      "corto": "Temp./luz",
+      "luna": [
+        "frio",
+        "oscilacion",
+        "sol_bajo"
+      ],
+      "marte": [
+        "frio",
+        "oscilacion",
+        "altitud"
+      ],
+      "icono": "termometro"
+    },
+    {
+      "id": "agua",
+      "nombre": "Agua, hielo y permafrost",
+      "corto": "Agua/hielo",
+      "luna": [
+        "hielo",
+        "aridez"
+      ],
+      "marte": [
+        "hielo",
+        "paleolago",
+        "aridez"
+      ],
+      "icono": "gota"
+    },
+    {
+      "id": "polvo",
+      "nombre": "Polvo, viento y erosión",
+      "corto": "Polvo/viento",
+      "luna": [],
+      "marte": [
+        "viento",
+        "dunas",
+        "seco"
+      ],
+      "icono": "viento"
+    },
+    {
+      "id": "vida",
+      "nombre": "Biología y habitabilidad",
+      "corto": "Vida",
+      "luna": [
+        "aridez",
+        "seco"
+      ],
+      "marte": [
+        "extremofilos",
+        "seco"
+      ],
+      "icono": "microbio"
+    },
+    {
+      "id": "subsuelo",
+      "nombre": "Cuevas y subsuelo",
+      "corto": "Subsuelo",
+      "luna": [
+        "cuevas"
+      ],
+      "marte": [
+        "cuevas"
+      ],
+      "icono": "cueva"
+    },
+    {
+      "id": "operaciones",
+      "nombre": "Condiciones de operación",
+      "corto": "Operación",
+      "luna": [
+        "aislamiento"
+      ],
+      "marte": [
+        "aislamiento"
+      ],
+      "icono": "bandera"
+    }
+  ],
+  "pesos": {
+    "luna": {
+      "geologia": 0.2,
+      "terreno": 0.15,
+      "temperatura": 0.2,
+      "agua": 0.15,
+      "polvo": 0,
+      "vida": 0.05,
+      "subsuelo": 0.15,
+      "operaciones": 0.1
+    },
+    "marte": {
+      "geologia": 0.15,
+      "terreno": 0.1,
+      "temperatura": 0.15,
+      "agua": 0.15,
+      "polvo": 0.15,
+      "vida": 0.15,
+      "subsuelo": 0.05,
+      "operaciones": 0.1
+    }
+  },
+  "niveles": [
+    {
+      "desde": 70,
+      "nombre": "Análogo fuerte"
+    },
+    {
+      "desde": 50,
+      "nombre": "Análogo parcial"
+    },
+    {
+      "desde": 0,
+      "nombre": "Análogo débil"
+    }
+  ],
+  "criterios_rasgos": [
+    {
+      "valor": 1,
+      "texto": "La fuente describe el rasgo como algo principal del sitio."
+    },
+    {
+      "valor": 0.5,
+      "texto": "El rasgo está, pero es pequeño, parcial o solo en una parte del sitio."
+    },
+    {
+      "valor": 0,
+      "texto": "Las fuentes revisadas no lo reportan."
+    }
+  ],
+  "criterio_aislamiento": "De 0 a 1: 1 = sin poblaciones ni caminos (se llega en avión o barco); 0.5 = desierto o reserva con carretera; 0.2–0.3 = junto a un pueblo o zona turística."
+}

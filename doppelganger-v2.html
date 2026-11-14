@@ -1,0 +1,1959 @@
+<!doctype html>
+<html lang="es" data-tema="inicio">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Doppelgänger · Análogos de la Luna y Marte</title>
+  <meta name="description" content="Buscamos lugares de la Tierra que se parecen a la base lunar del polo sur y a Marte, usando datos abiertos de la NASA.">
+  <meta name="ai-assistance" content="Code and text written with help from an AI assistant (Claude, Anthropic) and reviewed by team Gatitácticos. Data: NASA POWER, GIBS, Trek. / Código y texto hechos con apoyo de un asistente de IA (Claude, Anthropic) y revisados por el equipo.">
+  <style>
+/* Leaflet 1.9.4 — https://leafletjs.com — (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade — BSD-2-Clause */
+.leaflet-image-layer,.leaflet-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane,.leaflet-pane>canvas,.leaflet-pane>svg,.leaflet-tile,.leaflet-tile-container,.leaflet-zoom-box{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:0 0}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg{max-width:none!important;max-height:none!important}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer{max-width:none!important;max-height:none!important;width:auto;padding:0}.leaflet-container img.leaflet-tile{mix-blend-mode:plus-lighter}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom}.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{-ms-touch-action:none;touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-container a{-webkit-tap-highlight-color:rgba(51,181,229,.4)}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}.leaflet-overlay-pane svg{-moz-user-select:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-shape{width:1px;height:1px}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-bottom,.leaflet-top{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity .2s linear;-moz-transition:opacity .2s linear;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}svg.leaflet-zoom-animated{will-change:transform}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);-moz-transition:-moz-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-pan-anim .leaflet-tile,.leaflet-zoom-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-control,.leaflet-popup-pane{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-image-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-image-layer.leaflet-interactive,.leaflet-marker-icon.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078a8}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}.leaflet-container{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:12px;font-size:.75rem;line-height:1.5}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#000}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-bar a:focus,.leaflet-bar a:hover{background-color:#f4f4f4}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}.leaflet-control-layers-toggle{width:36px;height:36px}.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;line-height:1.4}.leaflet-control-attribution a{text-decoration:none}.leaflet-control-attribution a:focus,.leaflet-control-attribution a:hover{text-decoration:underline}.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}.leaflet-left .leaflet-control-scale{margin-left:5px}.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;-moz-box-sizing:border-box;box-sizing:border-box;background:rgba(255,255,255,.8);text-shadow:1px 1px #fff}.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers{box-shadow:none}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;font-size:1.08333em;min-height:1px}.leaflet-popup-content p{margin:17px 0;margin:1.3em 0}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:0 0}.leaflet-container a.leaflet-popup-close-button:focus,.leaflet-container a.leaflet-popup-close-button:hover{color:#585858}.leaflet-popup-scrolled{overflow:auto}.leaflet-div-icon{background:#fff;border:1px solid #666}.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before,.leaflet-tooltip-top:before{position:absolute;pointer-events:none;border:6px solid transparent;background:0 0;content:""}.leaflet-tooltip-bottom{margin-top:6px}.leaflet-tooltip-top{margin-top:-6px}.leaflet-tooltip-bottom:before,.leaflet-tooltip-top:before{left:50%;margin-left:-6px}.leaflet-tooltip-top:before{bottom:0;margin-bottom:-12px;border-top-color:#fff}.leaflet-tooltip-bottom:before{top:0;margin-top:-12px;margin-left:-6px;border-bottom-color:#fff}.leaflet-tooltip-left{margin-left:-6px}.leaflet-tooltip-right{margin-left:6px}.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{top:50%;margin-top:-6px}.leaflet-tooltip-left:before{right:0;margin-right:-12px;border-left-color:#fff}.leaflet-tooltip-right:before{left:0;margin-left:-12px;border-right-color:#fff}@media print{.leaflet-control{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+:root {
+  --fondo: #0b1430;
+  --panel: #121f45;
+  --panel-2: #182a5a;
+  --borde: #253a73;
+  --texto: #e6eeff;
+  --tenue: #9fb0d6;
+  --acento: #4f9bf0;
+  --claro: #9fd3ff;
+  --oscuro: #2d5fb3;
+  --candidato: #ffd166;
+  --sobre-acento: #06102a;
+  --barra: rgba(11, 20, 48, .92);
+  --serie-luna: #c9d6ea;
+  --serie-marte: #4f9bf0;
+  --marcador-activo: #ffffff;
+  --brillo: rgba(79, 155, 240, .25);
+  --fondo-mapa: #08102a;
+  --radio: 10px;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.55;
+  transition: background-color .45s ease, color .45s ease;
+}
+.caja-mapa, .caja-ranking, .ficha, .seccion, .barra-sup, .paso, .puntaje, .vista, .ejemplo, .selector {
+  transition: background-color .45s ease, border-color .45s ease, color .45s ease;
+}
+
+a { color: var(--claro); }
+a:hover { color: var(--texto); }
+
+h1, h2, h3, h4 { line-height: 1.2; margin: 0 0 .6em; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.15rem; margin-top: 1.6em; }
+h4 { font-size: .95rem; color: var(--claro); margin-top: 1.4em; }
+
+/* barra superior */
+.barra-sup {
+  position: sticky; top: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  flex-wrap: wrap;
+  padding: .6rem clamp(16px, 4vw, 48px);
+  background: var(--barra);
+  border-bottom: 1px solid var(--borde);
+  backdrop-filter: blur(6px);
+}
+.marca { display: flex; align-items: center; gap: .5rem; color: var(--texto); text-decoration: none; font-weight: 700; font-size: 1.15rem; }
+.barra-sup nav { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.barra-sup nav a { color: var(--tenue); text-decoration: none; }
+.barra-sup nav a:hover { color: var(--texto); }
+
+main { max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
+
+.portada { padding: 3.5rem 0 2rem; max-width: 780px; }
+.portada h1 { font-size: clamp(2rem, 5vw, 3.1rem); }
+.antetitulo { color: var(--claro); font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 .8rem; }
+.entrada { color: var(--tenue); font-size: 1.1rem; }
+.entrada b { color: var(--texto); }
+
+/* controles */
+.controles { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.selector { display: inline-flex; background: var(--panel); border: 1px solid var(--borde); border-radius: 999px; padding: 4px; }
+.selector button {
+  display: inline-flex; align-items: center; gap: .45rem;
+  border: 0; background: transparent; color: var(--tenue);
+  padding: .55rem 1.1rem; border-radius: 999px; font: inherit; cursor: pointer; min-height: 44px;
+}
+.selector button[aria-pressed="true"] { background: var(--acento); color: var(--sobre-acento); font-weight: 600; }
+.selector button:hover { color: var(--texto); }
+.selector button[aria-pressed="true"]:hover { color: var(--sobre-acento); }
+.icono { width: 20px; height: 20px; flex-shrink: 0; }
+.filtro { color: var(--tenue); display: flex; align-items: center; gap: .5rem; }
+.filtro select {
+  background: var(--panel); color: var(--texto); border: 1px solid var(--borde);
+  border-radius: 8px; padding: .5rem .7rem; font: inherit; min-height: 44px;
+}
+
+/* mapa y ranking */
+.mapa-y-ranking { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 1rem; }
+.caja-mapa, .caja-ranking, .ficha, .seccion { background: var(--panel); border: 1px solid var(--borde); border-radius: var(--radio); }
+.caja-mapa { padding: .6rem; }
+#mapa { height: 460px; border-radius: 8px; background: var(--fondo-mapa); }
+.leyenda { display: flex; flex-wrap: wrap; gap: .3rem 1rem; align-items: center; font-size: .82rem; color: var(--tenue); margin: .6rem .2rem 0; }
+.punto { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: .3rem; vertical-align: -1px; }
+.punto.fuerte { background: var(--claro); }
+.punto.parcial { background: var(--acento); }
+.punto.debil { background: var(--oscuro); }
+.punto.luna { background: var(--serie-luna); }
+.punto.marte { background: var(--serie-marte); }
+.aro { display: inline-block; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--candidato); margin-right: .3rem; vertical-align: -2px; }
+
+.caja-ranking { padding: 1rem; max-height: 540px; overflow: auto; }
+.caja-ranking h2 { font-size: 1.05rem; }
+.ranking { list-style: none; margin: 0; padding: 0; }
+.ranking button {
+  width: 100%; display: grid; grid-template-columns: 1.6rem 1fr 60px 2rem; align-items: center; gap: .5rem;
+  background: none; border: 0; border-radius: 8px; color: var(--texto); font: inherit; text-align: left;
+  padding: .45rem .4rem; cursor: pointer; min-height: 44px;
+}
+.ranking button:hover { background: var(--panel-2); }
+.ranking li.elegido button { background: var(--panel-2); outline: 1px solid var(--acento); }
+.ranking .pos { color: var(--tenue); font-size: .85rem; }
+.ranking .nombre { font-size: .92rem; }
+.ranking small { display: block; color: var(--tenue); font-size: .76rem; }
+.mini-barra { height: 6px; background: var(--borde); border-radius: 3px; overflow: hidden; }
+.mini-barra span { display: block; height: 100%; background: var(--acento); }
+.ranking b { text-align: right; }
+.aviso { color: var(--tenue); padding: .5rem; }
+
+/* ficha */
+.ficha { margin: 1rem 0 2rem; padding: clamp(1rem, 3vw, 2rem); }
+.ficha:empty { display: none; }
+.ficha-cabecera { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.ficha-cabecera h3 { margin: 0; font-size: 1.6rem; }
+.ficha-lugar { margin: 0 0 .2rem; color: var(--tenue); }
+.etiquetas { display: flex; gap: .4rem; flex-wrap: wrap; align-items: flex-start; }
+.etiqueta { font-size: .78rem; padding: .25rem .6rem; border-radius: 999px; border: 1px solid var(--borde); color: var(--tenue); }
+.etiqueta.candidato { border-color: var(--candidato); color: var(--candidato); }
+.etiqueta.pendiente { border-style: dashed; }
+
+.puntajes { display: flex; gap: .8rem; margin: 1rem 0; flex-wrap: wrap; }
+.puntaje { background: var(--panel-2); border: 1px solid var(--borde); border-radius: 8px; padding: .6rem 1rem; min-width: 140px; }
+.puntaje.activo { border-color: var(--acento); }
+.puntaje span { display: block; color: var(--tenue); font-size: .85rem; }
+.puntaje b { font-size: 2rem; }
+.puntaje small { display: block; color: var(--claro); }
+
+.ficha-graficas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 1.5rem; align-items: start; }
+.ficha-graficas figure { margin: 0; }
+.ficha-graficas figcaption { text-align: center; color: var(--tenue); font-size: .85rem; }
+.ficha-graficas figcaption .punto { margin-left: .8rem; }
+
+.radar { width: 100%; max-width: 380px; display: block; margin: 0 auto; }
+.radar-red { fill: none; stroke: var(--borde); }
+.radar-eje { stroke: var(--borde); }
+.radar-etiqueta { fill: var(--tenue); font-size: 11px; }
+.radar-serie { stroke-width: 2; fill-opacity: .12; stroke-opacity: .55; }
+.radar-serie.activa { fill-opacity: .35; stroke-opacity: 1; }
+.radar-luna { fill: var(--serie-luna); stroke: var(--serie-luna); }
+.radar-marte { fill: var(--serie-marte); stroke: var(--serie-marte); }
+
+.barras h4 { margin-top: 0; }
+.barra { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 2rem; gap: .6rem; align-items: center; font-size: .88rem; padding: .25rem 0; }
+.barra b { text-align: right; }
+.barra.no-aplica { color: var(--tenue); grid-template-columns: minmax(0, 1.4fr) auto; }
+.pista { height: 8px; background: var(--borde); border-radius: 4px; overflow: hidden; }
+.relleno { height: 100%; background: var(--acento); }
+
+.columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.lista-dim { padding-left: 1.1rem; margin: 0; }
+.dato { color: var(--claro); font-weight: 600; margin-left: .3rem; }
+.nota { color: var(--tenue); font-size: .85rem; }
+
+.tabla-clima { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.tabla-clima th { text-align: left; color: var(--tenue); font-weight: 400; padding: .35rem .5rem .35rem 0; }
+.tabla-clima td { padding: .35rem 1rem .35rem 0; }
+.fuentes { padding-left: 1.1rem; }
+
+/* secciones de texto */
+.seccion { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1.5rem; }
+.seccion p, .seccion li { color: var(--tenue); }
+.seccion table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.seccion th { text-align: left; color: var(--claro); font-weight: 600; border-bottom: 1px solid var(--borde); padding: .5rem; }
+.seccion td { border-bottom: 1px solid var(--borde); padding: .5rem; color: var(--texto); }
+.seccion td.num { text-align: right; white-space: nowrap; }
+.tabla-scroll { overflow-x: auto; }
+code { background: var(--panel-2); padding: .1rem .35rem; border-radius: 4px; }
+
+.pie { text-align: center; color: var(--tenue); font-size: .85rem; padding: 2rem 1rem 3rem; }
+
+/* tooltip de leaflet en tono oscuro */
+.leaflet-tooltip { background: var(--panel-2); color: var(--texto); border: 1px solid var(--borde); }
+.leaflet-container { font: inherit; }
+
+@media (max-width: 860px) {
+  .mapa-y-ranking, .ficha-graficas, .columnas { grid-template-columns: 1fr; }
+  #mapa { height: 340px; }
+  .caja-ranking { max-height: none; }
+}
+
+/* ---- portada con los tres mundos ---- */
+.portada {
+  display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 2rem; align-items: center;
+  max-width: none;
+}
+.boton {
+  display: inline-block; margin-top: .6rem; padding: .75rem 1.3rem; border-radius: 999px;
+  background: var(--acento); color: var(--sobre-acento); font-weight: 600; text-decoration: none;
+}
+.boton:hover { background: var(--claro); color: var(--sobre-acento); }
+
+.mundos-mini { position: relative; height: 340px; }
+.globo {
+  position: absolute; margin: 0; border-radius: 50%;
+  background-size: cover; background-position: center;
+  box-shadow: inset -24px -18px 50px rgba(0, 0, 0, .75), 0 0 40px var(--brillo);
+}
+.globo span {
+  position: absolute; left: 50%; bottom: -1.8rem; transform: translateX(-50%);
+  color: var(--tenue); font-size: .85rem; white-space: nowrap;
+}
+.globo.tierra {
+  width: 210px; height: 210px; left: 8%; top: 20px;
+  background-image: url("https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default/GoogleMapsCompatible_Level8/1/0/0.jpeg");
+}
+.globo.luna {
+  width: 110px; height: 110px; right: 6%; top: 0;
+  background-image: url("https://trek.nasa.gov/tiles/Moon/EQ/LRO_WAC_Mosaic_Global_303ppd_v02/1.0.0/default/default028mm/0/0/1.jpg");
+}
+.globo.marte {
+  width: 150px; height: 150px; right: 14%; bottom: 30px;
+  background-image: url("https://trek.nasa.gov/tiles/Mars/EQ/Mars_Viking_MDIM21_ClrMosaic_global_232m/1.0.0/default/default028mm/0/0/0.jpg");
+}
+
+/* ---- mapas de la Luna y Marte ---- */
+.objetivos { margin-bottom: 2rem; }
+.mapas-objetivo { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.mapas-objetivo figure { margin: 0; }
+.mapas-objetivo figcaption { color: var(--tenue); font-size: .82rem; margin-top: .4rem; }
+.mapa-mundo { height: 300px; border-radius: 8px; background: #000; }
+
+/* ---- galería de imágenes del sitio ---- */
+.galeria { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1rem 0 .3rem; }
+.vista { margin: 0; background: var(--panel-2); border: 1px solid var(--borde); border-radius: 8px; overflow: hidden; }
+.vista img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--fondo-mapa); }
+.vista figcaption { font-size: .78rem; color: var(--tenue); padding: .45rem .6rem; }
+.vista figcaption b { color: var(--texto); font-weight: 600; }
+.vista.sin-imagen img { visibility: hidden; }
+.vista.sin-imagen figcaption::after { content: " · sin imagen para esta zona"; }
+
+/* ---- controles de Leaflet en tono oscuro ---- */
+.leaflet-container { background: #000; }
+.leaflet-control-layers, .leaflet-control-layers-expanded {
+  background: var(--panel); color: var(--texto); border: 1px solid var(--borde) !important;
+  border-radius: 8px; font-size: .78rem;
+}
+.leaflet-bar a { background: var(--panel-2); color: var(--texto); border-bottom-color: var(--borde); }
+.leaflet-bar a:hover { background: var(--borde); }
+.leaflet-container .leaflet-control-attribution { background: var(--barra); color: var(--tenue); }
+.leaflet-control-attribution a { color: var(--claro); }
+
+@media (max-width: 860px) {
+  .portada { grid-template-columns: 1fr; padding-top: 2rem; }
+  .mundos-mini { height: 260px; }
+  .globo.tierra { width: 160px; height: 160px; }
+  .globo.marte { width: 110px; height: 110px; }
+  .globo.luna { width: 80px; height: 80px; }
+  .mapas-objetivo { grid-template-columns: 1fr; }
+  .galeria { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---- pasos del método y validación ---- */
+.pasos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.2rem 0; }
+.paso { background: var(--panel-2); border: 1px solid var(--borde); border-radius: 10px; padding: 1.1rem 1.2rem; }
+.paso h3 { margin: .5rem 0 .3rem; font-size: 1.05rem; }
+.paso p { margin: .3rem 0; font-size: .92rem; }
+.paso .num {
+  display: inline-flex; width: 30px; height: 30px; border-radius: 50%; align-items: center; justify-content: center;
+  background: var(--acento); color: var(--sobre-acento); font-weight: 700;
+}
+.dato-grande { display: block; font-size: 2.2rem; font-weight: 700; color: var(--claro); line-height: 1.1; }
+.formula-web { font-family: Consolas, "Courier New", monospace; color: var(--texto) !important; background: var(--fondo); border-radius: 6px; padding: .4rem .6rem; }
+.ejemplo { background: var(--panel-2); border: 1px solid var(--borde); border-radius: 10px; padding: .8rem 1.1rem; margin-bottom: 1rem; }
+.ejemplo summary { cursor: pointer; color: var(--claro); font-weight: 600; }
+@media (max-width: 860px) { .pasos { grid-template-columns: 1fr; } }
+
+/* ---- paletas por mundo ----
+   inicio: azul formal (la de :root)
+   tierra: cafés y tonos tierra
+   luna: blanco, gris y azul
+   marte: rojizos y cafés */
+:root[data-tema="tierra"] {
+  --fondo: #1d150e;
+  --panel: #2a1f15;
+  --panel-2: #36281b;
+  --borde: #5a4329;
+  --texto: #f5ecdc;
+  --tenue: #cdb796;
+  --acento: #c98a4b;
+  --claro: #ecc98f;
+  --oscuro: #7c5a35;
+  --candidato: #9fd27f;
+  --sobre-acento: #1d150e;
+  --barra: rgba(29, 21, 14, .93);
+  --serie-luna: #e9ddca;
+  --serie-marte: #c98a4b;
+  --marcador-activo: #fff8ec;
+  --brillo: rgba(201, 138, 75, .28);
+  --fondo-mapa: #140e09;
+}
+:root[data-tema="luna"] {
+  --fondo: #0d1118;
+  --panel: #1a202b;
+  --panel-2: #252d3a;
+  --borde: #3a4558;
+  --texto: #f4f7fb;
+  --tenue: #b3bdcc;
+  --acento: #b9cbe6;
+  --claro: #e6eef9;
+  --oscuro: #6f84a6;
+  --candidato: #ffd166;
+  --sobre-acento: #0d1118;
+  --barra: rgba(13, 17, 24, .9);
+  --serie-luna: #e6eef9;
+  --serie-marte: #6f84a6;
+  --marcador-activo: #ffffff;
+  --brillo: rgba(230, 238, 249, .3);
+  --fondo-mapa: #07090d;
+}
+:root[data-tema="marte"] {
+  --fondo: #1e0f0a;
+  --panel: #2b1610;
+  --panel-2: #3a1e15;
+  --borde: #64331f;
+  --texto: #fbebe1;
+  --tenue: #d9ad96;
+  --acento: #e0683a;
+  --claro: #ffb48a;
+  --oscuro: #9c3f25;
+  --candidato: #ffd166;
+  --sobre-acento: #1e0f0a;
+  --barra: rgba(30, 15, 10, .93);
+  --serie-luna: #ead8cd;
+  --serie-marte: #e0683a;
+  --marcador-activo: #fff3eb;
+  --brillo: rgba(224, 104, 58, .3);
+  --fondo-mapa: #150a06;
+}
+.icono .crater { fill: var(--fondo); opacity: .5; }
+.selector button[aria-pressed="true"] .icono .crater { fill: var(--acento); opacity: 1; filter: brightness(1.25); }
+
+/* ---- versión 2: cielo animado detrás de la página ---- */
+#cielo { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+main, .pie { position: relative; z-index: 1; }
+.caja-mapa, .caja-ranking, .ficha, .seccion {
+  background: color-mix(in srgb, var(--panel) 86%, transparent);
+  backdrop-filter: blur(4px);
+}
+.marca svg * { transition: fill .45s ease, stroke .45s ease; }
+
+/* =====================================================================
+   versión 2: estructura por modos, íconos y más movimiento
+   ===================================================================== */
+
+/* qué se ve en cada modo */
+:root[data-tema="luna"] .solo-general, :root[data-tema="marte"] .solo-general { display: none !important; }
+:root:not([data-tema="luna"]):not([data-tema="marte"]) .solo-cuerpo { display: none !important; }
+:root:not([data-tema="luna"]) .solo-luna { display: none !important; }
+:root:not([data-tema="marte"]) .solo-marte { display: none !important; }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* íconos */
+.ico { width: 1.15em; height: 1.15em; vertical-align: -0.2em; flex-shrink: 0; }
+.ico-mini { width: 1em; height: 1em; vertical-align: -0.15em; flex-shrink: 0; }
+.ico-grande { width: 44px; height: 44px; }
+.ico-dim { width: 26px; height: 26px; color: var(--claro); flex-shrink: 0; }
+i[data-ico] { font-style: normal; display: inline-flex; }
+h2 { display: flex; align-items: center; gap: .55rem; }
+h2 i[data-ico] { color: var(--acento); }
+
+/* barra superior con el selector al centro */
+.barra-sup { display: grid; grid-template-columns: auto 1fr auto; }
+.barra-sup .selector { justify-self: center; padding: 3px; }
+.barra-sup .selector button { min-height: 40px; padding: .4rem 1rem; }
+.barra-sup nav a { display: inline-flex; align-items: center; gap: .35rem; font-size: .92rem; }
+@media (max-width: 1080px) {
+  .barra-sup { grid-template-columns: auto auto; }
+  .barra-sup nav { grid-column: 1 / -1; justify-content: center; }
+}
+@media (max-width: 560px) {
+  .barra-sup { grid-template-columns: 1fr; justify-items: center; }
+  .barra-sup .selector button { padding: .4rem .7rem; }
+  .barra-sup nav { gap: .8rem; font-size: .85rem; }
+}
+
+/* portada */
+.portada h1 { transition: color .45s ease; }
+.cifras { list-style: none; padding: 0; margin: 1.2rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+.cifras li {
+  background: color-mix(in srgb, var(--panel) 80%, transparent); border: 1px solid var(--borde);
+  border-radius: 12px; padding: .55rem .9rem; display: flex; flex-direction: column; min-width: 92px;
+}
+.cifras b { font-size: 1.6rem; line-height: 1.1; color: var(--claro); }
+.cifras span { font-size: .78rem; color: var(--tenue); }
+.boton { display: inline-flex; align-items: center; gap: .45rem; border: 0; font: inherit; cursor: pointer; }
+.boton.chico { padding: .45rem .9rem; font-size: .88rem; margin: 0; }
+.globo { animation: flotar 9s ease-in-out infinite; }
+.globo.luna { animation-delay: -3s; }
+.globo.marte { animation-delay: -6s; }
+@keyframes flotar { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+
+/* tarjetas para elegir mundo */
+.elegir { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 0 0 2rem; }
+.tarjeta-mundo {
+  display: flex; flex-direction: column; align-items: flex-start; gap: .4rem; text-align: left;
+  padding: 1.3rem 1.4rem; border-radius: 16px; cursor: pointer; font: inherit; color: var(--texto);
+  background: color-mix(in srgb, var(--panel) 82%, transparent); border: 1px solid var(--borde);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  animation: subir .6s ease both;
+}
+.tarjeta-mundo:nth-child(2) { animation-delay: .08s; }
+.tarjeta-mundo:nth-child(3) { animation-delay: .16s; }
+.tarjeta-mundo:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 0, 0, .35); }
+.tarjeta-mundo b { font-size: 1.2rem; }
+.tarjeta-mundo span { color: var(--tenue); font-size: .92rem; }
+.tarjeta-mundo.tierra .ico-grande { color: #c98a4b; }
+.tarjeta-mundo.luna .ico-grande { color: #dfe7f3; }
+.tarjeta-mundo.marte .ico-grande { color: #e0683a; }
+.tarjeta-mundo.tierra:hover { border-color: #c98a4b; }
+.tarjeta-mundo.luna:hover { border-color: #dfe7f3; }
+.tarjeta-mundo.marte:hover { border-color: #e0683a; }
+@keyframes subir { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (max-width: 760px) { .elegir { grid-template-columns: 1fr; } }
+
+/* objetivo */
+.mapa-objetivo .mapa-mundo { height: 360px; }
+
+/* explorar */
+.encabezado-seccion { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 2rem 0 1rem; }
+.encabezado-seccion h2 { margin: 0; }
+.encabezado-seccion .controles { margin: 0; }
+.buscar {
+  display: inline-flex; align-items: center; gap: .4rem; color: var(--tenue);
+  background: var(--panel); border: 1px solid var(--borde); border-radius: 8px; padding: 0 .6rem; min-height: 44px;
+}
+.buscar input { background: transparent; border: 0; color: var(--texto); font: inherit; outline: none; width: 190px; }
+.caja-ranking h3 { margin-top: 0; font-size: 1.05rem; }
+.ranking li { animation: subir .35s ease both; animation-delay: calc(var(--i) * 25ms); }
+.ranking.catalogo button { grid-template-columns: 1.6rem 1fr auto; }
+.ranking .pos .ico-mini { color: var(--acento); }
+.mini-etq { font-style: normal; font-size: .72rem; padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--borde); color: var(--tenue); }
+.mini-etq.candidato { border-color: var(--candidato); color: var(--candidato); }
+.punto.conocido { background: var(--acento); }
+.punto.candidato { background: var(--candidato); }
+.elegido {
+  display: flex; align-items: center; gap: .8rem; margin-top: .6rem; padding: .7rem .9rem;
+  border: 1px solid var(--acento); border-radius: 10px; background: var(--panel-2); animation: subir .35s ease both;
+}
+.elegido > .ico { width: 26px; height: 26px; color: var(--acento); }
+.elegido div { flex: 1; display: flex; flex-direction: column; }
+.elegido small { color: var(--tenue); }
+.elegido-dato { color: var(--claro); font-size: .85rem; font-weight: 600; }
+
+/* ficha */
+.ficha { animation: subir .4s ease both; }
+.ficha-resumen { font-size: 1.05rem; }
+.etiqueta.ok { border-color: var(--acento); color: var(--claro); }
+.resultado { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr) minmax(0, 1fr); gap: 1.2rem; align-items: center; margin: 1.2rem 0; }
+.puntaje-grande { background: var(--panel-2); border: 1px solid var(--acento); border-radius: 14px; padding: 1.2rem; text-align: center; }
+.puntaje-grande span { display: block; color: var(--tenue); font-size: .9rem; }
+.puntaje-grande b { display: block; font-size: 4rem; line-height: 1; color: var(--claro); margin: .3rem 0; }
+.puntaje-grande small { color: var(--claro); }
+.radar-caja { margin: 0; }
+.radar-caja figcaption { text-align: center; color: var(--tenue); font-size: .8rem; }
+.resumen-dims h4 { margin-top: .6rem; }
+@media (max-width: 900px) { .resultado { grid-template-columns: 1fr; } }
+h4.sub { font-size: 1.1rem; color: var(--texto); margin-top: 1.8rem; }
+
+.desglose { display: flex; flex-direction: column; gap: .5rem; margin: .6rem 0 1rem; }
+.dimension, .parametro {
+  background: var(--panel-2); border: 1px solid var(--borde); border-radius: 12px; overflow: hidden;
+  transition: border-color .25s ease;
+}
+.dimension[open], .parametro[open] { border-color: var(--acento); }
+.dimension summary, .parametro summary {
+  display: grid; grid-template-columns: 26px minmax(0, 1.4fr) minmax(0, 1fr) 2.6rem; align-items: center; gap: .7rem;
+  padding: .7rem .9rem; cursor: pointer; list-style: none;
+}
+.dimension summary::-webkit-details-marker, .parametro summary::-webkit-details-marker { display: none; }
+.dim-nombre small { display: block; color: var(--tenue); font-size: .78rem; }
+.dimension summary b, .parametro summary b { text-align: right; }
+.indicadores { list-style: none; margin: 0; padding: 0 .9rem .4rem 3.1rem; }
+.ind { border-top: 1px solid var(--borde); padding: .7rem 0; }
+.ind p { margin: .3rem 0; color: var(--tenue); font-size: .92rem; }
+.ind-cabeza { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.ind-cabeza b { flex: 1; min-width: 160px; }
+.ind-valor { font-size: .82rem; padding: .15rem .6rem; border-radius: 999px; background: var(--panel); border: 1px solid var(--borde); }
+.ind-valor.v1 { border-color: var(--acento); color: var(--claro); }
+.ind-valor.v05 { border-style: dashed; border-color: var(--acento); }
+.ind-pct { font-weight: 700; color: var(--claro); min-width: 3.2rem; text-align: right; }
+.ind-como { font-size: .82rem !important; opacity: .9; }
+.dim-aporte { margin: 0; padding: .6rem .9rem .9rem 3.1rem; color: var(--tenue); font-size: .88rem; }
+.calculo { background: var(--panel-2); border: 1px dashed var(--borde); border-radius: 12px; padding: .9rem 1.1rem; margin: 1rem 0 1.5rem; }
+.calculo h4 { margin-top: 0; }
+.calculo .formula-web { overflow-x: auto; white-space: nowrap; }
+.checklist { list-style: none; padding: 0; margin: 0; }
+.checklist li { display: flex; gap: .5rem; align-items: center; padding: .25rem 0; color: var(--tenue); }
+.checklist li.ok { color: var(--texto); }
+.checklist li.ok .ico-mini { color: var(--acento); }
+.invitacion {
+  display: flex; align-items: center; gap: .9rem; margin-top: 1.2rem; padding: 1rem 1.2rem;
+  border: 1px dashed var(--acento); border-radius: 12px; background: var(--panel-2);
+}
+.invitacion .ico { width: 28px; height: 28px; color: var(--candidato); animation: girar 8s linear infinite; }
+.invitacion p { margin: 0; }
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* parámetros */
+.dos-botones { display: flex; gap: .8rem; flex-wrap: wrap; margin: 1rem 0 1.5rem; }
+.lista-parametros { display: flex; flex-direction: column; gap: .6rem; margin: 1rem 0; }
+.parametro { animation: subir .4s ease both; animation-delay: calc(var(--i) * 50ms); }
+.par-peso { height: 8px; background: var(--borde); border-radius: 4px; overflow: hidden; }
+.par-peso span { display: block; height: 100%; max-width: 100%; background: var(--acento); }
+.parametro ul { list-style: none; margin: 0; padding: 0 1rem .6rem 3.2rem; }
+.parametro li { border-top: 1px solid var(--borde); padding: .7rem 0; }
+.parametro h4 { margin: 0 0 .3rem; color: var(--texto); font-size: 1rem; }
+.parametro p { margin: .25rem 0; font-size: .93rem; }
+.par-dato { font-size: .84rem !important; color: var(--claro) !important; }
+.criterios { padding-left: 1.2rem; }
+.criterios b { color: var(--claro); margin-right: .3rem; }
+
+/* verificación */
+.protocolo { list-style: none; padding: 0; display: grid; gap: .6rem; counter-reset: paso; }
+.protocolo li {
+  display: flex; gap: .9rem; align-items: flex-start; padding: .8rem 1rem; border-radius: 12px;
+  background: var(--panel-2); border: 1px solid var(--borde); animation: subir .4s ease both;
+}
+.protocolo li > i .ico { width: 26px; height: 26px; color: var(--acento); }
+.protocolo li div { color: var(--tenue); }
+.protocolo li b { color: var(--texto); }
+.estado-verificacion { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1rem 0 .5rem; }
+.estado-verificacion div {
+  display: grid; grid-template-columns: auto 1fr; column-gap: .6rem; align-items: center;
+  padding: .8rem 1rem; border-radius: 12px; border: 1px solid var(--borde); background: var(--panel);
+}
+.estado-verificacion .ico { grid-row: span 2; width: 28px; height: 28px; color: var(--acento); }
+.estado-verificacion b { font-size: 1.3rem; color: var(--claro); }
+.estado-verificacion span { color: var(--tenue); font-size: .85rem; }
+.paso h4 { margin: .5rem 0 .3rem; font-size: 1rem; color: var(--texto); }
+@media (max-width: 760px) { .estado-verificacion { grid-template-columns: 1fr; } }
+
+/* secciones que aparecen suave */
+.seccion, .explorar { animation: subir .5s ease both; }
+
+</style>
+</head>
+<body>
+
+<header class="barra-sup">
+  <a class="marca" href="#inicio">
+    <svg viewBox="0 0 200 200" width="36" height="36" aria-hidden="true">
+      <g transform="rotate(-14 100 112)"><ellipse cx="100" cy="112" rx="94" ry="22" fill="none" stroke="var(--claro)" stroke-width="9"/></g>
+      <polygon points="50,84 56,30 92,60" fill="var(--acento)"/>
+      <polygon points="150,84 144,30 108,60" fill="var(--acento)"/>
+      <circle cx="100" cy="110" r="58" fill="var(--acento)"/>
+      <ellipse cx="82" cy="106" rx="7" ry="9" fill="var(--fondo)"/>
+      <ellipse cx="118" cy="106" rx="7" ry="9" fill="var(--fondo)"/>
+      <path d="M96 119 h8 l-4 5z" fill="var(--fondo)"/>
+      <g transform="rotate(-14 100 112)"><path d="M6 112 A94 22 0 0 0 194 112" fill="none" stroke="var(--claro)" stroke-width="9" stroke-linecap="round"/></g>
+    </svg>
+    <span>Doppelgänger</span>
+  </a>
+
+  <div class="selector" role="group" aria-label="Elige un mundo">
+    <button type="button" data-cuerpo="tierra" aria-pressed="false"><i data-ico="tierra" data-clase="icono"></i>Tierra</button>
+    <button type="button" data-cuerpo="luna" aria-pressed="false"><i data-ico="luna" data-clase="icono"></i>Luna</button>
+    <button type="button" data-cuerpo="marte" aria-pressed="false"><i data-ico="marte" data-clase="icono"></i>Marte</button>
+  </div>
+
+  <nav aria-label="Secciones">
+    <a href="#explorar"><i data-ico="ubicacion"></i>Explorar</a>
+    <a href="#parametros"><i data-ico="regla"></i>Parámetros</a>
+    <a href="#verificacion"><i data-ico="escudo"></i>Verificación</a>
+    <a href="#fuentes"><i data-ico="libro"></i>Fuentes</a>
+    <a href="#equipo"><i data-ico="personas"></i>Equipo</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ===== PORTADA ===== -->
+  <section id="inicio" class="portada">
+    <div class="portada-texto">
+      <p class="antetitulo">NASA Space Apps Challenge 2026 · Equipo Gatitácticos</p>
+      <h1 data-texto="titulo">Los dobles de la Luna y Marte en la Tierra</h1>
+      <p class="entrada" data-texto="entrada">
+        Antes de mandar personas al polo sur de la Luna o a Marte, el equipo y los procedimientos
+        se prueban en lugares de la Tierra que se les parecen: los análogos.
+      </p>
+      <ul class="cifras">
+        <li><b id="c-sitios">—</b><span>sitios</span></li>
+        <li><b id="c-conocidos">—</b><span>análogos que ya se usan</span></li>
+        <li><b id="c-candidatos">—</b><span>candidatos nuevos</span></li>
+        <li><b id="c-paises">—</b><span>países</span></li>
+      </ul>
+      <a class="boton" href="#explorar"><i data-ico="abajo"></i><span data-texto="boton">Ver todos los análogos</span></a>
+    </div>
+    <div class="mundos-mini" aria-hidden="true">
+      <figure class="globo tierra"><span>Tierra</span></figure>
+      <figure class="globo luna"><span>Luna</span></figure>
+      <figure class="globo marte"><span>Marte</span></figure>
+    </div>
+  </section>
+
+  <!-- elegir mundo (solo en vista general) -->
+  <section class="elegir solo-general" aria-label="Elige con qué comparar">
+    <button type="button" class="tarjeta-mundo tierra" data-cuerpo="tierra">
+      <i data-ico="tierra" data-clase="ico-grande"></i>
+      <b>Tierra</b>
+      <span>Todos los análogos que consideramos, en el mapa.</span>
+    </button>
+    <button type="button" class="tarjeta-mundo luna" data-cuerpo="luna">
+      <i data-ico="luna" data-clase="ico-grande"></i>
+      <b>Luna · polo sur</b>
+      <span>Qué tanto se parece cada sitio a la zona de la base de Artemis.</span>
+    </button>
+    <button type="button" class="tarjeta-mundo marte" data-cuerpo="marte">
+      <i data-ico="marte" data-clase="ico-grande"></i>
+      <b>Marte</b>
+      <span>Qué tanto se parece cada sitio a Marte, con sus propios parámetros.</span>
+    </button>
+  </section>
+
+  <!-- ===== OBJETIVO (solo Luna o Marte) ===== -->
+  <section id="objetivo" class="seccion solo-cuerpo">
+    <h2><i data-ico="crater"></i><span data-texto="obj-titulo">Contra qué comparamos</span></h2>
+    <p class="solo-luna">
+      El objetivo es la región del <b>polo sur</b> de la Luna, donde la NASA busca instalar la base permanente
+      y donde están las regiones candidatas de Artemis III. Ahí el Sol pasa casi en el horizonte, hay
+      cráteres en sombra permanente con hielo de agua y no hay atmósfera.
+    </p>
+    <p class="solo-marte">
+      Los objetivos son los sitios que exploran los rovers, como los cráteres <b>Jezero</b> (Perseverance) y
+      <b>Gale</b> (Curiosity): antiguos lagos, con polvo, viento, sales, mucho frío y aire muy delgado.
+    </p>
+    <div class="mapa-objetivo">
+      <div id="mapa-luna" class="mapa-mundo solo-luna"></div>
+      <div id="mapa-marte" class="mapa-mundo solo-marte"></div>
+    </div>
+    <p class="nota solo-luna">Mosaico LRO WAC y topografía LRO LOLA (NASA Moon Trek). Recuadro amarillo: polo sur.</p>
+    <p class="nota solo-marte">Mosaico Viking y topografía MGS MOLA (NASA Mars Trek). Puntos amarillos: Jezero y Gale.</p>
+  </section>
+
+  <!-- ===== EXPLORAR ===== -->
+  <section id="explorar" class="explorar">
+    <div class="encabezado-seccion">
+      <h2><i data-ico="ubicacion"></i><span data-texto="exp-titulo">Todos los análogos</span></h2>
+      <div class="controles">
+        <label class="buscar"><i data-ico="lupa"></i>
+          <input id="buscar" type="search" placeholder="Buscar sitio o país" aria-label="Buscar sitio o país">
+        </label>
+        <label class="filtro">
+          <span class="oculto">Mostrar</span>
+          <select id="filtro" aria-label="Mostrar">
+            <option value="todos">Todos los sitios</option>
+            <option value="candidato">Solo candidatos nuevos</option>
+            <option value="conocido">Solo análogos conocidos</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="mapa-y-ranking">
+      <div class="caja-mapa">
+        <div id="mapa" aria-label="Mapa de sitios análogos"></div>
+        <p class="leyenda solo-general">
+          <i class="punto conocido"></i>Análogo que ya se usa
+          <i class="punto candidato"></i>Candidato nuevo
+        </p>
+        <p class="leyenda solo-cuerpo">
+          <i class="punto fuerte"></i>Fuerte (70+)
+          <i class="punto parcial"></i>Parcial (50–69)
+          <i class="punto debil"></i>Débil (&lt;50)
+          <i class="aro"></i>Candidato nuevo
+        </p>
+        <div id="elegido" class="elegido" hidden></div>
+      </div>
+      <div class="caja-ranking">
+        <h3 id="titulo-ranking">Catálogo</h3>
+        <ol id="ranking" class="ranking"><li class="aviso">Cargando datos…</li></ol>
+      </div>
+    </div>
+
+    <article id="ficha" class="ficha" aria-live="polite"></article>
+  </section>
+
+  <!-- ===== PARÁMETROS ===== -->
+  <section id="parametros" class="seccion">
+    <h2><i data-ico="regla"></i><span data-texto="par-titulo">Parámetros</span></h2>
+    <div class="solo-general">
+      <p>
+        Cada cuerpo se compara con sus propios parámetros, porque lo que importa en la Luna no es lo mismo
+        que en Marte (por ejemplo, en la Luna no hay viento ni polvo que se mueva). Elige uno para verlos:
+      </p>
+      <div class="dos-botones">
+        <button type="button" class="boton" data-cuerpo="luna"><i data-ico="luna"></i>Parámetros de la Luna</button>
+        <button type="button" class="boton" data-cuerpo="marte"><i data-ico="marte"></i>Parámetros de Marte</button>
+      </div>
+      <h3>Cómo se calcula, en tres pasos</h3>
+      <div class="pasos">
+        <div class="paso"><span class="num">1</span><h4>Medir</h4><p>Datos de clima de NASA POWER y rasgos documentados en artículos científicos.</p></div>
+        <div class="paso"><span class="num">2</span><h4>Normalizar</h4><p>Cada dato se convierte en un valor de 0 a 1 entre dos umbrales.</p><p class="formula-web">f(x) = (x − a) / (b − a), recortado a [0, 1]</p></div>
+        <div class="paso"><span class="num">3</span><h4>Ponderar</h4><p>Se promedian las dimensiones con los pesos de cada cuerpo.</p><p class="formula-web">P = 100 · Σ w·D / Σ w</p></div>
+      </div>
+    </div>
+    <div class="solo-cuerpo">
+      <p data-texto="par-entrada"></p>
+      <div id="lista-parametros" class="lista-parametros"></div>
+      <h3>Cómo calificamos los rasgos</h3>
+      <ul id="criterios" class="criterios"></ul>
+    </div>
+  </section>
+
+  <!-- ===== VERIFICACIÓN ===== -->
+  <section id="verificacion" class="seccion">
+    <h2><i data-ico="escudo"></i>Cómo verificamos que sea correcto</h2>
+    <p>Revisamos dos cosas: que los datos de cada sitio sean ciertos, y que el método dé resultados que tengan sentido.</p>
+
+    <h3>1. Revisión de cada sitio</h3>
+    <ol class="protocolo">
+      <li><i data-ico="libro"></i><div><b>Fuente científica.</b> Cada rasgo tiene un motivo escrito y un artículo, tesis o página de una agencia espacial que lo respalda.</div></li>
+      <li><i data-ico="satelite"></i><div><b>Imagen de satélite.</b> Revisamos en las imágenes de NASA (Blue Marble y relieve ASTER) que el punto caiga en el lugar correcto.</div></li>
+      <li><i data-ico="termometro"></i><div><b>Datos medidos, no inventados.</b> El clima sale directo de NASA POWER con las coordenadas del sitio; cualquiera puede repetir la descarga con <code>scripts/descargar_clima.py</code>.</div></li>
+      <li><i data-ico="personas"></i><div><b>Dos revisores.</b> Dos integrantes del equipo revisan las fuentes por separado; solo entonces el sitio se marca como verificado.</div></li>
+      <li><i data-ico="grafica"></i><div><b>Prueba del método.</b> Comparamos el ranking con análogos que la NASA y la ESA ya usan, y movemos los pesos para ver si el resultado cambia.</div></li>
+    </ol>
+    <div id="estado-verificacion" class="estado-verificacion"></div>
+
+    <h3>2. Prueba del método</h3>
+    <div id="validacion" class="pasos"></div>
+
+    <h3>Limitaciones</h3>
+    <ul>
+      <li>Ningún sitio de la Tierra reproduce la gravedad reducida, el vacío lunar, la atmósfera delgada de Marte ni su radiación.</li>
+      <li>NASA POWER tiene una resolución de unos 50 km: en montañas o islas pequeñas el dato es de la zona, no del punto exacto.</li>
+      <li>Los rasgos se califican a mano a partir de las fuentes; los sitios “por verificar” todavía necesitan la revisión del equipo.</li>
+      <li>El polo sur lunar es sobre todo de rocas claras (anortosita); todavía no tenemos un parámetro para eso.</li>
+      <li>Los pesos son una decisión del equipo y se pueden cambiar en <code>data/modelo.json</code>.</li>
+    </ul>
+  </section>
+
+  <!-- ===== FUENTES ===== -->
+  <section id="fuentes" class="seccion">
+    <h2><i data-ico="libro"></i>Datos y fuentes</h2>
+    <ul class="fuentes-generales">
+      <li><a href="https://power.larc.nasa.gov" target="_blank" rel="noopener">NASA POWER</a>: clima anual de cada sitio.</li>
+      <li><a href="https://www.nasa.gov/?p=748006" target="_blank" rel="noopener">NASA, regiones candidatas de Artemis III</a>: objetivo lunar en el polo sur.</li>
+      <li><a href="https://science.nasa.gov/resource/shadows-near-the-moons-south-pole" target="_blank" rel="noopener">NASA Science, sombras en el polo sur lunar</a>: Sol a menos de 1.5° del horizonte y hielo en cráteres en sombra.</li>
+      <li><a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html" target="_blank" rel="noopener">NASA, Mars Fact Sheet</a>: presión, temperatura, viento y vapor de agua de Marte.</li>
+      <li><a href="https://arpi.unipi.it/retrieve/e0d6c930-149e-fcf8-e053-d805fe0aa794/Foucher_2021.pdf" target="_blank" rel="noopener">Foucher et al. 2021, análogos funcionales</a>: definición de análogo que usamos.</li>
+      <li><a href="https://ntrs.nasa.gov/citations/20220013521" target="_blank" rel="noopener">Graff et al. 2023, sitios volcánicos para Artemis</a> y <a href="https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/CAVES_and_Pangaea/What_is_Pangaea" target="_blank" rel="noopener">ESA PANGAEA</a>: sitios de entrenamiento de astronautas.</li>
+      <li><a href="https://earthdata.nasa.gov/gibs" target="_blank" rel="noopener">NASA GIBS</a>, <a href="https://worldview.earthdata.nasa.gov" target="_blank" rel="noopener">Worldview</a> y <a href="https://trek.nasa.gov" target="_blank" rel="noopener">NASA Solar System Treks</a>: mapas e imágenes.</li>
+      <li>Las fuentes de cada sitio están en su ficha.</li>
+    </ul>
+  </section>
+
+  <!-- ===== EQUIPO ===== -->
+  <section id="equipo" class="seccion">
+    <h2><i data-ico="personas"></i>Equipo Gatitácticos</h2>
+    <p>Noemí, Yexalen, Rafael, Diego y Luis. Sede Querétaro.</p>
+    <h3>Uso de herramientas de IA</h3>
+    <p>
+      Usamos un asistente de IA para apoyar la programación de esta página, la búsqueda inicial de
+      bibliografía y la redacción. La elección del reto, los criterios, la verificación de fuentes y el
+      análisis de resultados son del equipo. No usamos imágenes generadas por IA: todas son de la NASA.
+    </p>
+  </section>
+</main>
+
+<footer class="pie">
+  Proyecto para el NASA Space Apps Challenge 2026. Datos abiertos de la NASA y agencias asociadas.
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(() => {
+const DATOS = {"modelo": {"indicadores": {"frio": {"nombre": "Frío extremo", "fuente": "NASA POWER · T2M_MIN (°C)", "tipo": "clima", "campo": "T2M_MIN", "min": 15, "max": -40, "que": "La temperatura mínima del año en el sitio.", "luna": "En el polo sur lunar el Sol casi no calienta y algunos cráteres en sombra permanente están entre los lugares más fríos del sistema solar.", "marte": "Marte tiene una temperatura media de unos −59 °C.", "unidad": "°C", "dec": 1}, "oscilacion": {"nombre": "Oscilación día/noche", "fuente": "NASA POWER · T2M_RANGE (°C)", "tipo": "clima", "campo": "T2M_RANGE", "min": 5, "max": 20, "que": "La diferencia promedio entre el día y la noche.", "luna": "Sin atmósfera, el suelo lunar pasa de caliente a helado entre la luz y la sombra.", "marte": "En el sitio del Viking 1 la temperatura pasa de −89 °C de noche a −31 °C de día.", "unidad": "°C", "dec": 1}, "aridez": {"nombre": "Aridez", "fuente": "NASA POWER · PRECTOTCORR (mm/día)", "tipo": "clima", "campo": "PRECTOTCORR", "min": 2, "max": 0, "que": "La lluvia promedio por día.", "luna": "En la Luna nunca llueve; el agua solo existe como hielo en cráteres en sombra.", "marte": "En Marte no llueve; el agua está como hielo o vapor.", "unidad": "mm/día", "dec": 2}, "seco": {"nombre": "Aire seco", "fuente": "NASA POWER · RH2M (%)", "tipo": "clima", "campo": "RH2M", "min": 80, "max": 15, "que": "La humedad relativa del aire.", "luna": "La Luna no tiene atmósfera, así que no hay humedad.", "marte": "El aire de Marte tiene muy poco vapor de agua (unas 210 partes por millón).", "unidad": "%", "dec": 0}, "viento": {"nombre": "Viento", "fuente": "NASA POWER · WS10M (m/s)", "tipo": "clima", "campo": "WS10M", "min": 2, "max": 8, "que": "La velocidad promedio del viento a 10 m de altura.", "luna": "No aplica: la Luna no tiene viento.", "marte": "En Marte el viento va de 2 a 7 m/s en verano y llega a 17–30 m/s en tormentas de polvo.", "unidad": "m/s", "dec": 1}, "altitud": {"nombre": "Aire delgado (altitud)", "fuente": "NASA POWER · elevación del punto (m)", "tipo": "clima", "campo": "elev", "min": 0, "max": 4500, "que": "La altura sobre el nivel del mar: a más altura, el aire es más delgado y hay más radiación UV.", "luna": "No se usa para la Luna.", "marte": "La presión en Marte es de unos 6 milibares, menos del 1 % de la de la Tierra.", "unidad": "m", "dec": 0}, "sol_bajo": {"nombre": "Sol bajo (latitud)", "fuente": "Latitud del sitio (°)", "tipo": "geo", "campo": "lat_abs", "min": 30, "max": 75, "que": "Qué tan lejos del ecuador está el sitio: entre más cerca de un polo, más bajo pasa el Sol.", "luna": "En el polo sur lunar el Sol nunca sube más de 1.5° sobre el horizonte, así que las sombras son largas.", "marte": "No se usa para Marte.", "unidad": "°", "dec": 1}, "basalto": {"nombre": "Basalto volcánico", "tipo": "rasgo", "que": "Si hay roca volcánica oscura, como la de los mares lunares y gran parte de Marte.", "luna": "Sirve para practicar con roca volcánica. Ojo: el polo sur lunar es más de rocas claras (anortosita), algo que todavía no medimos.", "marte": "La corteza de Marte es mayormente basáltica."}, "crateres": {"nombre": "Cráteres", "tipo": "rasgo", "que": "Si hay cráteres de impacto o volcánicos.", "luna": "El polo sur lunar está lleno de cráteres, como Shackleton.", "marte": "Los rovers exploran cráteres como Gale y Jezero."}, "dunas": {"nombre": "Dunas o formas eólicas", "tipo": "rasgo", "que": "Si hay dunas, yardangs u otras formas hechas por el viento.", "luna": "No aplica: en la Luna no hay viento.", "marte": "Marte tiene campos de dunas y crestas hechas por el viento."}, "sales": {"nombre": "Sales, sulfatos, percloratos", "tipo": "rasgo", "que": "Si hay sales, sulfatos o percloratos.", "luna": "No se usa para la Luna.", "marte": "En Marte se encontraron sulfatos como la jarosita y percloratos en el suelo."}, "hielo": {"nombre": "Hielo o permafrost", "tipo": "rasgo", "que": "Si hay hielo, glaciares o suelo congelado.", "luna": "Hay hielo de agua en los cráteres en sombra del polo sur: es la razón para poner ahí la base.", "marte": "Marte tiene hielo en los polos y bajo la superficie."}, "paleolago": {"nombre": "Sedimentos de agua antigua", "tipo": "rasgo", "que": "Si hay sedimentos que dejó el agua hace mucho (lagos o ríos antiguos).", "luna": "No se usa para la Luna.", "marte": "Jezero y Gale fueron lagos hace miles de millones de años."}, "extremofilos": {"nombre": "Vida extremófila", "tipo": "rasgo", "que": "Si viven ahí organismos adaptados a condiciones extremas.", "luna": "No se usa para la Luna.", "marte": "Sirve para probar cómo buscar vida pasada en Marte."}, "cuevas": {"nombre": "Cuevas o tubos de lava", "tipo": "rasgo", "que": "Si hay cuevas o tubos de lava.", "luna": "Los tubos de lava podrían proteger a los astronautas de la radiación.", "marte": "Las cuevas marcianas podrían servir de refugio y guardar hielo."}, "aislamiento": {"nombre": "Aislamiento", "tipo": "rasgo", "que": "Qué tan lejos está de ayuda y servicios.", "luna": "En la Luna la tripulación depende de sí misma; ensayar aislados es parte del entrenamiento.", "marte": "Desde Marte, un mensaje tarda hasta 20 minutos en llegar a la Tierra."}}, "dimensiones": [{"id": "geologia", "nombre": "Geología y materiales", "corto": "Geología", "luna": ["basalto", "crateres"], "marte": ["basalto", "sales"], "icono": "roca"}, {"id": "terreno", "nombre": "Terreno y topografía", "corto": "Terreno", "luna": ["crateres"], "marte": ["crateres", "dunas"], "icono": "crater"}, {"id": "temperatura", "nombre": "Temperatura e iluminación", "corto": "Temp./luz", "luna": ["frio", "oscilacion", "sol_bajo"], "marte": ["frio", "oscilacion", "altitud"], "icono": "termometro"}, {"id": "agua", "nombre": "Agua, hielo y permafrost", "corto": "Agua/hielo", "luna": ["hielo", "aridez"], "marte": ["hielo", "paleolago", "aridez"], "icono": "gota"}, {"id": "polvo", "nombre": "Polvo, viento y erosión", "corto": "Polvo/viento", "luna": [], "marte": ["viento", "dunas", "seco"], "icono": "viento"}, {"id": "vida", "nombre": "Biología y habitabilidad", "corto": "Vida", "luna": ["aridez", "seco"], "marte": ["extremofilos", "seco"], "icono": "microbio"}, {"id": "subsuelo", "nombre": "Cuevas y subsuelo", "corto": "Subsuelo", "luna": ["cuevas"], "marte": ["cuevas"], "icono": "cueva"}, {"id": "operaciones", "nombre": "Condiciones de operación", "corto": "Operación", "luna": ["aislamiento"], "marte": ["aislamiento"], "icono": "bandera"}], "pesos": {"luna": {"geologia": 0.2, "terreno": 0.15, "temperatura": 0.2, "agua": 0.15, "polvo": 0, "vida": 0.05, "subsuelo": 0.15, "operaciones": 0.1}, "marte": {"geologia": 0.15, "terreno": 0.1, "temperatura": 0.15, "agua": 0.15, "polvo": 0.15, "vida": 0.15, "subsuelo": 0.05, "operaciones": 0.1}}, "niveles": [{"desde": 70, "nombre": "Análogo fuerte"}, {"desde": 50, "nombre": "Análogo parcial"}, {"desde": 0, "nombre": "Análogo débil"}], "criterios_rasgos": [{"valor": 1, "texto": "La fuente describe el rasgo como algo principal del sitio."}, {"valor": 0.5, "texto": "El rasgo está, pero es pequeño, parcial o solo en una parte del sitio."}, {"valor": 0, "texto": "Las fuentes revisadas no lo reportan."}], "criterio_aislamiento": "De 0 a 1: 1 = sin poblaciones ni caminos (se llega en avión o barco); 0.5 = desierto o reserva con carretera; 0.2–0.3 = junto a un pueblo o zona turística."}, "sitios": [{"id": "atacama", "nombre": "Desierto de Atacama (Yungay)", "lugar": "Antofagasta", "pais": "Chile", "tipo": "conocido", "lat": -24.1, "lon": -70.02, "rasgos": {"basalto": 0, "crateres": 0, "dunas": 0.5, "sales": 1, "hielo": 0, "paleolago": 1, "extremofilos": 1, "cuevas": 0, "aislamiento": 0.8}, "resumen": "Uno de los lugares más secos del planeta, con salares y suelos con percloratos. Es el análogo marciano más usado para probar instrumentos que buscan vida.", "pruebas": "Detección de vida en suelos casi estériles, perforación y rovers de larga distancia.", "fuentes": [{"titulo": "Martins et al. 2017, Earth as a Tool for Astrobiology (Space Science Reviews)", "url": "https://spiral.imperial.ac.uk/bitstream/10044/1/46262/2/Martins%20et%20al_Topical%20Team_major%20review_final.pdf"}, {"titulo": "Preston y Dartnell 2014, Planetary habitability (Int. J. Astrobiology)", "url": "https://www.cambridge.org/core/product/244C9EB88B74D6905133DD2228DD3112/core-reader"}], "verificado": false, "motivos": {"dunas": "Hay campos de arena y formas hechas por el viento, pero no dominan el paisaje de Yungay.", "sales": "Salares y suelos con nitratos y percloratos, sales que también se encontraron en Marte.", "paleolago": "Los salares son restos de lagos antiguos que se evaporaron.", "extremofilos": "Microbios que sobreviven casi sin agua dentro de rocas de sal; aquí se prueban detectores de vida.", "aislamiento": "Desierto remoto, aunque con caminos y una estación de investigación en Yungay."}}, {"id": "haughton", "nombre": "Cráter Haughton", "lugar": "Isla Devon, Nunavut", "pais": "Canadá", "tipo": "conocido", "lat": 75.38, "lon": -89.68, "rasgos": {"basalto": 0, "crateres": 1, "dunas": 0, "sales": 0.5, "hielo": 1, "paleolago": 1, "extremofilos": 1, "cuevas": 0, "aislamiento": 1}, "resumen": "Cráter de impacto de unos 20 km en un desierto polar. La NASA lo ha usado para ensayar caminatas, rovers y comunicaciones de misiones a Marte.", "pruebas": "Operaciones humanas en aislamiento, trajes, rovers y geología de impacto.", "fuentes": [{"titulo": "NASA Facts: Analogs (2008)", "url": "https://www.nasa.gov/wp-content/uploads/2016/04/nasa_facts_analogs_2008.pdf"}, {"titulo": "Preston, Grady y Barber 2012, Catalogue of Planetary Analogues (ESA), cap. 10", "url": "https://freight.cargo.site/m/D1821053255089660420449933921929/The-Catalogue-of-Planetary-Analogues.pdf"}], "verificado": false, "motivos": {"crateres": "Cráter de impacto de unos 20 km, uno de los mejor conservados del Ártico.", "sales": "Hay yeso en los depósitos del cráter, pero en menor cantidad que en un salar.", "hielo": "El suelo está congelado (permafrost) todo el año.", "paleolago": "Después del impacto hubo un lago dentro del cráter y quedan sus sedimentos.", "extremofilos": "Microbios que viven dentro de rocas fracturadas por el impacto.", "aislamiento": "Isla Devon, deshabitada; solo se llega en avioneta."}}, {"id": "mcmurdo", "nombre": "Valles Secos de McMurdo (Valle Taylor)", "lugar": "Tierra de Victoria", "pais": "Antártida", "tipo": "conocido", "lat": -77.62, "lon": 162.9, "rasgos": {"basalto": 0.5, "crateres": 0, "dunas": 0.5, "sales": 1, "hielo": 1, "paleolago": 1, "extremofilos": 1, "cuevas": 0, "aislamiento": 1}, "resumen": "Desierto polar frío y seco, sin hielo en la superficie de los valles. Es de los sitios más parecidos a Marte en clima.", "pruebas": "Hábitats, energía en frío extremo y búsqueda de vida en suelos helados.", "fuentes": [{"titulo": "NASA Facts: Analogs (2008)", "url": "https://www.nasa.gov/wp-content/uploads/2016/04/nasa_facts_analogs_2008.pdf"}, {"titulo": "Martins et al. 2017, Earth as a Tool for Astrobiology", "url": "https://spiral.imperial.ac.uk/bitstream/10044/1/46262/2/Martins%20et%20al_Topical%20Team_major%20review_final.pdf"}], "verificado": false, "motivos": {"basalto": "Hay rocas volcánicas oscuras (dolerita), mezcladas con otras rocas.", "dunas": "Hay rocas pulidas por el viento y algunas dunas.", "sales": "Suelos con sales y lagos muy salados.", "hielo": "Permafrost y glaciares; el suelo permanece congelado.", "paleolago": "Lagos cubiertos de hielo y sedimentos de lagos más grandes del pasado.", "extremofilos": "Comunidades de microbios dentro de rocas y bajo el hielo de los lagos.", "aislamiento": "Antártida: solo se trabaja con apoyo de una base científica."}}, {"id": "meteor", "nombre": "Meteor Crater", "lugar": "Arizona", "pais": "EUA", "tipo": "conocido", "lat": 35.027, "lon": -111.022, "rasgos": {"basalto": 0, "crateres": 1, "dunas": 0, "sales": 0, "hielo": 0, "paleolago": 0.5, "extremofilos": 0, "cuevas": 0, "aislamiento": 0.5}, "resumen": "Cráter de impacto de 1.2 km muy bien conservado. Ahí se entrenó en geología a astronautas del programa Apollo.", "pruebas": "Entrenamiento en geología de impacto y navegación en terreno con cráteres.", "fuentes": [{"titulo": "Universidad de Arizona, Exploring a Desert Portal to Other Worlds (2019)", "url": "https://news.arizona.edu/news/exploring-desert-portal-other-worlds"}], "verificado": false, "motivos": {"crateres": "Cráter de impacto de 1.2 km, muy bien conservado.", "paleolago": "Tuvo un lago en su interior; quedan sedimentos en el fondo.", "aislamiento": "Desierto con carretera y centro de visitantes."}}, {"id": "riotinto", "nombre": "Río Tinto", "lugar": "Huelva", "pais": "España", "tipo": "conocido", "lat": 37.69, "lon": -6.56, "rasgos": {"basalto": 0, "crateres": 0, "dunas": 0, "sales": 1, "hielo": 0, "paleolago": 0.5, "extremofilos": 1, "cuevas": 0.5, "aislamiento": 0.3}, "resumen": "Río muy ácido y rico en hierro, con minerales como jarosita y goethita, parecidos a los que encontraron los rovers en Marte.", "pruebas": "Instrumentos de mineralogía, perforación y búsqueda de vida en ambientes ácidos.", "fuentes": [{"titulo": "Europlanet, Planetary Field Analogues", "url": "https://www.isa.au.dk/networks/euroPlanet/facilities/tna1/overview.html"}, {"titulo": "Martins et al. 2017, Earth as a Tool for Astrobiology", "url": "https://spiral.imperial.ac.uk/bitstream/10044/1/46262/2/Martins%20et%20al_Topical%20Team_major%20review_final.pdf"}], "verificado": false, "motivos": {"sales": "Sulfatos de hierro como la jarosita, el mismo mineral que encontró el rover Opportunity en Marte.", "paleolago": "Terrazas de hierro que el río fue dejando a lo largo de miles de años.", "extremofilos": "Microbios que viven en agua muy ácida y llena de metales.", "cuevas": "Minas y galerías donde se ha buscado vida en el subsuelo.", "aislamiento": "Zona minera cerca de pueblos."}}, {"id": "lanzarote", "nombre": "Timanfaya y túnel de la Corona", "lugar": "Lanzarote, Canarias", "pais": "España", "tipo": "conocido", "lat": 29.0, "lon": -13.75, "rasgos": {"basalto": 1, "crateres": 1, "dunas": 0.5, "sales": 0, "hielo": 0, "paleolago": 0, "extremofilos": 0.5, "cuevas": 1, "aislamiento": 0.3}, "resumen": "Campos de lava basáltica y uno de los tubos de lava más grandes de la Tierra. La ESA lo usa para entrenar astronautas en geología.", "pruebas": "Exploración de cuevas con robots, entrenamiento geológico y refugios subterráneos.", "fuentes": [{"titulo": "Sauro et al. 2020, Lava tubes on Earth, Moon and Mars (Earth-Science Reviews)", "url": "https://cris.unibo.it/retrieve/bf298592-3a07-4d19-8979-599f91ae8131/2020%2bSauro%2bet%2bal%2bESR%2bLava%2btubes.pdf"}, {"titulo": "Martins et al. 2017, Earth as a Tool for Astrobiology", "url": "https://spiral.imperial.ac.uk/bitstream/10044/1/46262/2/Martins%20et%20al_Topical%20Team_major%20review_final.pdf"}], "verificado": false, "motivos": {"basalto": "Campos de lava basáltica de las erupciones de Timanfaya (1730–1736).", "crateres": "Decenas de conos y cráteres volcánicos.", "dunas": "Arenas volcánicas movidas por el viento, en zonas pequeñas.", "extremofilos": "Microbios en tubos de lava y zonas volcánicas, poco estudiados.", "cuevas": "El túnel de la Corona es uno de los tubos de lava más largos del mundo.", "aislamiento": "Isla turística con acceso fácil."}}, {"id": "maunakea", "nombre": "Mauna Kea", "lugar": "Isla de Hawái", "pais": "EUA", "tipo": "conocido", "lat": 19.82, "lon": -155.47, "rasgos": {"basalto": 1, "crateres": 1, "dunas": 0, "sales": 0, "hielo": 0.5, "paleolago": 0, "extremofilos": 0.5, "cuevas": 1, "aislamiento": 0.5}, "resumen": "Volcán basáltico usado por la NASA para probar extracción de oxígeno del material volcánico y técnicas para buscar hielo lunar.", "pruebas": "Uso de recursos locales (ISRU), construcción con regolito y movilidad en laderas.", "fuentes": [{"titulo": "NASA Facts: Analogs (2008)", "url": "https://www.nasa.gov/wp-content/uploads/2016/04/nasa_facts_analogs_2008.pdf"}], "verificado": false, "motivos": {"basalto": "Volcán basáltico; su material se parece al suelo lunar y se usa para fabricar simulantes.", "crateres": "Conos de ceniza y cráteres volcánicos en la cima.", "hielo": "Hay permafrost en algunos conos de la cima, en zonas pequeñas.", "extremofilos": "Pocos organismos adaptados al frío, la altura y la radiación UV.", "cuevas": "Tubos de lava en sus laderas.", "aislamiento": "Hay observatorios y carretera hasta la cima."}}, {"id": "pinacate", "nombre": "Campo volcánico El Pinacate", "lugar": "Sonora", "pais": "México", "tipo": "candidato", "lat": 31.77, "lon": -113.5, "rasgos": {"basalto": 1, "crateres": 1, "dunas": 1, "sales": 0, "hielo": 0, "paleolago": 0, "extremofilos": 0, "cuevas": 0.5, "aislamiento": 0.8}, "resumen": "Más de 400 conos volcánicos y nueve cráteres grandes rodeados de dunas. Astronautas del programa Apollo entrenaron en la zona, pero hoy casi no se usa como análogo.", "pruebas": "Rovers en lava y arena, entrenamiento geológico y vuelo de drones en terreno volcánico.", "fuentes": [{"titulo": "Universidad de Arizona, Exploring a Desert Portal to Other Worlds (2019)", "url": "https://news.arizona.edu/news/exploring-desert-portal-other-worlds"}], "verificado": false, "motivos": {"basalto": "Campo de lava basáltica con más de 400 conos volcánicos.", "crateres": "Nueve cráteres grandes tipo maar, como El Elegante.", "dunas": "Rodeado por las dunas del Gran Desierto de Altar.", "cuevas": "Hay tubos de lava, pero menos estudiados que los de Lanzarote.", "aislamiento": "Reserva de la biosfera, con pocos caminos y sin poblaciones dentro."}}, {"id": "alchichica", "nombre": "Laguna de Alchichica", "lugar": "Puebla", "pais": "México", "tipo": "candidato", "lat": 19.415, "lon": -97.4, "rasgos": {"basalto": 1, "crateres": 1, "dunas": 0, "sales": 0.5, "hielo": 0, "paleolago": 1, "extremofilos": 1, "cuevas": 0, "aislamiento": 0.4}, "resumen": "Lago salino y alcalino dentro de un cráter volcánico, con microbialitos. Se estudia cómo se conservan sus biofirmas en condiciones parecidas a Marte.", "pruebas": "Búsqueda de biofirmas en lagos de cráter, como en el cráter Jezero.", "fuentes": [{"titulo": "Lipid Biomarkers in Microbialites from a Maar Lake (Astrobiology, 2026)", "url": "https://astrobiology.com/2026/06/25/lipid-biomarkers-in-microbialites-from-a-maar-lake-an-astrobiological-study-of-biomarker-preservation-under-mars-analog-conditions/"}, {"titulo": "Sociedad Mexicana de Astrobiología, Sitios de interés astrobiológico", "url": "https://sites.google.com/soma.org.mx/soma-a-c/vinculación/sitios-de-interés-astrobiológico"}], "verificado": false, "motivos": {"basalto": "Cráter tipo maar abierto en rocas volcánicas.", "crateres": "El lago ocupa un cráter volcánico.", "sales": "Agua salina y alcalina, pero sin grandes depósitos de sal.", "paleolago": "Sedimentos y microbialitos que el lago fue acumulando durante miles de años.", "extremofilos": "Microbialitos vivos en agua alcalina.", "aislamiento": "Zona rural con acceso por carretera."}}, {"id": "cuatrocienegas", "nombre": "Cuatro Ciénegas (Churince)", "lugar": "Coahuila", "pais": "México", "tipo": "candidato", "lat": 26.85, "lon": -102.13, "rasgos": {"basalto": 0, "crateres": 0, "dunas": 1, "sales": 1, "hielo": 0, "paleolago": 1, "extremofilos": 1, "cuevas": 0, "aislamiento": 0.6}, "resumen": "Suelos y dunas de yeso en un oasis del desierto. Se ha propuesto como análogo del cráter Gale, donde trabaja el rover Curiosity.", "pruebas": "Detección de sulfatos y estudio de comunidades microbianas en suelos de yeso.", "fuentes": [{"titulo": "López-Lozano et al. 2012, Gypsum Soils of Cuatro Ciénegas: A Mars Analogue (Astrobiology)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3426888"}], "verificado": false, "motivos": {"dunas": "Dunas de yeso blanco.", "sales": "Suelos de yeso (sulfato de calcio), un mineral que también encontró Curiosity en el cráter Gale.", "paleolago": "Pozas y sedimentos de un sistema de agua muy antiguo.", "extremofilos": "Estromatolitos y microbios de linajes muy antiguos.", "aislamiento": "Área protegida en el desierto de Coahuila, con acceso limitado."}}, {"id": "xitle", "nombre": "Pedregal del Xitle", "lugar": "Ciudad de México", "pais": "México", "tipo": "candidato", "lat": 19.32, "lon": -99.19, "rasgos": {"basalto": 1, "crateres": 0.5, "dunas": 0, "sales": 0, "hielo": 0, "paleolago": 0, "extremofilos": 0, "cuevas": 0.5, "aislamiento": 0}, "resumen": "Flujo de lava basáltica del volcán Xitle sobre el que está Ciudad Universitaria. Una tesis de la UNAM lo propone como análogo de la superficie de Marte primitivo.", "pruebas": "Pruebas de laboratorio con basalto real, a bajo costo y cerca de universidades.", "fuentes": [{"titulo": "Mateos López 2022, tesis de licenciatura, Facultad de Química UNAM", "url": "https://ru.dgb.unam.mx/bitstream/20.500.14330/TES01000825500/3/0825500.pdf"}], "verificado": false, "motivos": {"basalto": "Flujo de lava basáltica de hace unos 1 670 años.", "crateres": "El volcán Xitle tiene un cráter pequeño y con vegetación.", "cuevas": "Pequeñas cavidades y túneles dentro de la lava."}}, {"id": "paricutin", "nombre": "Volcán Paricutín", "lugar": "Michoacán", "pais": "México", "tipo": "candidato", "lat": 19.493, "lon": -102.251, "rasgos": {"basalto": 1, "crateres": 1, "dunas": 0, "sales": 0, "hielo": 0, "paleolago": 0, "extremofilos": 0, "cuevas": 0, "aislamiento": 0.4}, "resumen": "Volcán que nació en 1943 con un campo de lava basáltica joven y poca vegetación.", "pruebas": "Movilidad de rovers sobre lava reciente y estudio de cómo se coloniza la roca nueva.", "fuentes": [], "verificado": false, "motivos": {"basalto": "Campo de lava joven de la erupción de 1943 a 1952 (falta citar fuente).", "crateres": "Cono volcánico con cráter en la cima.", "aislamiento": "Se llega a pie o a caballo desde Angahuan; zona rural."}}, {"id": "guerreronegro", "nombre": "Salinas de Guerrero Negro", "lugar": "Baja California Sur", "pais": "México", "tipo": "candidato", "lat": 27.75, "lon": -114.0, "rasgos": {"basalto": 0, "crateres": 0, "dunas": 1, "sales": 1, "hielo": 0, "paleolago": 0.5, "extremofilos": 1, "cuevas": 0, "aislamiento": 0.5}, "resumen": "Estanques de evaporación con tapetes microbianos en agua dos a tres veces más salada que el mar. Se usan para entender el metano que se mide en Marte.", "pruebas": "Medición de metano biológico y biofirmas en ambientes salinos.", "fuentes": [{"titulo": "Sociedad Mexicana de Astrobiología, Sitios de interés astrobiológico", "url": "https://sites.google.com/soma.org.mx/soma-a-c/vinculación/sitios-de-interés-astrobiológico"}], "verificado": false, "motivos": {"dunas": "Dunas costeras alrededor de las salinas.", "sales": "Evaporitas: halita y yeso en los estanques.", "paleolago": "Sedimentos recientes de laguna salada.", "extremofilos": "Tapetes microbianos en agua hipersalina.", "aislamiento": "Salina industrial con un poblado cerca."}}, {"id": "parangueo", "nombre": "Cráter Rincón de Parangueo", "lugar": "Valle de Santiago, Guanajuato", "pais": "México", "tipo": "candidato", "lat": 20.41, "lon": -101.25, "rasgos": {"basalto": 1, "crateres": 1, "dunas": 0, "sales": 1, "hielo": 0, "paleolago": 1, "extremofilos": 1, "cuevas": 0, "aislamiento": 0.3}, "resumen": "Lago de cráter casi seco, muy alcalino y salino, con montículos de estromatolitos.", "pruebas": "Diferenciar carbonatos de origen biológico y no biológico, como en lagos antiguos de Marte.", "fuentes": [{"titulo": "Sociedad Mexicana de Astrobiología, Sitios de interés astrobiológico", "url": "https://sites.google.com/soma.org.mx/soma-a-c/vinculación/sitios-de-interés-astrobiológico"}], "verificado": false, "motivos": {"basalto": "Cráter tipo maar en rocas volcánicas.", "crateres": "El lago está dentro de un cráter volcánico.", "sales": "Lago muy salino y alcalino, con costras de sal.", "paleolago": "El lago se fue secando y dejó sus sedimentos expuestos.", "extremofilos": "Montículos de estromatolitos.", "aislamiento": "Junto a Valle de Santiago, Guanajuato."}}, {"id": "dallol", "nombre": "Dallol", "lugar": "Depresión de Danakil", "pais": "Etiopía", "tipo": "candidato", "lat": 14.24, "lon": 40.3, "rasgos": {"basalto": 0.5, "crateres": 1, "dunas": 0, "sales": 1, "hielo": 0, "paleolago": 1, "extremofilos": 1, "cuevas": 0, "aislamiento": 1}, "resumen": "Pozas hidrotermales muy calientes, saladas y ácidas. Un estudio no encontró vida en ellas: hay agua líquida, pero no es habitable.", "pruebas": "Distinguir biofirmas reales de formas minerales que parecen células.", "fuentes": [{"titulo": "Belilla et al. 2019, Nature Ecology & Evolution (nota de prensa)", "url": "https://www.eurekalert.org/news-releases/708841"}, {"titulo": "Preprint en bioRxiv", "url": "https://www.biorxiv.org/content/10.1101/658211v1.full.pdf+html"}], "verificado": false, "motivos": {"basalto": "Está en la depresión de Danakil, una zona volcánica; Dallol es un domo de sal sobre magma.", "crateres": "Cráteres de explosión hidrotermal.", "sales": "Depósitos de sal y azufre.", "paleolago": "Capas de sal de un antiguo brazo de mar que se evaporó.", "extremofilos": "Hay arqueas en zonas cercanas, pero no en las pozas más extremas.", "aislamiento": "Una de las zonas más calientes y remotas del mundo."}}, {"id": "lut", "nombre": "Kaluts del desierto de Lut", "lugar": "Kermán", "pais": "Irán", "tipo": "candidato", "lat": 30.4, "lon": 57.7, "rasgos": {"basalto": 0.5, "crateres": 0, "dunas": 1, "sales": 0.5, "hielo": 0, "paleolago": 0.5, "extremofilos": 0, "cuevas": 0, "aislamiento": 1}, "resumen": "Yardangs, dunas y megarizaduras parecidas a las crestas eólicas transversales de Marte, con remolinos de polvo.", "pruebas": "Estudio de erosión por viento y navegación de rovers en campos de dunas.", "fuentes": [{"titulo": "Foroutan y Zimbelman 2016, Mega-ripples in Iran (Icarus)", "url": "https://profiles.si.edu/display/sro_139430"}], "verificado": false, "motivos": {"basalto": "Hay rocas volcánicas en partes del desierto, no en los kaluts.", "dunas": "Yardangs (kaluts) y megarizaduras formadas por el viento.", "sales": "Costras de sal en algunas zonas.", "paleolago": "Los kaluts están tallados en sedimentos de un lago antiguo.", "aislamiento": "Desierto sin poblaciones, de los más calientes del planeta."}}, {"id": "dalangtan", "nombre": "Playa salina Dalangtan", "lugar": "Cuenca de Qaidam, Qinghai", "pais": "China", "tipo": "candidato", "lat": 38.5, "lon": 91.6, "rasgos": {"basalto": 0, "crateres": 0, "dunas": 1, "sales": 1, "hielo": 0.5, "paleolago": 1, "extremofilos": 0.5, "cuevas": 0, "aislamiento": 1}, "resumen": "Playa salina hiperárida a casi 3 000 m, con baja presión, mucha radiación UV y sales parecidas a las de Marte, incluidos percloratos.", "pruebas": "Sensores remotos de sales, estabilidad de sales hidratadas y pruebas de preparación de misiones.", "fuentes": [{"titulo": "Kong et al. 2018, Dalangtan Saline Playa I (Astrobiology)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6205091"}], "verificado": false, "motivos": {"dunas": "Formas eólicas y yardangs en la cuenca de Qaidam.", "sales": "Sulfatos, cloruros y percloratos, como en Marte.", "hielo": "El suelo se congela en invierno.", "paleolago": "Fondo de un lago salado que se secó.", "extremofilos": "Pocos microbios adaptados a la sal.", "aislamiento": "Meseta del Tíbet, lejos de las ciudades."}}, {"id": "undara", "nombre": "Tubos de lava de Undara", "lugar": "Queensland", "pais": "Australia", "tipo": "candidato", "lat": -18.2, "lon": 144.6, "rasgos": {"basalto": 1, "crateres": 0.5, "dunas": 0, "sales": 0, "hielo": 0, "paleolago": 0, "extremofilos": 0, "cuevas": 1, "aislamiento": 0.7}, "resumen": "Sistema de tubos de lava inflados, de los más grandes del mundo y mucho menos estudiado que los de Hawái o Lanzarote.", "pruebas": "Cartografía de cuevas con láser y robots, y diseño de refugios bajo tierra.", "fuentes": [{"titulo": "Sauro et al. 2020, Lava tubes on Earth, Moon and Mars (Earth-Science Reviews)", "url": "https://cris.unibo.it/retrieve/bf298592-3a07-4d19-8979-599f91ae8131/2020%2bSauro%2bet%2bal%2bESR%2bLava%2btubes.pdf"}], "verificado": false, "motivos": {"basalto": "Flujo de lava basáltica de hace unos 190 000 años.", "crateres": "El volcán Undara tiene cráter en la cima.", "cuevas": "Tubos de lava inflados, de los más grandes del mundo.", "aislamiento": "Zona rural de Queensland, con acceso controlado."}}, {"id": "sanfrancisco", "nombre": "Campo volcánico San Francisco (SP Crater)", "lugar": "Arizona", "pais": "EUA", "tipo": "conocido", "lat": 35.58, "lon": -111.63, "rasgos": {"basalto": 1, "crateres": 1, "dunas": 0, "sales": 0, "hielo": 0, "paleolago": 0, "extremofilos": 0, "cuevas": 0.5, "aislamiento": 0.5}, "motivos": {"basalto": "Cientos de conos de ceniza y flujos de lava basáltica.", "crateres": "Conos con cráter, como SP Crater.", "cuevas": "Tiene tubos de lava, como Lava River Cave.", "aislamiento": "Desierto con caminos de terracería cerca de Flagstaff."}, "resumen": "Campo volcánico que la NASA usa para probar trajes, rovers y caminatas de las misiones Artemis.", "pruebas": "Ensayos de caminatas lunares, rovers presurizados y toma de muestras.", "fuentes": [{"titulo": "Graff et al. 2023, Volcanic Field Sites for Artemis Testing and Training (NASA)", "url": "https://ntrs.nasa.gov/citations/20220013521"}], "verificado": false}, {"id": "islandia", "nombre": "Tierras altas de Islandia (Holuhraun)", "lugar": "Norte de Vatnajökull", "pais": "Islandia", "tipo": "conocido", "lat": 64.87, "lon": -16.83, "rasgos": {"basalto": 1, "crateres": 0.5, "dunas": 0.5, "sales": 0, "hielo": 0.5, "paleolago": 0, "extremofilos": 0, "cuevas": 0, "aislamiento": 0.8}, "motivos": {"basalto": "Campo de lava basáltica de la erupción de Holuhraun (2014–2015).", "crateres": "Cráteres a lo largo de la fisura eruptiva.", "dunas": "Arenas volcánicas negras que mueve el viento.", "hielo": "Junto al glaciar Vatnajökull; el suelo se congela gran parte del año.", "aislamiento": "Tierras altas sin poblaciones; solo se llega en verano."}, "resumen": "La tripulación de Artemis II entrenó geología aquí en 2024, en campos de lava muy jóvenes.", "pruebas": "Entrenamiento de geología de campo y fotografía para astronautas.", "fuentes": [{"titulo": "NASA 2024, Artemis II Crew geology training in Iceland", "url": "https://www.nasa.gov/?p=936140"}, {"titulo": "Graff et al. 2023, Volcanic Field Sites for Artemis Testing and Training (NASA)", "url": "https://ntrs.nasa.gov/citations/20220013521"}], "verificado": false}, {"id": "potrillo", "nombre": "Campo volcánico Potrillo (Kilbourne Hole)", "lugar": "Nuevo México", "pais": "EUA", "tipo": "conocido", "lat": 31.97, "lon": -106.97, "rasgos": {"basalto": 1, "crateres": 1, "dunas": 0.5, "sales": 0, "hielo": 0, "paleolago": 0, "extremofilos": 0, "cuevas": 0, "aislamiento": 0.7}, "motivos": {"basalto": "Campo de lava basáltica y conos de ceniza.", "crateres": "Kilbourne Hole es un cráter tipo maar de casi 2 km.", "dunas": "Arenas del desierto de Chihuahua alrededor del cráter.", "aislamiento": "Desierto sin servicios, cerca de la frontera con México."}, "resumen": "Campo volcánico en el desierto de Chihuahua, elegido por la NASA para pruebas y entrenamiento de Artemis.", "pruebas": "Geología de cráteres volcánicos y pruebas de equipo en desierto.", "fuentes": [{"titulo": "Graff et al. 2023, Volcanic Field Sites for Artemis Testing and Training (NASA)", "url": "https://ntrs.nasa.gov/citations/20220013521"}], "verificado": false}, {"id": "mistastin", "nombre": "Cráter Mistastin (Kamestastin)", "lugar": "Labrador", "pais": "Canadá", "tipo": "conocido", "lat": 55.88, "lon": -63.31, "rasgos": {"basalto": 0, "crateres": 1, "dunas": 0, "sales": 0, "hielo": 0.5, "paleolago": 0, "extremofilos": 0, "cuevas": 0, "aislamiento": 1}, "motivos": {"crateres": "Cráter de impacto con rocas fundidas por el impacto. Tiene anortosita, la roca clara que se espera en el polo sur lunar.", "hielo": "Clima subártico: el suelo se congela gran parte del año.", "aislamiento": "Norte de Labrador, sin caminos; se llega en avioneta."}, "resumen": "Astronautas de Artemis II (Hansen y Koch) entrenaron aquí en 2023. Sus rocas se parecen a las del polo sur de la Luna.", "pruebas": "Entrenamiento de geología de impactos para Artemis.", "fuentes": [{"titulo": "SuperCluster, Artemis astronauts find lunar analog in meteorite impact crater", "url": "https://www.supercluster.com/editorial/artemis-astronauts-find-lunar-analog-in-meteorite-impact-crater"}], "verificado": false}, {"id": "ries", "nombre": "Cráter de Nördlinger Ries", "lugar": "Baviera", "pais": "Alemania", "tipo": "conocido", "lat": 48.88, "lon": 10.56, "rasgos": {"basalto": 0, "crateres": 1, "dunas": 0, "sales": 0, "hielo": 0, "paleolago": 1, "extremofilos": 0, "cuevas": 0, "aislamiento": 0.2}, "motivos": {"crateres": "Cráter de impacto de unos 24 km, con rocas fundidas por el impacto (suevita).", "paleolago": "Después del impacto se formó un lago y quedaron sus sedimentos.", "aislamiento": "Dentro del cráter está la ciudad de Nördlingen."}, "resumen": "La ESA entrena aquí a sus astronautas en geología lunar y de impactos (programa PANGAEA).", "pruebas": "Entrenamiento de geología de impactos y de toma de muestras.", "fuentes": [{"titulo": "ESA, What is PANGAEA", "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/CAVES_and_Pangaea/What_is_Pangaea"}], "verificado": false}, {"id": "lonar", "nombre": "Cráter de Lonar", "lugar": "Maharashtra", "pais": "India", "tipo": "conocido", "lat": 19.98, "lon": 76.51, "rasgos": {"basalto": 1, "crateres": 1, "dunas": 0, "sales": 0.5, "hielo": 0, "paleolago": 0.5, "extremofilos": 0.5, "cuevas": 0, "aislamiento": 0.3}, "motivos": {"basalto": "Es uno de los pocos cráteres de impacto en basalto, como muchos de la Luna y Marte.", "crateres": "Cráter de impacto de unos 1.8 km.", "sales": "El lago es salino y alcalino.", "paleolago": "Sedimentos del lago dentro del cráter.", "extremofilos": "Microbios adaptados a agua alcalina.", "aislamiento": "Junto al pueblo de Lonar."}, "resumen": "Cráter de impacto en lava basáltica, como los de la Luna y Marte. Se estudia su alteración por agua caliente.", "pruebas": "Estudio de cráteres en basalto y de minerales formados por agua tras el impacto.", "fuentes": [{"titulo": "USGS, Lonar Lake, India: An impact crater in basalt", "url": "https://pubs.usgs.gov/publication/70010158"}, {"titulo": "USGS, Hydrothermal alteration at the Lonar Lake impact structure: implications for Mars", "url": "https://pubs.usgs.gov/publication/70202247"}], "verificado": false}, {"id": "bockfjord", "nombre": "Complejo volcánico Bockfjord (Sverrefjell)", "lugar": "Svalbard", "pais": "Noruega", "tipo": "conocido", "lat": 79.43, "lon": 13.33, "rasgos": {"basalto": 1, "crateres": 0, "dunas": 0, "sales": 0, "hielo": 1, "paleolago": 0, "extremofilos": 0, "cuevas": 0, "aislamiento": 1}, "motivos": {"basalto": "Volcanes basálticos que hicieron erupción bajo el hielo hace cerca de un millón de años. Tienen carbonatos parecidos a los del cráter Gusev en Marte.", "hielo": "Ártico: permafrost y glaciares.", "aislamiento": "Solo se llega en barco; sin poblaciones."}, "resumen": "La NASA y otras agencias prueban aquí instrumentos de rovers marcianos (expediciones AMASE).", "pruebas": "Pruebas de instrumentos de rovers y de toma de muestras en clima polar.", "fuentes": [{"titulo": "Amundsen et al. 2011, Cryogenic origin for Mars analog carbonates in the Bockfjord Volcanic Complex (LPSC)", "url": "https://ntrs.nasa.gov/citations/20110008112"}], "verificado": false}, {"id": "cratersmoon", "nombre": "Craters of the Moon", "lugar": "Idaho", "pais": "EUA", "tipo": "conocido", "lat": 43.42, "lon": -113.52, "rasgos": {"basalto": 1, "crateres": 1, "dunas": 0, "sales": 0, "hielo": 0, "paleolago": 0, "extremofilos": 0, "cuevas": 1, "aislamiento": 0.5}, "motivos": {"basalto": "Gran campo de lava basáltica de la llanura del río Snake.", "crateres": "Conos de ceniza y de salpicadura con cráter.", "cuevas": "Muchos tubos de lava accesibles.", "aislamiento": "Monumento nacional con carretera y centro de visitantes."}, "resumen": "Campo de lava basáltica donde el proyecto FINESSE de la NASA estudió terrenos volcánicos como los de la Luna.", "pruebas": "Simulaciones de exploración en terreno basáltico y estudio de tubos de lava.", "fuentes": [{"titulo": "Heldmann et al., FINESSE: Field Investigations to Enable Solar System Science and Exploration (NASA)", "url": "https://ntrs.nasa.gov/api/citations/20190031834/downloads/20190031834.pdf"}], "verificado": false}, {"id": "hanksville", "nombre": "Hanksville (Mars Desert Research Station)", "lugar": "Utah", "pais": "EUA", "tipo": "conocido", "lat": 38.41, "lon": -110.79, "rasgos": {"basalto": 0, "crateres": 0, "dunas": 0.5, "sales": 0.5, "hielo": 0, "paleolago": 1, "extremofilos": 0, "cuevas": 0, "aislamiento": 0.6}, "motivos": {"dunas": "Arena y erosión por viento en todo el desierto.", "sales": "Suelos con sulfatos y capas de evaporitas cerca.", "paleolago": "Antiguos canales de río que hoy quedaron en alto, como los de la región Aeolis de Marte.", "aislamiento": "Desierto con un pueblo pequeño cerca."}, "resumen": "Sede de la estación de simulación MDRS. Tiene canales de río fosilizados y concreciones parecidas a las de Marte.", "pruebas": "Simulaciones de vida en un hábitat marciano, caminatas y geología.", "fuentes": [{"titulo": "Clarke y Stoker, Concretions in exhumed channels near Hanksville, Utah: implications for Mars", "url": "https://ntrs.nasa.gov/api/citations/20110023235/downloads/20110023235.pdf"}], "verificado": false}, {"id": "kachchh", "nombre": "Matanomadh, Kachchh", "lugar": "Guyarat", "pais": "India", "tipo": "candidato", "lat": 23.53, "lon": 69.0, "rasgos": {"basalto": 0.5, "crateres": 0, "dunas": 0, "sales": 1, "hielo": 0, "paleolago": 0.5, "extremofilos": 0, "cuevas": 0, "aislamiento": 0.5}, "motivos": {"basalto": "La zona tiene rocas volcánicas de los traps del Decán.", "sales": "Natrojarosita, un sulfato parecido a la jarosita que se encontró en Marte.", "paleolago": "Sedimentos formados con agua en el pasado.", "aislamiento": "Zona rural poco poblada."}, "resumen": "Afloramiento con natrojarosita, mineral parecido a la jarosita de Marte. Es un candidato reciente.", "pruebas": "Espectroscopía de sulfatos y entrenamiento para identificar minerales marcianos.", "fuentes": [{"titulo": "Natrojarosite formed in the Matanomadh Formation, Kutch, India (American Mineralogist, 2024)", "url": "https://www.citedrive.com/en/discovery/natrojarosite-formed-in-the-matanomadh-formation-kutch-india-a-na-analog-of-jarosite-on-mars"}], "verificado": false}], "clima": {"fuente": "NASA POWER, climatología anual (API temporal/climatology/point, comunidad RE)", "descargado": "2026-11-14", "sitios": {"atacama": {"elev": 1261, "T2M": 17.07, "T2M_MIN": -0.64, "T2M_MAX": 32.93, "T2M_RANGE": 14.74, "PRECTOTCORR": 0.02, "RH2M": 44.09, "WS10M": 3.03, "ALLSKY_SFC_SW_DWN": 5.9551}, "haughton": {"elev": 173.12, "T2M": -14.42, "T2M_MIN": -48.55, "T2M_MAX": 16.81, "T2M_RANGE": 4.64, "PRECTOTCORR": 0.85, "RH2M": 94.36, "WS10M": 4.11, "ALLSKY_SFC_SW_DWN": 2.3155}, "mcmurdo": {"elev": 582.82, "T2M": -21.88, "T2M_MIN": -47.14, "T2M_MAX": -0.19, "T2M_RANGE": 5.07, "PRECTOTCORR": 0.18, "RH2M": 80.65, "WS10M": 5.18, "ALLSKY_SFC_SW_DWN": 2.9993}, "meteor": {"elev": 1914.92, "T2M": 11.36, "T2M_MIN": -22.36, "T2M_MAX": 37.83, "T2M_RANGE": 14.49, "PRECTOTCORR": 1.14, "RH2M": 47.71, "WS10M": 3.9, "ALLSKY_SFC_SW_DWN": 5.5637}, "riotinto": {"elev": 187.78, "T2M": 18.01, "T2M_MIN": -4.61, "T2M_MAX": 46.26, "T2M_RANGE": 13.45, "PRECTOTCORR": 1.28, "RH2M": 62.53, "WS10M": 3.61, "ALLSKY_SFC_SW_DWN": 5.0191}, "lanzarote": {"elev": 26.63, "T2M": 20.12, "T2M_MIN": 13, "T2M_MAX": 28.47, "T2M_RANGE": 2.35, "PRECTOTCORR": 0.3, "RH2M": 78.06, "WS10M": 6.45, "ALLSKY_SFC_SW_DWN": 5.1655}, "maunakea": {"elev": 635.57, "T2M": 20.9, "T2M_MIN": 12.75, "T2M_MAX": 28.67, "T2M_RANGE": 5.2, "PRECTOTCORR": 4.41, "RH2M": 82.05, "WS10M": 4.83, "ALLSKY_SFC_SW_DWN": 5.28}, "pinacate": {"elev": 197.65, "T2M": 22.48, "T2M_MIN": -3.73, "T2M_MAX": 48.47, "T2M_RANGE": 14.21, "PRECTOTCORR": 0.38, "RH2M": 40.84, "WS10M": 3.68, "ALLSKY_SFC_SW_DWN": 6.006}, "alchichica": {"elev": 2267.9, "T2M": 14.05, "T2M_MIN": -5.15, "T2M_MAX": 31.59, "T2M_RANGE": 12.46, "PRECTOTCORR": 3.1, "RH2M": 74.77, "WS10M": 2.78, "ALLSKY_SFC_SW_DWN": 5.1079}, "cuatrocienegas": {"elev": 961.53, "T2M": 20.82, "T2M_MIN": -9.91, "T2M_MAX": 43.29, "T2M_RANGE": 14.66, "PRECTOTCORR": 1.04, "RH2M": 51.18, "WS10M": 3.04, "ALLSKY_SFC_SW_DWN": 5.8238}, "xitle": {"elev": 2626.86, "T2M": 13.83, "T2M_MIN": -3.37, "T2M_MAX": 31.7, "T2M_RANGE": 14.01, "PRECTOTCORR": 2.17, "RH2M": 65.75, "WS10M": 1.97, "ALLSKY_SFC_SW_DWN": 5.5092}, "paricutin": {"elev": 1377.94, "T2M": 21.53, "T2M_MIN": 3.79, "T2M_MAX": 38.74, "T2M_RANGE": 13.34, "PRECTOTCORR": 1.97, "RH2M": 60.87, "WS10M": 2.12, "ALLSKY_SFC_SW_DWN": 5.6945}, "guerreronegro": {"elev": 179.86, "T2M": 20.55, "T2M_MIN": 2.31, "T2M_MAX": 43.38, "T2M_RANGE": 13.59, "PRECTOTCORR": 0.24, "RH2M": 58.42, "WS10M": 4.2, "ALLSKY_SFC_SW_DWN": 6.1589}, "parangueo": {"elev": 1864.07, "T2M": 18.54, "T2M_MIN": -2.2, "T2M_MAX": 37.31, "T2M_RANGE": 15.28, "PRECTOTCORR": 1.98, "RH2M": 58.13, "WS10M": 2.86, "ALLSKY_SFC_SW_DWN": 5.9842}, "dallol": {"elev": 1063.31, "T2M": 25.96, "T2M_MIN": 11.26, "T2M_MAX": 40.27, "T2M_RANGE": 11.94, "PRECTOTCORR": 1.23, "RH2M": 46.84, "WS10M": 3.51, "ALLSKY_SFC_SW_DWN": 5.957}, "lut": {"elev": 1315.82, "T2M": 20.31, "T2M_MIN": -7.17, "T2M_MAX": 44.59, "T2M_RANGE": 14.32, "PRECTOTCORR": 0.27, "RH2M": 26.72, "WS10M": 3.49, "ALLSKY_SFC_SW_DWN": 5.9018}, "dalangtan": {"elev": 2913.07, "T2M": 3.58, "T2M_MIN": -26.99, "T2M_MAX": 33.17, "T2M_RANGE": 13.35, "PRECTOTCORR": 0.11, "RH2M": 33.18, "WS10M": 3.46, "ALLSKY_SFC_SW_DWN": 5.1864}, "undara": {"elev": 537.63, "T2M": 23.55, "T2M_MIN": 3.31, "T2M_MAX": 42.83, "T2M_RANGE": 13.59, "PRECTOTCORR": 2.31, "RH2M": 63.52, "WS10M": 4.65, "ALLSKY_SFC_SW_DWN": 5.9467}, "sanfrancisco": {"elev": 2093.24, "T2M": 10.17, "T2M_MIN": -21.21, "T2M_MAX": 37, "T2M_RANGE": 14.18, "PRECTOTCORR": 1.02, "RH2M": 47.94, "WS10M": 3.98, "ALLSKY_SFC_SW_DWN": 5.5637}, "islandia": {"elev": 801.56, "T2M": -2.84, "T2M_MIN": -23.83, "T2M_MAX": 10.31, "T2M_RANGE": 4.1, "PRECTOTCORR": 2.36, "RH2M": 94.09, "WS10M": 6.3, "ALLSKY_SFC_SW_DWN": 2.9798}, "potrillo": {"elev": 1275.56, "T2M": 17.68, "T2M_MIN": -13.61, "T2M_MAX": 42.55, "T2M_RANGE": 15.04, "PRECTOTCORR": 0.63, "RH2M": 39.08, "WS10M": 4, "ALLSKY_SFC_SW_DWN": 5.8987}, "mistastin": {"elev": 426.62, "T2M": -5.86, "T2M_MIN": -46.56, "T2M_MAX": 25.69, "T2M_RANGE": 8.39, "PRECTOTCORR": 2.6, "RH2M": 92.59, "WS10M": 5.94, "ALLSKY_SFC_SW_DWN": 3.0089}, "ries": {"elev": 470.09, "T2M": 8.74, "T2M_MIN": -19.07, "T2M_MAX": 36.32, "T2M_RANGE": 9, "PRECTOTCORR": 2.05, "RH2M": 81.27, "WS10M": 3.95, "ALLSKY_SFC_SW_DWN": 3.2539}, "lonar": {"elev": 530.02, "T2M": 25.96, "T2M_MIN": 6.08, "T2M_MAX": 45.55, "T2M_RANGE": 13.12, "PRECTOTCORR": 2.31, "RH2M": 53.19, "WS10M": 3.67, "ALLSKY_SFC_SW_DWN": 5.3366}, "bockfjord": {"elev": 343.29, "T2M": -7.62, "T2M_MIN": -40.09, "T2M_MAX": 11.85, "T2M_RANGE": 3.57, "PRECTOTCORR": 1.82, "RH2M": 94.8, "WS10M": 4.4, "ALLSKY_SFC_SW_DWN": 2.0894}, "cratersmoon": {"elev": 1891.71, "T2M": 5.69, "T2M_MIN": -32.62, "T2M_MAX": 36.91, "T2M_RANGE": 12.35, "PRECTOTCORR": 1.14, "RH2M": 59.83, "WS10M": 3.37, "ALLSKY_SFC_SW_DWN": 4.5494}, "hanksville": {"elev": 1659.66, "T2M": 11.75, "T2M_MIN": -19.96, "T2M_MAX": 41.12, "T2M_RANGE": 13.64, "PRECTOTCORR": 0.66, "RH2M": 43.14, "WS10M": 3.56, "ALLSKY_SFC_SW_DWN": 5.2874}, "kachchh": {"elev": 37.85, "T2M": 26.61, "T2M_MIN": 4.58, "T2M_MAX": 43.75, "T2M_RANGE": 10.84, "PRECTOTCORR": 1.11, "RH2M": 58.6, "WS10M": 5.3, "ALLSKY_SFC_SW_DWN": 5.4509}}}};
+// ---- puntaje.js ----
+// Hecho con apoyo de un asistente de IA (Claude, Anthropic) y revisado por el equipo Gatitácticos.
+// Written with help from an AI assistant (Claude, Anthropic) and reviewed by team Gatitácticos.
+// Cálculo de similitud de cada sitio con la Luna y con Marte.
+// Todo sale de data/modelo.json: si cambian un peso o un umbral ahí,
+// la página se recalcula sola.
+
+const limitar = (x) => Math.max(0, Math.min(1, x));
+
+// Convierte un valor medido en un puntaje de 0 a 1.
+// "min" es el valor que da 0 y "max" el que da 1 (pueden ir en cualquier orden).
+function escalar(valor, min, max) {
+  if (valor == null || Number.isNaN(valor)) return null;
+  return limitar((valor - min) / (max - min));
+}
+
+function valorIndicador(clave, sitio, clima, modelo) {
+  const ind = modelo.indicadores[clave];
+
+  if (ind.tipo === "rasgo") {
+    return sitio.rasgos[clave] ?? null;
+  }
+  if (ind.tipo === "geo") {
+    return escalar(Math.abs(sitio.lat), ind.min, ind.max);
+  }
+  if (!clima) return null;
+  return escalar(clima[ind.campo], ind.min, ind.max);
+}
+
+function promedio(valores) {
+  const validos = valores.filter((v) => v != null);
+  if (!validos.length) return null;
+  return validos.reduce((a, b) => a + b, 0) / validos.length;
+}
+
+function nivelDe(puntaje, modelo) {
+  return modelo.niveles.find((n) => puntaje >= n.desde).nombre;
+}
+
+// Devuelve el puntaje total (0-100) y el de cada dimensión para un cuerpo ("luna" o "marte").
+function calcular(sitio, clima, modelo, cuerpo) {
+  const pesos = modelo.pesos[cuerpo];
+  const dimensiones = modelo.dimensiones.map((dim) => {
+    const claves = dim[cuerpo];
+    const indicadores = claves.map((c) => ({ clave: c, valor: valorIndicador(c, sitio, clima, modelo) }));
+    const valor = claves.length ? promedio(indicadores.map((i) => i.valor)) : null;
+    return { id: dim.id, nombre: dim.nombre, corto: dim.corto, icono: dim.icono, valor, peso: pesos[dim.id], indicadores };
+  });
+
+  let suma = 0;
+  let pesoUsado = 0;
+  for (const d of dimensiones) {
+    if (d.valor == null || !d.peso) continue;
+    suma += d.valor * d.peso;
+    pesoUsado += d.peso;
+  }
+
+  const total = pesoUsado ? Math.round((suma / pesoUsado) * 100) : 0;
+  return { total, nivel: nivelDe(total, modelo), dimensiones };
+}
+
+// Ranking de todos los sitios para un cuerpo.
+function ranking(sitios, climaPorSitio, modelo, cuerpo) {
+  return sitios
+    .map((s) => ({ sitio: s, ...calcular(s, climaPorSitio[s.id], modelo, cuerpo) }))
+    .sort((a, b) => b.total - a.total);
+}
+
+// Las dos dimensiones más fuertes y las dos más débiles (para la ficha).
+function fortalezasYDebilidades(resultado) {
+  const aplican = resultado.dimensiones
+    .filter((d) => d.valor != null && d.peso)
+    .sort((a, b) => b.valor - a.valor);
+  return {
+    fuertes: aplican.slice(0, 2),
+    debiles: aplican.slice(-2).reverse(),
+  };
+}
+
+// ---- radar.js ----
+// Hecho con apoyo de un asistente de IA (Claude, Anthropic) y revisado por el equipo Gatitácticos.
+// Written with help from an AI assistant (Claude, Anthropic) and reviewed by team Gatitácticos.
+// Gráfica de radar en SVG, sin librerías.
+// Recibe las dimensiones de los dos cuerpos para dibujarlas encimadas.
+
+const NS = "http://www.w3.org/2000/svg";
+
+function el(nombre, attrs = {}, texto) {
+  const nodo = document.createElementNS(NS, nombre);
+  for (const [k, v] of Object.entries(attrs)) nodo.setAttribute(k, v);
+  if (texto != null) nodo.textContent = texto;
+  return nodo;
+}
+
+function punto(cx, cy, r, i, n) {
+  const ang = -Math.PI / 2 + (2 * Math.PI * i) / n;
+  return [cx + r * Math.cos(ang), cy + r * Math.sin(ang)];
+}
+
+function dibujarRadar(contenedor, series, activo) {
+  const ancho = 420;
+  const alto = 330;
+  const cx = ancho / 2;
+  const cy = alto / 2 + 4;
+  const radio = 105;
+  const etiquetas = series[0].dimensiones.map((d) => d.corto);
+  const n = etiquetas.length;
+
+  const svg = el("svg", { viewBox: `0 0 ${ancho} ${alto}`, class: "radar", role: "img" });
+  svg.appendChild(el("title", {}, "Similitud por dimensión"));
+
+  for (const nivel of [0.25, 0.5, 0.75, 1]) {
+    const pts = etiquetas.map((_, i) => punto(cx, cy, radio * nivel, i, n).join(",")).join(" ");
+    svg.appendChild(el("polygon", { points: pts, class: "radar-red" }));
+  }
+
+  etiquetas.forEach((texto, i) => {
+    const [x, y] = punto(cx, cy, radio, i, n);
+    svg.appendChild(el("line", { x1: cx, y1: cy, x2: x, y2: y, class: "radar-eje" }));
+    const [lx, ly] = punto(cx, cy, radio + 22, i, n);
+    const ancla = Math.abs(lx - cx) < 8 ? "middle" : lx > cx ? "start" : "end";
+    svg.appendChild(el("text", { x: lx, y: ly + 4, "text-anchor": ancla, class: "radar-etiqueta" }, texto));
+  });
+
+  // primero el cuerpo no seleccionado, para que el activo quede encima
+  const ordenadas = [...series].sort(
+    (a, b) => (a.cuerpo === activo) - (b.cuerpo === activo)
+  );
+  for (const serie of ordenadas) {
+    const pts = serie.dimensiones
+      .map((d, i) => punto(cx, cy, radio * (d.valor ?? 0), i, n).join(","))
+      .join(" ");
+    const clase = `radar-serie radar-${serie.cuerpo}${serie.cuerpo === activo ? " activa" : ""}`;
+    svg.appendChild(el("polygon", { points: pts, class: clase }));
+  }
+
+  contenedor.replaceChildren(svg);
+}
+
+// ---- capas.js ----
+// Hecho con apoyo de un asistente de IA (Claude, Anthropic) y revisado por el equipo Gatitácticos.
+// Written with help from an AI assistant (Claude, Anthropic) and reviewed by team Gatitácticos.
+// Capas de imágenes de la NASA para los mapas y las fichas.
+// Tierra: NASA GIBS (Global Imagery Browse Services).
+// Luna y Marte: NASA Solar System Treks (Moon Trek y Mars Trek).
+
+const GIBS = "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best";
+const TREK = "https://trek.nasa.gov/tiles";
+
+const CAPAS_TIERRA = {
+  "Imagen (Blue Marble)": {
+    url: `${GIBS}/BlueMarble_ShadedRelief_Bathymetry/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg`,
+    maxNativeZoom: 8,
+  },
+  "Relieve (ASTER GDEM)": {
+    url: `${GIBS}/ASTER_GDEM_Greyscale_Shaded_Relief/default/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpeg`,
+    maxNativeZoom: 12,
+  },
+};
+
+const CAPAS_LUNA = {
+  "Imagen (LRO WAC)": {
+    url: `${TREK}/Moon/EQ/LRO_WAC_Mosaic_Global_303ppd_v02/1.0.0/default/default028mm/{z}/{y}/{x}.jpg`,
+    maxNativeZoom: 7,
+  },
+  "Topografía (LRO LOLA)": {
+    url: `${TREK}/Moon/EQ/LRO_LOLA_ClrShade_Global_128ppd_v04/1.0.0/default/default028mm/{z}/{y}/{x}.png`,
+    maxNativeZoom: 6,
+  },
+};
+
+const CAPAS_MARTE = {
+  "Imagen (Viking)": {
+    url: `${TREK}/Mars/EQ/Mars_Viking_MDIM21_ClrMosaic_global_232m/1.0.0/default/default028mm/{z}/{y}/{x}.jpg`,
+    maxNativeZoom: 7,
+  },
+  "Topografía (MGS MOLA)": {
+    url: `${TREK}/Mars/EQ/Mars_MGS_MOLA_ClrShade_merge_global_463m/1.0.0/default/default028mm/{z}/{y}/{x}.jpg`,
+    maxNativeZoom: 6,
+  },
+};
+
+// Imagen fija de un recuadro alrededor del sitio (API de capturas de Worldview).
+function imagenSitio(lat, lon, capa, lado = 1) {
+  const m = lado / 2;
+  const bbox = [lat - m, lon - m, lat + m, lon + m].map((v) => v.toFixed(3)).join(",");
+  return (
+    "https://wvs.earthdata.nasa.gov/api/v1/snapshot?REQUEST=GetSnapshot" +
+    `&LAYERS=${capa}&CRS=EPSG:4326&BBOX=${bbox}&FORMAT=image/jpeg&WIDTH=480&HEIGHT=480`
+  );
+}
+
+const ATRIBUCION_GIBS =
+  'Imágenes: <a href="https://earthdata.nasa.gov/gibs" target="_blank" rel="noopener">NASA GIBS</a>';
+const ATRIBUCION_TREK =
+  'Imágenes: <a href="https://trek.nasa.gov" target="_blank" rel="noopener">NASA Solar System Treks</a>';
+
+// ---- iconos.js ----
+// Hecho con apoyo de un asistente de IA (Claude, Anthropic) y revisado por el equipo Gatitácticos.
+// Written with help from an AI assistant (Claude, Anthropic) and reviewed by team Gatitácticos.
+// Íconos de línea en SVG (24 x 24). Toman el color del texto (currentColor).
+
+const TRAZOS = {
+  roca: '<path d="M4 17l3-8 5-3 5 2 3 7-4 4H8z"/><path d="M7 9l4 3 6-4M11 12l1 7"/>',
+  crater: '<ellipse cx="12" cy="14" rx="9" ry="5"/><ellipse cx="12" cy="13.5" rx="4.5" ry="2.2"/><path d="M3 14c0-3 2-6 4-7M21 14c0-3-2-6-4-7"/>',
+  termometro: '<path d="M10 4a2 2 0 0 1 4 0v10a4 4 0 1 1-4 0z"/><path d="M12 9v7"/>',
+  gota: '<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/><path d="M9.5 15a2.5 2.5 0 0 0 2.5 2.5"/>',
+  viento: '<path d="M3 9h11a3 3 0 1 0-3-3M3 15h15a3 3 0 1 1-3 3M3 12h8"/>',
+  microbio: '<circle cx="12" cy="12" r="5"/><circle cx="10.5" cy="11" r="1"/><circle cx="13.5" cy="13.5" r="1"/><path d="M12 7V4M12 20v-3M7 12H4M20 12h-3M8.5 8.5 6.5 6.5M17.5 17.5l-2-2M15.5 8.5l2-2M6.5 17.5l2-2"/>',
+  cueva: '<path d="M3 20c0-8 4-14 9-14s9 6 9 14"/><path d="M8 20c0-4 2-7 4-7s4 3 4 7"/>',
+  bandera: '<path d="M6 21V4"/><path d="M6 4h11l-2 4 2 4H6"/>',
+  tierra: '<circle cx="12" cy="12" r="9"/><path d="M6.5 6.8c1.6.4 2.4 1.6 2 3-.3 1.1-1.6 1.3-1.6 2.6 0 1.4 1.5 1.8 1.7 3.3M13.5 3.2c-.6 1.3.1 2.4 1.5 2.6 1.6.2 2.2 1.4 1.5 2.6-.6 1 .2 2 1.4 2.2 1.2.2 2 .9 2.4 1.9"/>',
+  luna: '<path d="M15.2 2.6A9.6 9.6 0 1 0 21.4 17 8 8 0 0 1 15.2 2.6Z"/>',
+  marte: '<circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="9" r="1.6"/><circle cx="15" cy="14.5" r="2"/>',
+  check: '<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.8"/>',
+  pendiente: '<circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/><path d="M12 7v5l3 2"/>',
+  ubicacion: '<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+  lupa: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/>',
+  libro: '<path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h8M8 11h6"/>',
+  escudo: '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>',
+  regla: '<path d="M4 4h4v16H4zM8 7h3M8 11h2M8 15h3M14 4l6 16M14 20l6-16"/>',
+  personas: '<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M14.5 14.3c3.2-.6 6.5 1.4 6.5 5.7"/>',
+  abajo: '<path d="M12 5v14M6 13l6 6 6-6"/>',
+  satelite: '<path d="M7 7l4 4M13 13l4 4"/><rect x="3" y="3" width="5" height="5" transform="rotate(45 5.5 5.5)"/><rect x="15" y="15" width="5" height="5" transform="rotate(45 17.5 17.5)"/><circle cx="12" cy="12" r="2.5"/>',
+  grafica: '<path d="M4 20V4M4 20h16"/><path d="M7 16l4-5 3 3 5-7"/>',
+  estrella: '<path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/>',
+};
+
+function icono(nombre, clase = "ico") {
+  const t = TRAZOS[nombre] ?? TRAZOS.estrella;
+  return `<svg class="${clase}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${t}</svg>`;
+}
+
+// Rellena todos los <i data-ico="nombre"> de la página.
+function pintarIconos(raiz = document) {
+  raiz.querySelectorAll("[data-ico]").forEach((el) => {
+    el.innerHTML = icono(el.dataset.ico, el.dataset.clase || "ico");
+  });
+}
+
+// ---- mapa.js ----
+// Hecho con apoyo de un asistente de IA (Claude, Anthropic) y revisado por el equipo Gatitácticos.
+// Written with help from an AI assistant (Claude, Anthropic) and reviewed by team Gatitácticos.
+// Mapas con Leaflet (se carga desde index.html como variable global L).
+
+let mapa;
+let capaSitios;
+
+// Los colores salen de la paleta activa (variables CSS): entre más parecido,
+// más claro y más grande el punto.
+function variable(nombre) {
+  return getComputedStyle(document.documentElement).getPropertyValue(nombre).trim();
+}
+
+function colorPara(total) {
+  if (total >= 70) return variable("--claro");
+  if (total >= 50) return variable("--acento");
+  return variable("--oscuro");
+}
+
+function capasBase(definiciones, atribucion, extra = {}) {
+  const capas = {};
+  for (const [nombre, d] of Object.entries(definiciones)) {
+    capas[nombre] = L.tileLayer(d.url, {
+      maxNativeZoom: d.maxNativeZoom,
+      maxZoom: 10,
+      attribution: atribucion,
+      minNativeZoom: 0,
+      noWrap: extra.noWrap ?? false,
+      bounds: extra.bounds,
+    });
+  }
+  return capas;
+}
+
+function sinLeaflet(id) {
+  document.getElementById(id).innerHTML =
+    '<p class="aviso">No se pudo cargar el mapa. Revisa tu conexión a internet.</p>';
+}
+
+function crearMapa(id) {
+  if (typeof L === "undefined") return sinLeaflet(id);
+
+  mapa = L.map(id, { worldCopyJump: true, minZoom: 2 }).setView([20, 0], 2);
+  const capas = capasBase(CAPAS_TIERRA, ATRIBUCION_GIBS);
+  capas["Imagen (Blue Marble)"].addTo(mapa);
+  L.control.layers(capas, null, { collapsed: false, position: "topright" }).addTo(mapa);
+  capaSitios = L.layerGroup().addTo(mapa);
+}
+
+function pintarSitios(resultados, seleccionado, alElegir, modo = "inicio") {
+  if (!mapa) return;
+  capaSitios.clearLayers();
+  const conPuntaje = modo === "luna" || modo === "marte";
+
+  for (const r of resultados) {
+    const s = r.sitio;
+    const activo = s.id === seleccionado;
+    if (!conPuntaje) {
+      // vista general: solo dónde está cada análogo, sin puntajes
+      const m = L.circleMarker([s.lat, s.lon], {
+        radius: activo ? 10 : 7,
+        color: activo ? variable("--marcador-activo") : variable("--fondo"),
+        weight: activo ? 3 : 2,
+        fillColor: s.tipo === "candidato" ? variable("--candidato") : variable("--acento"),
+        fillOpacity: 0.95,
+      });
+      m.bindTooltip(`${s.nombre} · ${s.pais}`);
+      m.on("click", () => alElegir(s.id));
+      capaSitios.addLayer(m);
+      continue;
+    }
+    const marcador = L.circleMarker([s.lat, s.lon], {
+      radius: 6 + r.total / 10,
+      color: activo ? variable("--marcador-activo") : s.tipo === "candidato" ? variable("--candidato") : variable("--fondo"),
+      weight: activo ? 3 : 2,
+      fillColor: colorPara(r.total),
+      fillOpacity: 0.95,
+    });
+    marcador.bindTooltip(`${s.nombre} · ${r.total}`);
+    marcador.on("click", () => alElegir(s.id));
+    capaSitios.addLayer(marcador);
+  }
+}
+
+function centrarEn(sitio) {
+  if (mapa) mapa.flyTo([sitio.lat, sitio.lon], 6, { duration: 0.8 });
+}
+
+// Mapas de la Luna y Marte. Los mosaicos de Trek están en proyección
+// geográfica (2 x 1 mosaicos en el nivel 0), igual que EPSG:4326 de Leaflet.
+const OBJETIVOS = {
+  luna: (m) => {
+    L.rectangle([[-90, -180], [-84, 180]], { color: "#ffd166", weight: 2, fillOpacity: 0.15 })
+      .bindTooltip("Polo sur: zona de las 9 regiones candidatas de Artemis III", { sticky: true })
+      .addTo(m);
+  },
+  marte: (m) => {
+    const sitios = [
+      { nombre: "Cráter Jezero (rover Perseverance)", lat: 18.38, lon: 77.58 },
+      { nombre: "Cráter Gale (rover Curiosity)", lat: -5.4, lon: 137.85 },
+    ];
+    for (const s of sitios) {
+      L.circleMarker([s.lat, s.lon], { radius: 7, color: "#ffffff", weight: 2, fillColor: "#ffd166", fillOpacity: 1 })
+        .bindTooltip(s.nombre)
+        .addTo(m);
+    }
+  },
+};
+
+function crearMundo(id, cuerpo) {
+  if (typeof L === "undefined") return sinLeaflet(id);
+
+  const limites = [[-90, -180], [90, 180]];
+  const m = L.map(id, {
+    crs: L.CRS.EPSG4326,
+    minZoom: -1,
+    maxBounds: limites,
+    maxBoundsViscosity: 1,
+    zoomSnap: 0.5,
+  });
+  const definiciones = cuerpo === "luna" ? CAPAS_LUNA : CAPAS_MARTE;
+  const capas = capasBase(definiciones, ATRIBUCION_TREK, { noWrap: true, bounds: limites });
+  const inicial = cuerpo === "luna" ? "Topografía (LRO LOLA)" : "Topografía (MGS MOLA)";
+  capas[inicial].addTo(m);
+  L.control.layers(capas, null, { collapsed: false, position: "topright" }).addTo(m);
+  OBJETIVOS[cuerpo](m);
+  m.fitBounds(limites);
+  return m;
+}
+
+// ---- ficha.js ----
+// Hecho con apoyo de un asistente de IA (Claude, Anthropic) y revisado por el equipo Gatitácticos.
+// Written with help from an AI assistant (Claude, Anthropic) and reviewed by team Gatitácticos.
+// Ficha de un sitio. En vista general solo se describe el lugar; con Luna o Marte
+// se muestra el desglose de ese cuerpo: cada parámetro, su valor, por qué y cómo se calculó.
+
+const VISTAS = [
+  { capa: "BlueMarble_NextGeneration", titulo: "Imagen satelital", nota: "Blue Marble, NASA" },
+  { capa: "ASTER_GDEM_Greyscale_Shaded_Relief", titulo: "Relieve sombreado", nota: "ASTER GDEM, NASA/METI" },
+  { capa: "ASTER_GDEM_Color_Shaded_Relief", titulo: "Elevación a color", nota: "ASTER GDEM, NASA/METI" },
+];
+const NOMBRE_CUERPO = { luna: "la Luna", marte: "Marte" };
+
+const esc = (t) =>
+  String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+const num = (v, dec = 1) => (v == null ? "—" : Number(v).toFixed(dec));
+const pct = (v) => (v == null ? "—" : `${Math.round(v * 100)} %`);
+
+function galeria(sitio) {
+  return VISTAS.map(
+    (v) => `<figure class="vista">
+      <img src="${imagenSitio(sitio.lat, sitio.lon, v.capa, 0.8)}" alt="${esc(v.titulo)} de ${esc(sitio.nombre)}"
+           loading="lazy" onerror="this.closest('figure').classList.add('sin-imagen')">
+      <figcaption><b>${v.titulo}</b> · ${v.nota}</figcaption>
+    </figure>`
+  ).join("");
+}
+
+function cabecera(sitio) {
+  return `<header class="ficha-cabecera">
+      <div>
+        <p class="ficha-lugar">${icono("ubicacion", "ico-mini")} ${esc(sitio.lugar)}, ${esc(sitio.pais)} · ${sitio.lat}°, ${sitio.lon}°</p>
+        <h3>${esc(sitio.nombre)}</h3>
+      </div>
+      <div class="etiquetas">
+        <span class="etiqueta ${sitio.tipo}">${sitio.tipo === "candidato" ? "Candidato nuevo" : "Análogo que ya se usa"}</span>
+        ${sitio.verificado ? `<span class="etiqueta ok">${icono("check", "ico-mini")} Verificado</span>` : `<span class="etiqueta pendiente">Por verificar</span>`}
+      </div>
+    </header>`;
+}
+
+function listaFuentes(sitio) {
+  return sitio.fuentes.length
+    ? sitio.fuentes.map((f) => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.titulo)}</a></li>`).join("")
+    : `<li class="aviso">Sin fuente todavía. Falta investigar este sitio.</li>`;
+}
+
+// ---------- vista general (Tierra / inicio): solo el lugar ----------
+function mostrarFichaGeneral(contenedor, sitio) {
+  contenedor.innerHTML = `
+    ${cabecera(sitio)}
+    <p class="ficha-resumen">${esc(sitio.resumen)}</p>
+    <div class="galeria">${galeria(sitio)}</div>
+    <p class="nota">Recuadro de unos 90 km por lado alrededor del sitio, visto por satélites de la NASA.</p>
+    <div class="columnas">
+      <div><h4>${icono("bandera", "ico-mini")} Para qué se usa o podría usarse</h4><p>${esc(sitio.pruebas)}</p></div>
+      <div><h4>${icono("libro", "ico-mini")} Fuentes</h4><ul class="fuentes">${listaFuentes(sitio)}</ul></div>
+    </div>
+    <div class="invitacion">
+      ${icono("estrella")}
+      <p>Elige <b>Luna</b> o <b>Marte</b> en la barra de arriba para ver qué tanto se parece este sitio, parámetro por parámetro.</p>
+    </div>`;
+}
+
+// ---------- vista de un cuerpo ----------
+function filaIndicador(clave, valor, sitio, clima, modelo, cuerpo) {
+  const ind = modelo.indicadores[clave];
+  if (ind.tipo === "rasgo") {
+    const v = sitio.rasgos[clave] ?? 0;
+    const texto = clave === "aislamiento" ? `${v}` : v === 1 ? "Sí" : v === 0.5 ? "En parte" : "No";
+    const motivo = sitio.motivos?.[clave] ?? "Las fuentes revisadas no lo reportan.";
+    return `<li class="ind">
+      <div class="ind-cabeza"><b>${ind.nombre}</b><span class="ind-valor v${String(v).replace(".", "")}">${texto}</span><span class="ind-pct">${pct(valor)}</span></div>
+      <p>${esc(motivo)}</p>
+      <p class="ind-como">${icono("libro", "ico-mini")} Calificado con las fuentes del sitio (1 = principal, 0.5 = en parte, 0 = no se reporta).</p>
+    </li>`;
+  }
+  let medido;
+  if (ind.tipo === "geo") medido = `${num(Math.abs(sitio.lat), 1)}° de latitud`;
+  else medido = `${num(clima?.[ind.campo], ind.dec ?? 1)} ${ind.unidad ?? ""}`;
+  return `<li class="ind">
+    <div class="ind-cabeza"><b>${ind.nombre}</b><span class="ind-valor">${medido}</span><span class="ind-pct">${pct(valor)}</span></div>
+    <p>${esc(ind[cuerpo])}</p>
+    <p class="ind-como">${icono("satelite", "ico-mini")} ${esc(ind.fuente)}. Vale 0 % con ${ind.min} ${ind.unidad ?? ""} y 100 % con ${ind.max} ${ind.unidad ?? ""}.</p>
+  </li>`;
+}
+
+function mostrarFicha(contenedor, sitio, clima, modelo, cuerpo, lugar = {}) {
+  const res = calcular(sitio, clima, modelo, cuerpo);
+  const { fuertes, debiles } = fortalezasYDebilidades(res);
+  const usadas = res.dimensiones.filter((d) => d.valor != null && d.peso);
+  const sumaPesos = usadas.reduce((a, d) => a + d.peso, 0);
+
+  const desglose = usadas
+    .map((d) => {
+      const aporte = (100 * d.peso * d.valor) / sumaPesos;
+      return `<details class="dimension" ${d === usadas[0] ? "open" : ""}>
+        <summary>
+          ${icono(d.icono, "ico-dim")}
+          <span class="dim-nombre">${d.nombre}<small>pesa ${Math.round(d.peso * 100)} %</small></span>
+          <span class="pista"><span class="relleno" style="width:${Math.round(d.valor * 100)}%"></span></span>
+          <b>${Math.round(d.valor * 100)}</b>
+        </summary>
+        <ul class="indicadores">${d.indicadores.map((i) => filaIndicador(i.clave, i.valor, sitio, clima, modelo, cuerpo)).join("")}</ul>
+        <p class="dim-aporte">Promedio de la dimensión: <b>${Math.round(d.valor * 100)} %</b> → aporta <b>${aporte.toFixed(1)}</b> puntos al total.</p>
+      </details>`;
+    })
+    .join("");
+
+  const sumaTexto = usadas
+    .map((d) => `<span>${Math.round(d.peso * 100)} % × ${(d.valor).toFixed(2)}</span>`)
+    .join(" + ");
+
+  const fuente = sitio.fuentes.length > 0;
+  contenedor.innerHTML = `
+    ${cabecera(sitio)}
+    <p class="ficha-resumen">${esc(sitio.resumen)}</p>
+    <div class="galeria">${galeria(sitio)}</div>
+
+    <div class="resultado">
+      <div class="puntaje-grande">
+        <span>Parecido con ${NOMBRE_CUERPO[cuerpo]}</span>
+        <b>${res.total}</b>
+        <small>${esc(res.nivel)}${lugar.pos ? ` · lugar ${lugar.pos} de ${lugar.total}` : ""}</small>
+      </div>
+      <figure class="radar-caja">
+        <div id="radar"></div>
+        <figcaption>Similitud por dimensión (0 al centro, 100 en el borde)</figcaption>
+      </figure>
+      <div class="resumen-dims">
+        <h4>${icono("check", "ico-mini")} Dónde se parece</h4>
+        <ul class="lista-dim">${fuertes.map((d) => `<li>${esc(d.nombre)} <span class="dato">${Math.round(d.valor * 100)}</span></li>`).join("")}</ul>
+        <h4>${icono("pendiente", "ico-mini")} Dónde falla</h4>
+        <ul class="lista-dim">${debiles.map((d) => `<li>${esc(d.nombre)} <span class="dato">${Math.round(d.valor * 100)}</span></li>`).join("")}</ul>
+      </div>
+    </div>
+
+    <h4 class="sub">${icono("regla", "ico-mini")} Desglose: por qué tiene este puntaje</h4>
+    <p class="nota">Abre cada dimensión para ver sus parámetros, el valor medido, por qué importa para ${NOMBRE_CUERPO[cuerpo]} y cómo se calculó.</p>
+    <div class="desglose">${desglose}</div>
+
+    <div class="calculo">
+      <h4>${icono("grafica", "ico-mini")} Cómo se calculó el total</h4>
+      <p class="formula-web">P = 100 × (${sumaTexto}) / ${Math.round(sumaPesos * 100)} % = <b>${res.total}</b></p>
+      <p class="nota">Además, ningún sitio de la Tierra reproduce la gravedad${cuerpo === "luna" ? ", el vacío lunar" : ", la atmósfera de Marte"} ni la radiación del espacio.</p>
+    </div>
+
+    <div class="columnas">
+      <div>
+        <h4>${icono("bandera", "ico-mini")} Qué se podría probar aquí</h4>
+        <p>${esc(sitio.pruebas)}</p>
+        <h4>${icono("escudo", "ico-mini")} Cómo verificamos este sitio</h4>
+        <ul class="checklist">
+          <li class="${fuente ? "ok" : ""}">${icono(fuente ? "check" : "pendiente", "ico-mini")} Fuente científica de sus rasgos</li>
+          <li class="ok">${icono("check", "ico-mini")} Clima descargado de NASA POWER</li>
+          <li class="${sitio.verificado ? "ok" : ""}">${icono(sitio.verificado ? "check" : "pendiente", "ico-mini")} Ubicación revisada en las imágenes de satélite de arriba</li>
+          <li class="${sitio.verificado ? "ok" : ""}">${icono(sitio.verificado ? "check" : "pendiente", "ico-mini")} Revisión de dos integrantes del equipo</li>
+        </ul>
+      </div>
+      <div>
+        <h4>${icono("termometro", "ico-mini")} Clima del sitio (NASA POWER, promedio anual)</h4>
+        <table class="tabla-clima">
+          <tr><th>Temp. media</th><td>${num(clima?.T2M)} °C</td><th>Mínima</th><td>${num(clima?.T2M_MIN)} °C</td></tr>
+          <tr><th>Oscilación</th><td>${num(clima?.T2M_RANGE)} °C</td><th>Lluvia</th><td>${num(clima?.PRECTOTCORR, 2)} mm/día</td></tr>
+          <tr><th>Humedad</th><td>${num(clima?.RH2M, 0)} %</td><th>Viento</th><td>${num(clima?.WS10M)} m/s</td></tr>
+          <tr><th>Elevación</th><td>${num(clima?.elev, 0)} m</td><th>Radiación solar</th><td>${num(clima?.ALLSKY_SFC_SW_DWN, 2)} kWh/m²/día</td></tr>
+        </table>
+        <h4>${icono("libro", "ico-mini")} Fuentes</h4>
+        <ul class="fuentes">${listaFuentes(sitio)}</ul>
+      </div>
+    </div>`;
+
+  dibujarRadar(contenedor.querySelector("#radar"), [{ cuerpo, dimensiones: usadas }], cuerpo);
+}
+
+// ---- fondo.js ----
+// Hecho con apoyo de un asistente de IA (Claude, Anthropic) y revisado por el equipo Gatitácticos.
+// Written with help from an AI assistant (Claude, Anthropic) and reviewed by team Gatitácticos.
+// Fondo animado: cielo con estrellas que se desplazan, estrellas fugaces, nebulosas,
+// satélites y el astro que se vería desde cada mundo. Se dibuja en un <canvas> fijo
+// detrás de la página. Si la persona pidió menos movimiento, se dibuja quieto.
+
+const PERFILES = {
+  inicio: {
+    estrella: "207,224,255", densidad: 1.1, fugaz: "159,211,255", fugacesPorSeg: 0.25,
+    nebulosas: ["79,155,240", "120,90,220"], astro: null, polvo: null,
+  },
+  // Tierra: noche cálida, motas doradas que suben y la Luna en el cielo
+  tierra: {
+    estrella: "243,223,191", densidad: 0.8, fugaz: "236,201,143", fugacesPorSeg: 0.15,
+    nebulosas: ["201,138,75", "120,150,80"], astro: "luna",
+    polvo: { color: "214,160,96", cantidad: 60, vx: 0.08, vy: -0.2, tam: [1, 2.6], alfa: [0.15, 0.5] },
+  },
+  // Luna: cielo negro sin atmósfera, muchas estrellas, lluvia de fugaces y la Tierra a lo lejos
+  luna: {
+    estrella: "255,255,255", densidad: 1.8, fugaz: "222,234,255", fugacesPorSeg: 0.9,
+    nebulosas: ["185,203,230", "110,130,170"], astro: "tierra", polvo: null,
+  },
+  // Marte: tormenta de polvo rojizo, meteoros anaranjados, remolinos y sus dos lunas
+  marte: {
+    estrella: "255,217,199", densidad: 0.6, fugaz: "255,154,107", fugacesPorSeg: 0.4,
+    nebulosas: ["224,104,58", "150,60,30"], astro: "fobos",
+    polvo: { color: "224,112,64", cantidad: 150, vx: 0.9, vy: 0.06, tam: [0.8, 2.4], alfa: [0.12, 0.45] },
+    remolinos: true,
+  },
+};
+
+const azar = (a, b) => a + Math.random() * (b - a);
+
+function iniciarFondo() {
+  const lienzo = document.createElement("canvas");
+  lienzo.id = "cielo";
+  lienzo.setAttribute("aria-hidden", "true");
+  document.body.prepend(lienzo);
+  const ctx = lienzo.getContext("2d");
+  const quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  let ancho = 0, alto = 0;
+  let perfil = PERFILES.inicio;
+  let estrellas = [], fugaces = [], motas = [], satelites = [], remolinos = [], nebulosas = [];
+
+  function crearTodo() {
+    const n = Math.round(((ancho * alto) / 9000) * perfil.densidad);
+    estrellas = Array.from({ length: n }, () => ({
+      x: Math.random() * ancho, y: Math.random() * alto,
+      r: Math.random() < 0.08 ? azar(1.2, 1.9) : azar(0.4, 1.1),
+      fase: Math.random() * Math.PI * 2, vel: azar(0.6, 2.2),
+      capa: Math.random() < 0.3 ? 2 : 1, // las de la capa 2 se mueven más (paralaje)
+    }));
+    const p = perfil.polvo;
+    motas = p
+      ? Array.from({ length: p.cantidad }, () => ({
+          x: Math.random() * ancho, y: Math.random() * alto, r: azar(...p.tam), a: azar(...p.alfa),
+          vx: p.vx * azar(0.5, 1.5), vy: p.vy * azar(0.5, 1.5), ondula: Math.random() * Math.PI * 2,
+        }))
+      : [];
+    nebulosas = perfil.nebulosas.map((color, i) => ({
+      color, x: azar(0.1, 0.9) * ancho, y: azar(0.1, 0.9) * alto,
+      r: azar(0.35, 0.55) * Math.max(ancho, alto), vx: azar(-0.06, 0.06), vy: azar(-0.04, 0.04), a: i ? 0.07 : 0.1,
+    }));
+    fugaces = [];
+    satelites = [];
+    remolinos = [];
+  }
+
+  function medir() {
+    const escala = Math.min(window.devicePixelRatio || 1, 2);
+    ancho = window.innerWidth;
+    alto = window.innerHeight;
+    lienzo.width = ancho * escala;
+    lienzo.height = alto * escala;
+    ctx.setTransform(escala, 0, 0, escala, 0, 0);
+    crearTodo();
+  }
+
+  function lanzarFugaz() {
+    const angulo = azar(0.35, 0.75);
+    const rapidez = azar(9, 16);
+    fugaces.push({
+      x: azar(-0.1, 0.8) * ancho, y: azar(-0.05, 0.45) * alto,
+      vx: Math.cos(angulo) * rapidez, vy: Math.sin(angulo) * rapidez,
+      largo: azar(80, 200), vida: 0, dura: azar(45, 85), grosor: azar(1.2, 2.4),
+    });
+  }
+
+  function lanzarSatelite() {
+    const izquierda = Math.random() < 0.5;
+    satelites.push({
+      x: izquierda ? -10 : ancho + 10, y: azar(0.05, 0.6) * alto,
+      vx: (izquierda ? 1 : -1) * azar(0.5, 0.9), vy: azar(-0.1, 0.1), t: 0,
+    });
+  }
+
+  function lanzarRemolino() {
+    remolinos.push({ x: azar(0.1, 0.9) * ancho, y: alto * azar(0.75, 0.95), vida: 0, dura: azar(400, 700), giro: Math.random() * 6 });
+  }
+
+  function dibujarNebulosas() {
+    for (const n of nebulosas) {
+      if (!quieto) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < -n.r * 0.3 || n.x > ancho + n.r * 0.3) n.vx *= -1;
+        if (n.y < -n.r * 0.3 || n.y > alto + n.r * 0.3) n.vy *= -1;
+      }
+      const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
+      g.addColorStop(0, `rgba(${n.color},${n.a})`);
+      g.addColorStop(1, `rgba(${n.color},0)`);
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, ancho, alto);
+    }
+  }
+
+  function dibujarAstro(t) {
+    if (!perfil.astro) return;
+    const R = Math.min(ancho, alto) * 0.06 + 18;
+    // abajo a la izquierda, para no tapar los globos de la portada
+    const x = R * 1.6;
+    const y = alto - R * 2.2 + Math.sin(t / 9000) * 8;
+    if (perfil.astro === "tierra") {
+      // la Tierra vista desde la Luna: azul con nubes y un halo
+      const halo = ctx.createRadialGradient(x, y, R * 0.9, x, y, R * 1.8);
+      halo.addColorStop(0, "rgba(120,170,255,.28)");
+      halo.addColorStop(1, "rgba(120,170,255,0)");
+      ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(x, y, R * 1.8, 0, Math.PI * 2); ctx.fill();
+      const cuerpo = ctx.createRadialGradient(x - R * 0.4, y - R * 0.4, R * 0.1, x, y, R);
+      cuerpo.addColorStop(0, "#9cc8ff"); cuerpo.addColorStop(0.6, "#2f6fc4"); cuerpo.addColorStop(1, "#0d2a5c");
+      ctx.fillStyle = cuerpo; ctx.beginPath(); ctx.arc(x, y, R, 0, Math.PI * 2); ctx.fill();
+      ctx.save(); ctx.beginPath(); ctx.arc(x, y, R, 0, Math.PI * 2); ctx.clip();
+      ctx.strokeStyle = "rgba(255,255,255,.55)"; ctx.lineWidth = R * 0.12; ctx.lineCap = "round";
+      const giro = (t / 30000) % (Math.PI * 2);
+      for (let i = 0; i < 4; i++) {
+        const yy = y - R * 0.6 + i * R * 0.4;
+        const dx = Math.sin(giro + i) * R * 0.5;
+        ctx.beginPath(); ctx.moveTo(x - R * 0.7 + dx, yy); ctx.lineTo(x - R * 0.1 + dx, yy + R * 0.08); ctx.stroke();
+      }
+      // lado de noche
+      ctx.fillStyle = "rgba(5,8,15,.55)"; ctx.beginPath(); ctx.arc(x + R * 0.55, y + R * 0.2, R * 1.05, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    } else if (perfil.astro === "luna") {
+      const halo = ctx.createRadialGradient(x, y, R * 0.8, x, y, R * 2);
+      halo.addColorStop(0, "rgba(255,236,200,.22)"); halo.addColorStop(1, "rgba(255,236,200,0)");
+      ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(x, y, R * 2, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#f3e6cc"; ctx.beginPath(); ctx.arc(x, y, R * 0.8, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "rgba(160,140,110,.35)";
+      for (const [a, b, r] of [[-0.3, -0.2, 0.18], [0.2, 0.25, 0.14], [0.1, -0.35, 0.1]]) {
+        ctx.beginPath(); ctx.arc(x + a * R, y + b * R, r * R, 0, Math.PI * 2); ctx.fill();
+      }
+    } else if (perfil.astro === "fobos") {
+      // Fobos y Deimos: dos lunas pequeñas e irregulares que cruzan despacio
+      const lunas = [
+        { r: R * 0.22, periodo: 60000, radio: ancho * 0.35, alto: alto * 0.18, color: "rgba(185,165,150,.75)" },
+        { r: R * 0.13, periodo: 140000, radio: ancho * 0.42, alto: alto * 0.1, color: "rgba(216,200,187,.7)" },
+      ];
+      for (const l of lunas) {
+        const a = (t / l.periodo) * Math.PI * 2;
+        const lx = ancho / 2 + Math.cos(a) * l.radio;
+        const ly = alto * 0.22 + Math.sin(a) * l.alto;
+        ctx.fillStyle = l.color;
+        ctx.beginPath(); ctx.ellipse(lx, ly, l.r * 1.25, l.r, a * 0.3, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "rgba(60,30,20,.35)";
+        ctx.beginPath(); ctx.arc(lx + l.r * 0.3, ly - l.r * 0.2, l.r * 0.3, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+  }
+
+  function dibujar(t, dt) {
+    ctx.clearRect(0, 0, ancho, alto);
+    dibujarNebulosas();
+
+    for (const e of estrellas) {
+      if (!quieto) {
+        e.x -= 0.03 * e.capa * dt * 60 * 0.5;
+        if (e.x < -2) e.x = ancho + 2;
+      }
+      const brillo = quieto ? 0.7 : 0.45 + 0.55 * Math.abs(Math.sin(e.fase + (t / 1000) * e.vel));
+      ctx.fillStyle = `rgba(${perfil.estrella},${brillo})`;
+      ctx.beginPath(); ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2); ctx.fill();
+      if (e.r > 1.5 && brillo > 0.85) {
+        ctx.strokeStyle = `rgba(${perfil.estrella},${(brillo - 0.85) * 2})`;
+        ctx.lineWidth = 0.6;
+        ctx.beginPath(); ctx.moveTo(e.x - 5, e.y); ctx.lineTo(e.x + 5, e.y); ctx.moveTo(e.x, e.y - 5); ctx.lineTo(e.x, e.y + 5); ctx.stroke();
+      }
+    }
+
+    dibujarAstro(t);
+
+    for (const s of satelites) {
+      s.x += s.vx; s.y += s.vy; s.t += dt;
+      const parpadeo = Math.sin(s.t * 6) > 0.6 ? 1 : 0.35;
+      ctx.fillStyle = `rgba(255,255,255,${parpadeo})`;
+      ctx.beginPath(); ctx.arc(s.x, s.y, 1.4, 0, Math.PI * 2); ctx.fill();
+    }
+    satelites = satelites.filter((s) => s.x > -20 && s.x < ancho + 20);
+
+    if (perfil.polvo) {
+      for (const m of motas) {
+        if (!quieto) {
+          m.x += m.vx + Math.sin(t / 1400 + m.ondula) * 0.25;
+          m.y += m.vy + Math.cos(t / 1700 + m.ondula) * 0.12;
+          if (m.x > ancho + 5) m.x = -5;
+          if (m.x < -5) m.x = ancho + 5;
+          if (m.y > alto + 5) m.y = -5;
+          if (m.y < -5) m.y = alto + 5;
+        }
+        ctx.fillStyle = `rgba(${perfil.polvo.color},${m.a})`;
+        ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+
+    for (const r of remolinos) {
+      r.vida++;
+      const f = Math.sin(Math.PI * Math.min(r.vida / r.dura, 1));
+      r.x += 0.25;
+      for (let k = 0; k < 26; k++) {
+        const h = k * 6;
+        const ang = r.giro + r.vida * 0.12 + k * 0.7;
+        const rad = 4 + k * 1.3;
+        ctx.fillStyle = `rgba(224,140,90,${0.12 * f * (1 - k / 30)})`;
+        ctx.beginPath(); ctx.arc(r.x + Math.cos(ang) * rad, r.y - h, 2 + k * 0.15, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    remolinos = remolinos.filter((r) => r.vida < r.dura);
+
+    for (const f of fugaces) {
+      f.x += f.vx; f.y += f.vy; f.vida++;
+      const desvanece = Math.sin(Math.PI * Math.min(f.vida / f.dura, 1));
+      const norma = Math.hypot(f.vx, f.vy);
+      const cx = f.x - (f.vx / norma) * f.largo;
+      const cy = f.y - (f.vy / norma) * f.largo;
+      const estela = ctx.createLinearGradient(f.x, f.y, cx, cy);
+      estela.addColorStop(0, `rgba(${perfil.fugaz},${0.95 * desvanece})`);
+      estela.addColorStop(1, `rgba(${perfil.fugaz},0)`);
+      ctx.strokeStyle = estela; ctx.lineWidth = f.grosor; ctx.lineCap = "round";
+      ctx.beginPath(); ctx.moveTo(f.x, f.y); ctx.lineTo(cx, cy); ctx.stroke();
+      ctx.fillStyle = `rgba(255,255,255,${desvanece})`;
+      ctx.beginPath(); ctx.arc(f.x, f.y, f.grosor, 0, Math.PI * 2); ctx.fill();
+    }
+    fugaces = fugaces.filter((f) => f.vida < f.dura && f.x < ancho + 250 && f.y < alto + 250);
+  }
+
+  let anterior = 0;
+  function cuadro(t) {
+    const dt = anterior ? Math.min((t - anterior) / 1000, 0.1) : 0;
+    anterior = t;
+    if (!document.hidden) {
+      if (Math.random() < perfil.fugacesPorSeg * dt) lanzarFugaz();
+      if (Math.random() < 0.06 * dt) lanzarSatelite();
+      if (perfil.remolinos && remolinos.length < 2 && Math.random() < 0.08 * dt) lanzarRemolino();
+      dibujar(t, dt);
+    }
+    requestAnimationFrame(cuadro);
+  }
+
+  function cambiarPerfil() {
+    const tema = document.documentElement.dataset.tema || "inicio";
+    perfil = PERFILES[tema] || PERFILES.inicio;
+    crearTodo();
+    if (perfil.fugacesPorSeg > 0.5 && !quieto) for (let i = 0; i < 2; i++) lanzarFugaz(); // bienvenida
+    if (quieto) dibujar(0, 0);
+  }
+
+  window.addEventListener("resize", () => {
+    medir();
+    if (quieto) dibujar(0, 0);
+  });
+  new MutationObserver(cambiarPerfil).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-tema"],
+  });
+
+  medir();
+  cambiarPerfil();
+  if (!quieto) requestAnimationFrame(cuadro);
+}
+
+// ---- main.js ----
+// Hecho con apoyo de un asistente de IA (Claude, Anthropic) y revisado por el equipo Gatitácticos.
+// Written with help from an AI assistant (Claude, Anthropic) and reviewed by team Gatitácticos.
+
+// modo: "inicio" (azul) o "tierra" = vista general, sin puntajes.
+// "luna" o "marte" = solo los parámetros y puntajes de ese cuerpo.
+const estado = { modo: "inicio", filtro: "todos", busqueda: "", seleccionado: null };
+const ES_CUERPO = (m) => m === "luna" || m === "marte";
+let datos;
+const mundosCreados = {};
+
+const TEXTOS = {
+  general: {
+    titulo: "Los dobles de la Luna y Marte en la Tierra",
+    entrada: "Antes de mandar personas al polo sur de la Luna o a Marte, el equipo y los procedimientos se prueban en lugares de la Tierra que se les parecen: los análogos. Elige Luna o Marte arriba para ver qué tanto se parece cada uno.",
+    boton: "Ver todos los análogos",
+    "exp-titulo": "Todos los análogos que consideramos",
+    "par-titulo": "Parámetros",
+  },
+  luna: {
+    titulo: "¿Qué lugares de la Tierra se parecen al polo sur de la Luna?",
+    entrada: "Comparamos cada sitio con la región donde la NASA planea la base de Artemis: frío extremo, Sol rasante, cráteres, hielo en sombra, sin aire y sin viento.",
+    boton: "Ver el ranking lunar",
+    "obj-titulo": "Contra qué comparamos: el polo sur lunar",
+    "exp-titulo": "Ranking: parecido al polo sur lunar",
+    "par-titulo": "Parámetros de la Luna",
+    "par-entrada": "Estos son los parámetros que usamos solo para la Luna. Cada dimensión pesa distinto según lo que importa para una base en el polo sur.",
+  },
+  marte: {
+    titulo: "¿Qué lugares de la Tierra se parecen a Marte?",
+    entrada: "Comparamos cada sitio con las zonas que exploran los rovers: aire delgado y seco, frío, polvo y viento, sales y lagos antiguos.",
+    boton: "Ver el ranking marciano",
+    "obj-titulo": "Contra qué comparamos: Marte",
+    "exp-titulo": "Ranking: parecido a Marte",
+    "par-titulo": "Parámetros de Marte",
+    "par-entrada": "Estos son los parámetros que usamos solo para Marte. Aquí sí cuentan el polvo, el viento, las sales y la búsqueda de vida.",
+  },
+};
+
+async function cargarJSON(ruta) {
+  const resp = await fetch(ruta);
+  if (!resp.ok) throw new Error(`No se pudo leer ${ruta}`);
+  return resp.json();
+}
+
+async function cargarDatos() {
+  return { modelo: DATOS.modelo, sitios: DATOS.sitios, clima: DATOS.clima.sitios };
+}
+
+const sitioPorId = (id) => datos.sitios.find((s) => s.id === id);
+
+function filtrar(lista) {
+  const q = estado.busqueda.trim().toLowerCase();
+  return lista.filter((r) => {
+    if (estado.filtro !== "todos" && r.sitio.tipo !== estado.filtro) return false;
+    if (!q) return true;
+    return `${r.sitio.nombre} ${r.sitio.pais} ${r.sitio.lugar}`.toLowerCase().includes(q);
+  });
+}
+
+function resultadosVisibles() {
+  if (ES_CUERPO(estado.modo)) return filtrar(ranking(datos.sitios, datos.clima, datos.modelo, estado.modo));
+  const catalogo = [...datos.sitios]
+    .sort((a, b) => a.pais.localeCompare(b.pais, "es") || a.nombre.localeCompare(b.nombre, "es"))
+    .map((s) => ({ sitio: s }));
+  return filtrar(catalogo);
+}
+
+function pintarLista(resultados) {
+  const lista = document.getElementById("ranking");
+  if (!resultados.length) {
+    lista.innerHTML = `<li class="aviso">Ningún sitio coincide con la búsqueda.</li>`;
+    return;
+  }
+  const cuerpo = ES_CUERPO(estado.modo);
+  lista.classList.toggle("catalogo", !cuerpo);
+  lista.innerHTML = resultados
+    .map((r, i) => {
+      const s = r.sitio;
+      const etiqueta = s.tipo === "candidato" ? `<em class="mini-etq candidato">nuevo</em>` : `<em class="mini-etq">conocido</em>`;
+      const derecha = cuerpo
+        ? `<span class="mini-barra"><span style="width:${r.total}%"></span></span><b>${r.total}</b>`
+        : etiqueta;
+      return `<li class="${s.id === estado.seleccionado ? "elegido" : ""}" style="--i:${i}">
+        <button type="button" data-id="${s.id}">
+          <span class="pos">${cuerpo ? i + 1 : icono("ubicacion", "ico-mini")}</span>
+          <span class="nombre">${s.nombre}<small>${s.lugar}, ${s.pais}${cuerpo && s.tipo === "candidato" ? " · candidato" : ""}</small></span>
+          ${derecha}
+        </button>
+      </li>`;
+    })
+    .join("");
+}
+
+function pintarElegido() {
+  const caja = document.getElementById("elegido");
+  if (!estado.seleccionado) {
+    caja.hidden = true;
+    return;
+  }
+  const s = sitioPorId(estado.seleccionado);
+  let extra = "";
+  if (ES_CUERPO(estado.modo)) {
+    const r = ranking(datos.sitios, datos.clima, datos.modelo, estado.modo);
+    const pos = r.findIndex((x) => x.sitio.id === s.id);
+    extra = `<span class="elegido-dato">${r[pos].total} pts · lugar ${pos + 1} de ${r.length}</span>`;
+  }
+  caja.hidden = false;
+  caja.innerHTML = `${icono("ubicacion")}<div><b>${s.nombre}</b><small>${s.lugar}, ${s.pais}</small>${extra}</div>
+    <a class="boton chico" href="#ficha">${icono("abajo")}<span>${ES_CUERPO(estado.modo) ? "Ver por qué" : "Ver ficha"}</span></a>`;
+}
+
+function pintarFicha() {
+  const ficha = document.getElementById("ficha");
+  if (!estado.seleccionado) {
+    ficha.innerHTML = "";
+    return;
+  }
+  const s = sitioPorId(estado.seleccionado);
+  if (ES_CUERPO(estado.modo)) {
+    const r = ranking(datos.sitios, datos.clima, datos.modelo, estado.modo);
+    const pos = r.findIndex((x) => x.sitio.id === s.id) + 1;
+    mostrarFicha(ficha, s, datos.clima[s.id], datos.modelo, estado.modo, { pos, total: r.length });
+  } else {
+    mostrarFichaGeneral(ficha, s);
+  }
+}
+
+// Al elegir un sitio solo se mueve el mapa; la ficha se actualiza abajo sin saltar.
+function seleccionar(id, mover = true) {
+  estado.seleccionado = id;
+  if (mover) centrarEn(sitioPorId(id));
+  actualizarVista();
+  pintarFicha();
+}
+
+function actualizarVista() {
+  const resultados = resultadosVisibles();
+  pintarLista(resultados);
+  pintarSitios(resultados, estado.seleccionado, (id) => seleccionar(id), estado.modo);
+  pintarElegido();
+}
+
+function aplicarTextos() {
+  const t = ES_CUERPO(estado.modo) ? TEXTOS[estado.modo] : TEXTOS.general;
+  document.querySelectorAll("[data-texto]").forEach((el) => {
+    const v = t[el.dataset.texto] ?? TEXTOS.general[el.dataset.texto];
+    if (v != null) el.textContent = v;
+  });
+  document.getElementById("titulo-ranking").textContent = ES_CUERPO(estado.modo)
+    ? `Ranking ${estado.modo === "luna" ? "lunar" : "marciano"} (0 a 100)`
+    : "Catálogo de análogos";
+}
+
+function cambiarModo(modo, alternar = false) {
+  // en el selector de arriba, un segundo clic sobre el mundo elegido regresa al inicio (azul)
+  estado.modo = alternar && estado.modo === modo ? "inicio" : modo;
+  document.documentElement.dataset.tema = estado.modo;
+  document.querySelectorAll(".selector [data-cuerpo]").forEach((b) => {
+    b.setAttribute("aria-pressed", b.dataset.cuerpo === estado.modo);
+  });
+  aplicarTextos();
+
+  if (ES_CUERPO(estado.modo)) {
+    if (!mundosCreados[estado.modo]) {
+      mundosCreados[estado.modo] = crearMundo(`mapa-${estado.modo}`, estado.modo);
+    }
+    setTimeout(() => mundosCreados[estado.modo]?.invalidateSize?.(), 60);
+    // al entrar a un cuerpo, se elige el primer lugar si no había selección
+    if (!estado.seleccionado) {
+      estado.seleccionado = ranking(datos.sitios, datos.clima, datos.modelo, estado.modo)[0].sitio.id;
+    }
+  }
+  pintarParametros();
+  pintarVerificacion();
+  actualizarVista();
+  pintarFicha();
+}
+
+// ---------- parámetros (solo del cuerpo elegido) ----------
+function textoUmbral(ind) {
+  if (ind.tipo === "rasgo") return "Rasgo calificado con 0, 0.5 o 1 según las fuentes.";
+  const u = ind.unidad ?? "";
+  return `Vale 0 con ${ind.min} ${u} y vale 1 con ${ind.max} ${u}.`;
+}
+
+function pintarParametros() {
+  const caja = document.getElementById("lista-parametros");
+  if (!ES_CUERPO(estado.modo)) {
+    caja.innerHTML = "";
+    return;
+  }
+  const { modelo } = datos;
+  const cuerpo = estado.modo;
+  const dims = modelo.dimensiones
+    .map((d) => ({ ...d, peso: modelo.pesos[cuerpo][d.id], claves: d[cuerpo] }))
+    .filter((d) => d.claves.length && d.peso)
+    .sort((a, b) => b.peso - a.peso);
+
+  caja.innerHTML = dims
+    .map(
+      (d, i) => `<details class="parametro" style="--i:${i}" ${i === 0 ? "open" : ""}>
+      <summary>
+        ${icono(d.icono, "ico-dim")}
+        <span class="par-nombre">${d.nombre}</span>
+        <span class="par-peso"><span style="width:${d.peso * 100 * 4}%"></span></span>
+        <b>${Math.round(d.peso * 100)} %</b>
+      </summary>
+      <ul>
+        ${d.claves
+          .map((c) => {
+            const ind = modelo.indicadores[c];
+            const fuente = ind.tipo === "rasgo" ? "Bibliografía de cada sitio" : ind.fuente;
+            return `<li>
+              <h4>${ind.nombre}</h4>
+              <p><b>Qué mide:</b> ${ind.que}</p>
+              <p><b>Por qué importa:</b> ${ind[cuerpo]}</p>
+              <p class="par-dato">${icono(ind.tipo === "rasgo" ? "libro" : "satelite", "ico-mini")} ${fuente} · ${textoUmbral(ind)}</p>
+            </li>`;
+          })
+          .join("")}
+      </ul>
+    </details>`
+    )
+    .join("");
+
+  const fuera = modelo.dimensiones.filter((d) => !d[cuerpo].length || !modelo.pesos[cuerpo][d.id]);
+  if (fuera.length) {
+    caja.insertAdjacentHTML(
+      "beforeend",
+      `<p class="nota">No cuentan para ${cuerpo === "luna" ? "la Luna" : "Marte"}: ${fuera.map((d) => d.nombre).join(", ")}.</p>`
+    );
+  }
+
+  document.getElementById("criterios").innerHTML =
+    modelo.criterios_rasgos.map((c) => `<li><b>${c.valor}</b> ${c.texto}</li>`).join("") +
+    `<li><b>Aislamiento</b> ${modelo.criterio_aislamiento}</li>`;
+}
+
+// ---------- verificación ----------
+function spearman(a, b) {
+  const n = a.length;
+  let d = 0;
+  for (let i = 0; i < n; i++) d += (a[i] - b[i]) ** 2;
+  return 1 - (6 * d) / (n * (n * n - 1));
+}
+
+function pruebaPesos(cuerpo, corridas = 300) {
+  const base = ranking(datos.sitios, datos.clima, datos.modelo, cuerpo).map((x) => x.sitio.id);
+  let suma = 0;
+  let primero = 0;
+  for (let k = 0; k < corridas; k++) {
+    const m = structuredClone(datos.modelo);
+    for (const d in m.pesos[cuerpo]) m.pesos[cuerpo][d] *= 0.8 + 0.4 * Math.random();
+    const r = ranking(datos.sitios, datos.clima, m, cuerpo).map((x) => x.sitio.id);
+    suma += spearman(base.map((_, i) => i), base.map((id) => r.indexOf(id)));
+    if (r[0] === base[0]) primero++;
+  }
+  return { rho: suma / corridas, primero: Math.round((100 * primero) / corridas) };
+}
+
+function pintarVerificacion() {
+  const total = datos.sitios.length;
+  const conFuente = datos.sitios.filter((s) => s.fuentes.length).length;
+  const verificados = datos.sitios.filter((s) => s.verificado).length;
+  document.getElementById("estado-verificacion").innerHTML = `
+    <div>${icono("libro")}<b>${conFuente} de ${total}</b><span>sitios con fuente científica</span></div>
+    <div>${icono("satelite")}<b>${total} de ${total}</b><span>con clima de NASA POWER</span></div>
+    <div>${icono("personas")}<b>${verificados} de ${total}</b><span>revisados por el equipo</span></div>`;
+
+  const caja = document.getElementById("validacion");
+  if (!ES_CUERPO(estado.modo)) {
+    caja.innerHTML = `<p class="nota">Elige Luna o Marte arriba para ver la prueba del método con sus propios parámetros.</p>`;
+    return;
+  }
+  const cuerpo = estado.modo;
+  const r = ranking(datos.sitios, datos.clima, datos.modelo, cuerpo);
+  const conocidos = r.map((x, i) => [x, i]).filter(([x]) => x.sitio.tipo === "conocido");
+  const arriba = conocidos.filter(([, i]) => i < r.length / 2).length;
+  const { rho, primero } = pruebaPesos(cuerpo);
+  caja.innerHTML = `
+    <div class="paso"><span class="dato-grande">${arriba} de ${conocidos.length}</span><h4>¿Reconoce los análogos que ya se usan?</h4>
+      <p>Análogos conocidos que quedan en la mitad superior del ranking ${cuerpo === "luna" ? "lunar" : "marciano"}.
+      ${cuerpo === "marte" ? "Varios análogos conocidos son de entrenamiento lunar o volcánico, por eso no todos quedan arriba para Marte." : ""}</p></div>
+    <div class="paso"><span class="dato-grande">${rho.toFixed(2)}</span><h4>¿Es estable?</h4>
+      <p>Correlación media del ranking al mover cada peso ±20 % (300 pruebas, se calcula en tu navegador). El primer lugar se mantuvo en ${primero} % de las pruebas.</p></div>
+    <div class="paso"><span class="dato-grande">64 800</span><h4>¿Escala a todo el planeta?</h4>
+      <p>Celdas de 1° que cubren la Tierra. Probamos que calificarlas todas tarda menos de medio segundo.</p></div>`;
+}
+
+function pintarCifras() {
+  const s = datos.sitios;
+  document.getElementById("c-sitios").textContent = s.length;
+  document.getElementById("c-conocidos").textContent = s.filter((x) => x.tipo === "conocido").length;
+  document.getElementById("c-candidatos").textContent = s.filter((x) => x.tipo === "candidato").length;
+  document.getElementById("c-paises").textContent = new Set(s.map((x) => x.pais)).size;
+}
+
+function conectarControles() {
+  document.querySelectorAll("[data-cuerpo]").forEach((b) =>
+    b.addEventListener("click", () => {
+      const dentroDeSelector = b.closest(".selector");
+      cambiarModo(b.dataset.cuerpo, Boolean(dentroDeSelector));
+      if (!dentroDeSelector) document.getElementById("explorar").scrollIntoView({ behavior: "smooth" });
+    })
+  );
+  document.getElementById("filtro").addEventListener("change", (e) => {
+    estado.filtro = e.target.value;
+    actualizarVista();
+  });
+  document.getElementById("buscar").addEventListener("input", (e) => {
+    estado.busqueda = e.target.value;
+    actualizarVista();
+  });
+  document.getElementById("ranking").addEventListener("click", (e) => {
+    const boton = e.target.closest("button[data-id]");
+    if (boton) seleccionar(boton.dataset.id);
+  });
+}
+
+async function iniciar() {
+  iniciarFondo();
+  pintarIconos();
+  try {
+    datos = await cargarDatos();
+  } catch (err) {
+    document.getElementById("ranking").innerHTML =
+      `<li class="aviso">No se pudieron cargar los datos. Si abriste index.html directo, usa el archivo de un solo archivo o un servidor local (ver README).</li>`;
+    console.error(err);
+    return;
+  }
+  crearMapa("mapa");
+  conectarControles();
+  pintarCifras();
+  aplicarTextos();
+  pintarParametros();
+  pintarVerificacion();
+  actualizarVista();
+}
+
+iniciar();
+
+})();
+</script>
+</body>
+</html>

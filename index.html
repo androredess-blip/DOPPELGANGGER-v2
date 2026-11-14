@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es" data-tema="inicio">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Doppelgänger · Análogos de la Luna y Marte</title>
+  <meta name="description" content="Buscamos lugares de la Tierra que se parecen a la base lunar del polo sur y a Marte, usando datos abiertos de la NASA.">
+  <meta name="ai-assistance" content="Code and text written with help from an AI assistant (Claude, Anthropic) and reviewed by team Gatitácticos. Data: NASA POWER, GIBS, Trek. / Código y texto hechos con apoyo de un asistente de IA (Claude, Anthropic) y revisados por el equipo.">
+  <link rel="stylesheet" href="css/leaflet.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<header class="barra-sup">
+  <a class="marca" href="#inicio">
+    <svg viewBox="0 0 200 200" width="36" height="36" aria-hidden="true">
+      <g transform="rotate(-14 100 112)"><ellipse cx="100" cy="112" rx="94" ry="22" fill="none" stroke="var(--claro)" stroke-width="9"/></g>
+      <polygon points="50,84 56,30 92,60" fill="var(--acento)"/>
+      <polygon points="150,84 144,30 108,60" fill="var(--acento)"/>
+      <circle cx="100" cy="110" r="58" fill="var(--acento)"/>
+      <ellipse cx="82" cy="106" rx="7" ry="9" fill="var(--fondo)"/>
+      <ellipse cx="118" cy="106" rx="7" ry="9" fill="var(--fondo)"/>
+      <path d="M96 119 h8 l-4 5z" fill="var(--fondo)"/>
+      <g transform="rotate(-14 100 112)"><path d="M6 112 A94 22 0 0 0 194 112" fill="none" stroke="var(--claro)" stroke-width="9" stroke-linecap="round"/></g>
+    </svg>
+    <span>Doppelgänger</span>
+  </a>
+
+  <div class="selector" role="group" aria-label="Elige un mundo">
+    <button type="button" data-cuerpo="tierra" aria-pressed="false"><i data-ico="tierra" data-clase="icono"></i>Tierra</button>
+    <button type="button" data-cuerpo="luna" aria-pressed="false"><i data-ico="luna" data-clase="icono"></i>Luna</button>
+    <button type="button" data-cuerpo="marte" aria-pressed="false"><i data-ico="marte" data-clase="icono"></i>Marte</button>
+  </div>
+
+  <nav aria-label="Secciones">
+    <a href="#explorar"><i data-ico="ubicacion"></i>Explorar</a>
+    <a href="#parametros"><i data-ico="regla"></i>Parámetros</a>
+    <a href="#verificacion"><i data-ico="escudo"></i>Verificación</a>
+    <a href="#fuentes"><i data-ico="libro"></i>Fuentes</a>
+    <a href="#equipo"><i data-ico="personas"></i>Equipo</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ===== PORTADA ===== -->
+  <section id="inicio" class="portada">
+    <div class="portada-texto">
+      <p class="antetitulo">NASA Space Apps Challenge 2026 · Equipo Gatitácticos</p>
+      <h1 data-texto="titulo">Los dobles de la Luna y Marte en la Tierra</h1>
+      <p class="entrada" data-texto="entrada">
+        Antes de mandar personas al polo sur de la Luna o a Marte, el equipo y los procedimientos
+        se prueban en lugares de la Tierra que se les parecen: los análogos.
+      </p>
+      <ul class="cifras">
+        <li><b id="c-sitios">—</b><span>sitios</span></li>
+        <li><b id="c-conocidos">—</b><span>análogos que ya se usan</span></li>
+        <li><b id="c-candidatos">—</b><span>candidatos nuevos</span></li>
+        <li><b id="c-paises">—</b><span>países</span></li>
+      </ul>
+      <a class="boton" href="#explorar"><i data-ico="abajo"></i><span data-texto="boton">Ver todos los análogos</span></a>
+    </div>
+    <div class="mundos-mini" aria-hidden="true">
+      <figure class="globo tierra"><span>Tierra</span></figure>
+      <figure class="globo luna"><span>Luna</span></figure>
+      <figure class="globo marte"><span>Marte</span></figure>
+    </div>
+  </section>
+
+  <!-- elegir mundo (solo en vista general) -->
+  <section class="elegir solo-general" aria-label="Elige con qué comparar">
+    <button type="button" class="tarjeta-mundo tierra" data-cuerpo="tierra">
+      <i data-ico="tierra" data-clase="ico-grande"></i>
+      <b>Tierra</b>
+      <span>Todos los análogos que consideramos, en el mapa.</span>
+    </button>
+    <button type="button" class="tarjeta-mundo luna" data-cuerpo="luna">
+      <i data-ico="luna" data-clase="ico-grande"></i>
+      <b>Luna · polo sur</b>
+      <span>Qué tanto se parece cada sitio a la zona de la base de Artemis.</span>
+    </button>
+    <button type="button" class="tarjeta-mundo marte" data-cuerpo="marte">
+      <i data-ico="marte" data-clase="ico-grande"></i>
+      <b>Marte</b>
+      <span>Qué tanto se parece cada sitio a Marte, con sus propios parámetros.</span>
+    </button>
+  </section>
+
+  <!-- ===== OBJETIVO (solo Luna o Marte) ===== -->
+  <section id="objetivo" class="seccion solo-cuerpo">
+    <h2><i data-ico="crater"></i><span data-texto="obj-titulo">Contra qué comparamos</span></h2>
+    <p class="solo-luna">
+      El objetivo es la región del <b>polo sur</b> de la Luna, donde la NASA busca instalar la base permanente
+      y donde están las regiones candidatas de Artemis III. Ahí el Sol pasa casi en el horizonte, hay
+      cráteres en sombra permanente con hielo de agua y no hay atmósfera.
+    </p>
+    <p class="solo-marte">
+      Los objetivos son los sitios que exploran los rovers, como los cráteres <b>Jezero</b> (Perseverance) y
+      <b>Gale</b> (Curiosity): antiguos lagos, con polvo, viento, sales, mucho frío y aire muy delgado.
+    </p>
+    <div class="mapa-objetivo">
+      <div id="mapa-luna" class="mapa-mundo solo-luna"></div>
+      <div id="mapa-marte" class="mapa-mundo solo-marte"></div>
+    </div>
+    <p class="nota solo-luna">Mosaico LRO WAC y topografía LRO LOLA (NASA Moon Trek). Recuadro amarillo: polo sur.</p>
+    <p class="nota solo-marte">Mosaico Viking y topografía MGS MOLA (NASA Mars Trek). Puntos amarillos: Jezero y Gale.</p>
+  </section>
+
+  <!-- ===== EXPLORAR ===== -->
+  <section id="explorar" class="explorar">
+    <div class="encabezado-seccion">
+      <h2><i data-ico="ubicacion"></i><span data-texto="exp-titulo">Todos los análogos</span></h2>
+      <div class="controles">
+        <label class="buscar"><i data-ico="lupa"></i>
+          <input id="buscar" type="search" placeholder="Buscar sitio o país" aria-label="Buscar sitio o país">
+        </label>
+        <label class="filtro">
+          <span class="oculto">Mostrar</span>
+          <select id="filtro" aria-label="Mostrar">
+            <option value="todos">Todos los sitios</option>
+            <option value="candidato">Solo candidatos nuevos</option>
+            <option value="conocido">Solo análogos conocidos</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="mapa-y-ranking">
+      <div class="caja-mapa">
+        <div id="mapa" aria-label="Mapa de sitios análogos"></div>
+        <p class="leyenda solo-general">
+          <i class="punto conocido"></i>Análogo que ya se usa
+          <i class="punto candidato"></i>Candidato nuevo
+        </p>
+        <p class="leyenda solo-cuerpo">
+          <i class="punto fuerte"></i>Fuerte (70+)
+          <i class="punto parcial"></i>Parcial (50–69)
+          <i class="punto debil"></i>Débil (&lt;50)
+          <i class="aro"></i>Candidato nuevo
+        </p>
+        <div id="elegido" class="elegido" hidden></div>
+      </div>
+      <div class="caja-ranking">
+        <h3 id="titulo-ranking">Catálogo</h3>
+        <ol id="ranking" class="ranking"><li class="aviso">Cargando datos…</li></ol>
+      </div>
+    </div>
+
+    <article id="ficha" class="ficha" aria-live="polite"></article>
+  </section>
+
+  <!-- ===== PARÁMETROS ===== -->
+  <section id="parametros" class="seccion">
+    <h2><i data-ico="regla"></i><span data-texto="par-titulo">Parámetros</span></h2>
+    <div class="solo-general">
+      <p>
+        Cada cuerpo se compara con sus propios parámetros, porque lo que importa en la Luna no es lo mismo
+        que en Marte (por ejemplo, en la Luna no hay viento ni polvo que se mueva). Elige uno para verlos:
+      </p>
+      <div class="dos-botones">
+        <button type="button" class="boton" data-cuerpo="luna"><i data-ico="luna"></i>Parámetros de la Luna</button>
+        <button type="button" class="boton" data-cuerpo="marte"><i data-ico="marte"></i>Parámetros de Marte</button>
+      </div>
+      <h3>Cómo se calcula, en tres pasos</h3>
+      <div class="pasos">
+        <div class="paso"><span class="num">1</span><h4>Medir</h4><p>Datos de clima de NASA POWER y rasgos documentados en artículos científicos.</p></div>
+        <div class="paso"><span class="num">2</span><h4>Normalizar</h4><p>Cada dato se convierte en un valor de 0 a 1 entre dos umbrales.</p><p class="formula-web">f(x) = (x − a) / (b − a), recortado a [0, 1]</p></div>
+        <div class="paso"><span class="num">3</span><h4>Ponderar</h4><p>Se promedian las dimensiones con los pesos de cada cuerpo.</p><p class="formula-web">P = 100 · Σ w·D / Σ w</p></div>
+      </div>
+    </div>
+    <div class="solo-cuerpo">
+      <p data-texto="par-entrada"></p>
+      <div id="lista-parametros" class="lista-parametros"></div>
+      <h3>Cómo calificamos los rasgos</h3>
+      <ul id="criterios" class="criterios"></ul>
+    </div>
+  </section>
+
+  <!-- ===== VERIFICACIÓN ===== -->
+  <section id="verificacion" class="seccion">
+    <h2><i data-ico="escudo"></i>Cómo verificamos que sea correcto</h2>
+    <p>Revisamos dos cosas: que los datos de cada sitio sean ciertos, y que el método dé resultados que tengan sentido.</p>
+
+    <h3>1. Revisión de cada sitio</h3>
+    <ol class="protocolo">
+      <li><i data-ico="libro"></i><div><b>Fuente científica.</b> Cada rasgo tiene un motivo escrito y un artículo, tesis o página de una agencia espacial que lo respalda.</div></li>
+      <li><i data-ico="satelite"></i><div><b>Imagen de satélite.</b> Revisamos en las imágenes de NASA (Blue Marble y relieve ASTER) que el punto caiga en el lugar correcto.</div></li>
+      <li><i data-ico="termometro"></i><div><b>Datos medidos, no inventados.</b> El clima sale directo de NASA POWER con las coordenadas del sitio; cualquiera puede repetir la descarga con <code>scripts/descargar_clima.py</code>.</div></li>
+      <li><i data-ico="personas"></i><div><b>Dos revisores.</b> Dos integrantes del equipo revisan las fuentes por separado; solo entonces el sitio se marca como verificado.</div></li>
+      <li><i data-ico="grafica"></i><div><b>Prueba del método.</b> Comparamos el ranking con análogos que la NASA y la ESA ya usan, y movemos los pesos para ver si el resultado cambia.</div></li>
+    </ol>
+    <div id="estado-verificacion" class="estado-verificacion"></div>
+
+    <h3>2. Prueba del método</h3>
+    <div id="validacion" class="pasos"></div>
+
+    <h3>Limitaciones</h3>
+    <ul>
+      <li>Ningún sitio de la Tierra reproduce la gravedad reducida, el vacío lunar, la atmósfera delgada de Marte ni su radiación.</li>
+      <li>NASA POWER tiene una resolución de unos 50 km: en montañas o islas pequeñas el dato es de la zona, no del punto exacto.</li>
+      <li>Los rasgos se califican a mano a partir de las fuentes; los sitios “por verificar” todavía necesitan la revisión del equipo.</li>
+      <li>El polo sur lunar es sobre todo de rocas claras (anortosita); todavía no tenemos un parámetro para eso.</li>
+      <li>Los pesos son una decisión del equipo y se pueden cambiar en <code>data/modelo.json</code>.</li>
+    </ul>
+  </section>
+
+  <!-- ===== FUENTES ===== -->
+  <section id="fuentes" class="seccion">
+    <h2><i data-ico="libro"></i>Datos y fuentes</h2>
+    <ul class="fuentes-generales">
+      <li><a href="https://power.larc.nasa.gov" target="_blank" rel="noopener">NASA POWER</a>: clima anual de cada sitio.</li>
+      <li><a href="https://www.nasa.gov/?p=748006" target="_blank" rel="noopener">NASA, regiones candidatas de Artemis III</a>: objetivo lunar en el polo sur.</li>
+      <li><a href="https://science.nasa.gov/resource/shadows-near-the-moons-south-pole" target="_blank" rel="noopener">NASA Science, sombras en el polo sur lunar</a>: Sol a menos de 1.5° del horizonte y hielo en cráteres en sombra.</li>
+      <li><a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html" target="_blank" rel="noopener">NASA, Mars Fact Sheet</a>: presión, temperatura, viento y vapor de agua de Marte.</li>
+      <li><a href="https://arpi.unipi.it/retrieve/e0d6c930-149e-fcf8-e053-d805fe0aa794/Foucher_2021.pdf" target="_blank" rel="noopener">Foucher et al. 2021, análogos funcionales</a>: definición de análogo que usamos.</li>
+      <li><a href="https://ntrs.nasa.gov/citations/20220013521" target="_blank" rel="noopener">Graff et al. 2023, sitios volcánicos para Artemis</a> y <a href="https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/CAVES_and_Pangaea/What_is_Pangaea" target="_blank" rel="noopener">ESA PANGAEA</a>: sitios de entrenamiento de astronautas.</li>
+      <li><a href="https://earthdata.nasa.gov/gibs" target="_blank" rel="noopener">NASA GIBS</a>, <a href="https://worldview.earthdata.nasa.gov" target="_blank" rel="noopener">Worldview</a> y <a href="https://trek.nasa.gov" target="_blank" rel="noopener">NASA Solar System Treks</a>: mapas e imágenes.</li>
+      <li>Las fuentes de cada sitio están en su ficha.</li>
+    </ul>
+  </section>
+
+  <!-- ===== EQUIPO ===== -->
+  <section id="equipo" class="seccion">
+    <h2><i data-ico="personas"></i>Equipo Gatitácticos</h2>
+    <p>Noemí, Yexalen, Rafael, Diego y Luis. Sede Querétaro.</p>
+    <h3>Uso de herramientas de IA</h3>
+    <p>
+      Usamos un asistente de IA para apoyar la programación de esta página, la búsqueda inicial de
+      bibliografía y la redacción. La elección del reto, los criterios, la verificación de fuentes y el
+      análisis de resultados son del equipo. No usamos imágenes generadas por IA: todas son de la NASA.
+    </p>
+  </section>
+</main>
+
+<footer class="pie">
+  Proyecto para el NASA Space Apps Challenge 2026. Datos abiertos de la NASA y agencias asociadas.
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

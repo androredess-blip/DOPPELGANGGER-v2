@@ -1,0 +1,1033 @@
+[
+  {
+    "id": "atacama",
+    "nombre": "Desierto de Atacama (Yungay)",
+    "lugar": "Antofagasta",
+    "pais": "Chile",
+    "tipo": "conocido",
+    "lat": -24.1,
+    "lon": -70.02,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 0,
+      "dunas": 0.5,
+      "sales": 1,
+      "hielo": 0,
+      "paleolago": 1,
+      "extremofilos": 1,
+      "cuevas": 0,
+      "aislamiento": 0.8
+    },
+    "resumen": "Uno de los lugares más secos del planeta, con salares y suelos con percloratos. Es el análogo marciano más usado para probar instrumentos que buscan vida.",
+    "pruebas": "Detección de vida en suelos casi estériles, perforación y rovers de larga distancia.",
+    "fuentes": [
+      {
+        "titulo": "Martins et al. 2017, Earth as a Tool for Astrobiology (Space Science Reviews)",
+        "url": "https://spiral.imperial.ac.uk/bitstream/10044/1/46262/2/Martins%20et%20al_Topical%20Team_major%20review_final.pdf"
+      },
+      {
+        "titulo": "Preston y Dartnell 2014, Planetary habitability (Int. J. Astrobiology)",
+        "url": "https://www.cambridge.org/core/product/244C9EB88B74D6905133DD2228DD3112/core-reader"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "dunas": "Hay campos de arena y formas hechas por el viento, pero no dominan el paisaje de Yungay.",
+      "sales": "Salares y suelos con nitratos y percloratos, sales que también se encontraron en Marte.",
+      "paleolago": "Los salares son restos de lagos antiguos que se evaporaron.",
+      "extremofilos": "Microbios que sobreviven casi sin agua dentro de rocas de sal; aquí se prueban detectores de vida.",
+      "aislamiento": "Desierto remoto, aunque con caminos y una estación de investigación en Yungay."
+    }
+  },
+  {
+    "id": "haughton",
+    "nombre": "Cráter Haughton",
+    "lugar": "Isla Devon, Nunavut",
+    "pais": "Canadá",
+    "tipo": "conocido",
+    "lat": 75.38,
+    "lon": -89.68,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 0.5,
+      "hielo": 1,
+      "paleolago": 1,
+      "extremofilos": 1,
+      "cuevas": 0,
+      "aislamiento": 1
+    },
+    "resumen": "Cráter de impacto de unos 20 km en un desierto polar. La NASA lo ha usado para ensayar caminatas, rovers y comunicaciones de misiones a Marte.",
+    "pruebas": "Operaciones humanas en aislamiento, trajes, rovers y geología de impacto.",
+    "fuentes": [
+      {
+        "titulo": "NASA Facts: Analogs (2008)",
+        "url": "https://www.nasa.gov/wp-content/uploads/2016/04/nasa_facts_analogs_2008.pdf"
+      },
+      {
+        "titulo": "Preston, Grady y Barber 2012, Catalogue of Planetary Analogues (ESA), cap. 10",
+        "url": "https://freight.cargo.site/m/D1821053255089660420449933921929/The-Catalogue-of-Planetary-Analogues.pdf"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "crateres": "Cráter de impacto de unos 20 km, uno de los mejor conservados del Ártico.",
+      "sales": "Hay yeso en los depósitos del cráter, pero en menor cantidad que en un salar.",
+      "hielo": "El suelo está congelado (permafrost) todo el año.",
+      "paleolago": "Después del impacto hubo un lago dentro del cráter y quedan sus sedimentos.",
+      "extremofilos": "Microbios que viven dentro de rocas fracturadas por el impacto.",
+      "aislamiento": "Isla Devon, deshabitada; solo se llega en avioneta."
+    }
+  },
+  {
+    "id": "mcmurdo",
+    "nombre": "Valles Secos de McMurdo (Valle Taylor)",
+    "lugar": "Tierra de Victoria",
+    "pais": "Antártida",
+    "tipo": "conocido",
+    "lat": -77.62,
+    "lon": 162.9,
+    "rasgos": {
+      "basalto": 0.5,
+      "crateres": 0,
+      "dunas": 0.5,
+      "sales": 1,
+      "hielo": 1,
+      "paleolago": 1,
+      "extremofilos": 1,
+      "cuevas": 0,
+      "aislamiento": 1
+    },
+    "resumen": "Desierto polar frío y seco, sin hielo en la superficie de los valles. Es de los sitios más parecidos a Marte en clima.",
+    "pruebas": "Hábitats, energía en frío extremo y búsqueda de vida en suelos helados.",
+    "fuentes": [
+      {
+        "titulo": "NASA Facts: Analogs (2008)",
+        "url": "https://www.nasa.gov/wp-content/uploads/2016/04/nasa_facts_analogs_2008.pdf"
+      },
+      {
+        "titulo": "Martins et al. 2017, Earth as a Tool for Astrobiology",
+        "url": "https://spiral.imperial.ac.uk/bitstream/10044/1/46262/2/Martins%20et%20al_Topical%20Team_major%20review_final.pdf"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "basalto": "Hay rocas volcánicas oscuras (dolerita), mezcladas con otras rocas.",
+      "dunas": "Hay rocas pulidas por el viento y algunas dunas.",
+      "sales": "Suelos con sales y lagos muy salados.",
+      "hielo": "Permafrost y glaciares; el suelo permanece congelado.",
+      "paleolago": "Lagos cubiertos de hielo y sedimentos de lagos más grandes del pasado.",
+      "extremofilos": "Comunidades de microbios dentro de rocas y bajo el hielo de los lagos.",
+      "aislamiento": "Antártida: solo se trabaja con apoyo de una base científica."
+    }
+  },
+  {
+    "id": "meteor",
+    "nombre": "Meteor Crater",
+    "lugar": "Arizona",
+    "pais": "EUA",
+    "tipo": "conocido",
+    "lat": 35.027,
+    "lon": -111.022,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 0,
+      "hielo": 0,
+      "paleolago": 0.5,
+      "extremofilos": 0,
+      "cuevas": 0,
+      "aislamiento": 0.5
+    },
+    "resumen": "Cráter de impacto de 1.2 km muy bien conservado. Ahí se entrenó en geología a astronautas del programa Apollo.",
+    "pruebas": "Entrenamiento en geología de impacto y navegación en terreno con cráteres.",
+    "fuentes": [
+      {
+        "titulo": "Universidad de Arizona, Exploring a Desert Portal to Other Worlds (2019)",
+        "url": "https://news.arizona.edu/news/exploring-desert-portal-other-worlds"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "crateres": "Cráter de impacto de 1.2 km, muy bien conservado.",
+      "paleolago": "Tuvo un lago en su interior; quedan sedimentos en el fondo.",
+      "aislamiento": "Desierto con carretera y centro de visitantes."
+    }
+  },
+  {
+    "id": "riotinto",
+    "nombre": "Río Tinto",
+    "lugar": "Huelva",
+    "pais": "España",
+    "tipo": "conocido",
+    "lat": 37.69,
+    "lon": -6.56,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 0,
+      "dunas": 0,
+      "sales": 1,
+      "hielo": 0,
+      "paleolago": 0.5,
+      "extremofilos": 1,
+      "cuevas": 0.5,
+      "aislamiento": 0.3
+    },
+    "resumen": "Río muy ácido y rico en hierro, con minerales como jarosita y goethita, parecidos a los que encontraron los rovers en Marte.",
+    "pruebas": "Instrumentos de mineralogía, perforación y búsqueda de vida en ambientes ácidos.",
+    "fuentes": [
+      {
+        "titulo": "Europlanet, Planetary Field Analogues",
+        "url": "https://www.isa.au.dk/networks/euroPlanet/facilities/tna1/overview.html"
+      },
+      {
+        "titulo": "Martins et al. 2017, Earth as a Tool for Astrobiology",
+        "url": "https://spiral.imperial.ac.uk/bitstream/10044/1/46262/2/Martins%20et%20al_Topical%20Team_major%20review_final.pdf"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "sales": "Sulfatos de hierro como la jarosita, el mismo mineral que encontró el rover Opportunity en Marte.",
+      "paleolago": "Terrazas de hierro que el río fue dejando a lo largo de miles de años.",
+      "extremofilos": "Microbios que viven en agua muy ácida y llena de metales.",
+      "cuevas": "Minas y galerías donde se ha buscado vida en el subsuelo.",
+      "aislamiento": "Zona minera cerca de pueblos."
+    }
+  },
+  {
+    "id": "lanzarote",
+    "nombre": "Timanfaya y túnel de la Corona",
+    "lugar": "Lanzarote, Canarias",
+    "pais": "España",
+    "tipo": "conocido",
+    "lat": 29.0,
+    "lon": -13.75,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 1,
+      "dunas": 0.5,
+      "sales": 0,
+      "hielo": 0,
+      "paleolago": 0,
+      "extremofilos": 0.5,
+      "cuevas": 1,
+      "aislamiento": 0.3
+    },
+    "resumen": "Campos de lava basáltica y uno de los tubos de lava más grandes de la Tierra. La ESA lo usa para entrenar astronautas en geología.",
+    "pruebas": "Exploración de cuevas con robots, entrenamiento geológico y refugios subterráneos.",
+    "fuentes": [
+      {
+        "titulo": "Sauro et al. 2020, Lava tubes on Earth, Moon and Mars (Earth-Science Reviews)",
+        "url": "https://cris.unibo.it/retrieve/bf298592-3a07-4d19-8979-599f91ae8131/2020%2bSauro%2bet%2bal%2bESR%2bLava%2btubes.pdf"
+      },
+      {
+        "titulo": "Martins et al. 2017, Earth as a Tool for Astrobiology",
+        "url": "https://spiral.imperial.ac.uk/bitstream/10044/1/46262/2/Martins%20et%20al_Topical%20Team_major%20review_final.pdf"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "basalto": "Campos de lava basáltica de las erupciones de Timanfaya (1730–1736).",
+      "crateres": "Decenas de conos y cráteres volcánicos.",
+      "dunas": "Arenas volcánicas movidas por el viento, en zonas pequeñas.",
+      "extremofilos": "Microbios en tubos de lava y zonas volcánicas, poco estudiados.",
+      "cuevas": "El túnel de la Corona es uno de los tubos de lava más largos del mundo.",
+      "aislamiento": "Isla turística con acceso fácil."
+    }
+  },
+  {
+    "id": "maunakea",
+    "nombre": "Mauna Kea",
+    "lugar": "Isla de Hawái",
+    "pais": "EUA",
+    "tipo": "conocido",
+    "lat": 19.82,
+    "lon": -155.47,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 0,
+      "hielo": 0.5,
+      "paleolago": 0,
+      "extremofilos": 0.5,
+      "cuevas": 1,
+      "aislamiento": 0.5
+    },
+    "resumen": "Volcán basáltico usado por la NASA para probar extracción de oxígeno del material volcánico y técnicas para buscar hielo lunar.",
+    "pruebas": "Uso de recursos locales (ISRU), construcción con regolito y movilidad en laderas.",
+    "fuentes": [
+      {
+        "titulo": "NASA Facts: Analogs (2008)",
+        "url": "https://www.nasa.gov/wp-content/uploads/2016/04/nasa_facts_analogs_2008.pdf"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "basalto": "Volcán basáltico; su material se parece al suelo lunar y se usa para fabricar simulantes.",
+      "crateres": "Conos de ceniza y cráteres volcánicos en la cima.",
+      "hielo": "Hay permafrost en algunos conos de la cima, en zonas pequeñas.",
+      "extremofilos": "Pocos organismos adaptados al frío, la altura y la radiación UV.",
+      "cuevas": "Tubos de lava en sus laderas.",
+      "aislamiento": "Hay observatorios y carretera hasta la cima."
+    }
+  },
+  {
+    "id": "pinacate",
+    "nombre": "Campo volcánico El Pinacate",
+    "lugar": "Sonora",
+    "pais": "México",
+    "tipo": "candidato",
+    "lat": 31.77,
+    "lon": -113.5,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 1,
+      "dunas": 1,
+      "sales": 0,
+      "hielo": 0,
+      "paleolago": 0,
+      "extremofilos": 0,
+      "cuevas": 0.5,
+      "aislamiento": 0.8
+    },
+    "resumen": "Más de 400 conos volcánicos y nueve cráteres grandes rodeados de dunas. Astronautas del programa Apollo entrenaron en la zona, pero hoy casi no se usa como análogo.",
+    "pruebas": "Rovers en lava y arena, entrenamiento geológico y vuelo de drones en terreno volcánico.",
+    "fuentes": [
+      {
+        "titulo": "Universidad de Arizona, Exploring a Desert Portal to Other Worlds (2019)",
+        "url": "https://news.arizona.edu/news/exploring-desert-portal-other-worlds"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "basalto": "Campo de lava basáltica con más de 400 conos volcánicos.",
+      "crateres": "Nueve cráteres grandes tipo maar, como El Elegante.",
+      "dunas": "Rodeado por las dunas del Gran Desierto de Altar.",
+      "cuevas": "Hay tubos de lava, pero menos estudiados que los de Lanzarote.",
+      "aislamiento": "Reserva de la biosfera, con pocos caminos y sin poblaciones dentro."
+    }
+  },
+  {
+    "id": "alchichica",
+    "nombre": "Laguna de Alchichica",
+    "lugar": "Puebla",
+    "pais": "México",
+    "tipo": "candidato",
+    "lat": 19.415,
+    "lon": -97.4,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 0.5,
+      "hielo": 0,
+      "paleolago": 1,
+      "extremofilos": 1,
+      "cuevas": 0,
+      "aislamiento": 0.4
+    },
+    "resumen": "Lago salino y alcalino dentro de un cráter volcánico, con microbialitos. Se estudia cómo se conservan sus biofirmas en condiciones parecidas a Marte.",
+    "pruebas": "Búsqueda de biofirmas en lagos de cráter, como en el cráter Jezero.",
+    "fuentes": [
+      {
+        "titulo": "Lipid Biomarkers in Microbialites from a Maar Lake (Astrobiology, 2026)",
+        "url": "https://astrobiology.com/2026/06/25/lipid-biomarkers-in-microbialites-from-a-maar-lake-an-astrobiological-study-of-biomarker-preservation-under-mars-analog-conditions/"
+      },
+      {
+        "titulo": "Sociedad Mexicana de Astrobiología, Sitios de interés astrobiológico",
+        "url": "https://sites.google.com/soma.org.mx/soma-a-c/vinculación/sitios-de-interés-astrobiológico"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "basalto": "Cráter tipo maar abierto en rocas volcánicas.",
+      "crateres": "El lago ocupa un cráter volcánico.",
+      "sales": "Agua salina y alcalina, pero sin grandes depósitos de sal.",
+      "paleolago": "Sedimentos y microbialitos que el lago fue acumulando durante miles de años.",
+      "extremofilos": "Microbialitos vivos en agua alcalina.",
+      "aislamiento": "Zona rural con acceso por carretera."
+    }
+  },
+  {
+    "id": "cuatrocienegas",
+    "nombre": "Cuatro Ciénegas (Churince)",
+    "lugar": "Coahuila",
+    "pais": "México",
+    "tipo": "candidato",
+    "lat": 26.85,
+    "lon": -102.13,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 0,
+      "dunas": 1,
+      "sales": 1,
+      "hielo": 0,
+      "paleolago": 1,
+      "extremofilos": 1,
+      "cuevas": 0,
+      "aislamiento": 0.6
+    },
+    "resumen": "Suelos y dunas de yeso en un oasis del desierto. Se ha propuesto como análogo del cráter Gale, donde trabaja el rover Curiosity.",
+    "pruebas": "Detección de sulfatos y estudio de comunidades microbianas en suelos de yeso.",
+    "fuentes": [
+      {
+        "titulo": "López-Lozano et al. 2012, Gypsum Soils of Cuatro Ciénegas: A Mars Analogue (Astrobiology)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3426888"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "dunas": "Dunas de yeso blanco.",
+      "sales": "Suelos de yeso (sulfato de calcio), un mineral que también encontró Curiosity en el cráter Gale.",
+      "paleolago": "Pozas y sedimentos de un sistema de agua muy antiguo.",
+      "extremofilos": "Estromatolitos y microbios de linajes muy antiguos.",
+      "aislamiento": "Área protegida en el desierto de Coahuila, con acceso limitado."
+    }
+  },
+  {
+    "id": "xitle",
+    "nombre": "Pedregal del Xitle",
+    "lugar": "Ciudad de México",
+    "pais": "México",
+    "tipo": "candidato",
+    "lat": 19.32,
+    "lon": -99.19,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 0.5,
+      "dunas": 0,
+      "sales": 0,
+      "hielo": 0,
+      "paleolago": 0,
+      "extremofilos": 0,
+      "cuevas": 0.5,
+      "aislamiento": 0
+    },
+    "resumen": "Flujo de lava basáltica del volcán Xitle sobre el que está Ciudad Universitaria. Una tesis de la UNAM lo propone como análogo de la superficie de Marte primitivo.",
+    "pruebas": "Pruebas de laboratorio con basalto real, a bajo costo y cerca de universidades.",
+    "fuentes": [
+      {
+        "titulo": "Mateos López 2022, tesis de licenciatura, Facultad de Química UNAM",
+        "url": "https://ru.dgb.unam.mx/bitstream/20.500.14330/TES01000825500/3/0825500.pdf"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "basalto": "Flujo de lava basáltica de hace unos 1 670 años.",
+      "crateres": "El volcán Xitle tiene un cráter pequeño y con vegetación.",
+      "cuevas": "Pequeñas cavidades y túneles dentro de la lava."
+    }
+  },
+  {
+    "id": "paricutin",
+    "nombre": "Volcán Paricutín",
+    "lugar": "Michoacán",
+    "pais": "México",
+    "tipo": "candidato",
+    "lat": 19.493,
+    "lon": -102.251,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 0,
+      "hielo": 0,
+      "paleolago": 0,
+      "extremofilos": 0,
+      "cuevas": 0,
+      "aislamiento": 0.4
+    },
+    "resumen": "Volcán que nació en 1943 con un campo de lava basáltica joven y poca vegetación.",
+    "pruebas": "Movilidad de rovers sobre lava reciente y estudio de cómo se coloniza la roca nueva.",
+    "fuentes": [],
+    "verificado": false,
+    "motivos": {
+      "basalto": "Campo de lava joven de la erupción de 1943 a 1952 (falta citar fuente).",
+      "crateres": "Cono volcánico con cráter en la cima.",
+      "aislamiento": "Se llega a pie o a caballo desde Angahuan; zona rural."
+    }
+  },
+  {
+    "id": "guerreronegro",
+    "nombre": "Salinas de Guerrero Negro",
+    "lugar": "Baja California Sur",
+    "pais": "México",
+    "tipo": "candidato",
+    "lat": 27.75,
+    "lon": -114.0,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 0,
+      "dunas": 1,
+      "sales": 1,
+      "hielo": 0,
+      "paleolago": 0.5,
+      "extremofilos": 1,
+      "cuevas": 0,
+      "aislamiento": 0.5
+    },
+    "resumen": "Estanques de evaporación con tapetes microbianos en agua dos a tres veces más salada que el mar. Se usan para entender el metano que se mide en Marte.",
+    "pruebas": "Medición de metano biológico y biofirmas en ambientes salinos.",
+    "fuentes": [
+      {
+        "titulo": "Sociedad Mexicana de Astrobiología, Sitios de interés astrobiológico",
+        "url": "https://sites.google.com/soma.org.mx/soma-a-c/vinculación/sitios-de-interés-astrobiológico"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "dunas": "Dunas costeras alrededor de las salinas.",
+      "sales": "Evaporitas: halita y yeso en los estanques.",
+      "paleolago": "Sedimentos recientes de laguna salada.",
+      "extremofilos": "Tapetes microbianos en agua hipersalina.",
+      "aislamiento": "Salina industrial con un poblado cerca."
+    }
+  },
+  {
+    "id": "parangueo",
+    "nombre": "Cráter Rincón de Parangueo",
+    "lugar": "Valle de Santiago, Guanajuato",
+    "pais": "México",
+    "tipo": "candidato",
+    "lat": 20.41,
+    "lon": -101.25,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 1,
+      "hielo": 0,
+      "paleolago": 1,
+      "extremofilos": 1,
+      "cuevas": 0,
+      "aislamiento": 0.3
+    },
+    "resumen": "Lago de cráter casi seco, muy alcalino y salino, con montículos de estromatolitos.",
+    "pruebas": "Diferenciar carbonatos de origen biológico y no biológico, como en lagos antiguos de Marte.",
+    "fuentes": [
+      {
+        "titulo": "Sociedad Mexicana de Astrobiología, Sitios de interés astrobiológico",
+        "url": "https://sites.google.com/soma.org.mx/soma-a-c/vinculación/sitios-de-interés-astrobiológico"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "basalto": "Cráter tipo maar en rocas volcánicas.",
+      "crateres": "El lago está dentro de un cráter volcánico.",
+      "sales": "Lago muy salino y alcalino, con costras de sal.",
+      "paleolago": "El lago se fue secando y dejó sus sedimentos expuestos.",
+      "extremofilos": "Montículos de estromatolitos.",
+      "aislamiento": "Junto a Valle de Santiago, Guanajuato."
+    }
+  },
+  {
+    "id": "dallol",
+    "nombre": "Dallol",
+    "lugar": "Depresión de Danakil",
+    "pais": "Etiopía",
+    "tipo": "candidato",
+    "lat": 14.24,
+    "lon": 40.3,
+    "rasgos": {
+      "basalto": 0.5,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 1,
+      "hielo": 0,
+      "paleolago": 1,
+      "extremofilos": 1,
+      "cuevas": 0,
+      "aislamiento": 1
+    },
+    "resumen": "Pozas hidrotermales muy calientes, saladas y ácidas. Un estudio no encontró vida en ellas: hay agua líquida, pero no es habitable.",
+    "pruebas": "Distinguir biofirmas reales de formas minerales que parecen células.",
+    "fuentes": [
+      {
+        "titulo": "Belilla et al. 2019, Nature Ecology & Evolution (nota de prensa)",
+        "url": "https://www.eurekalert.org/news-releases/708841"
+      },
+      {
+        "titulo": "Preprint en bioRxiv",
+        "url": "https://www.biorxiv.org/content/10.1101/658211v1.full.pdf+html"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "basalto": "Está en la depresión de Danakil, una zona volcánica; Dallol es un domo de sal sobre magma.",
+      "crateres": "Cráteres de explosión hidrotermal.",
+      "sales": "Depósitos de sal y azufre.",
+      "paleolago": "Capas de sal de un antiguo brazo de mar que se evaporó.",
+      "extremofilos": "Hay arqueas en zonas cercanas, pero no en las pozas más extremas.",
+      "aislamiento": "Una de las zonas más calientes y remotas del mundo."
+    }
+  },
+  {
+    "id": "lut",
+    "nombre": "Kaluts del desierto de Lut",
+    "lugar": "Kermán",
+    "pais": "Irán",
+    "tipo": "candidato",
+    "lat": 30.4,
+    "lon": 57.7,
+    "rasgos": {
+      "basalto": 0.5,
+      "crateres": 0,
+      "dunas": 1,
+      "sales": 0.5,
+      "hielo": 0,
+      "paleolago": 0.5,
+      "extremofilos": 0,
+      "cuevas": 0,
+      "aislamiento": 1
+    },
+    "resumen": "Yardangs, dunas y megarizaduras parecidas a las crestas eólicas transversales de Marte, con remolinos de polvo.",
+    "pruebas": "Estudio de erosión por viento y navegación de rovers en campos de dunas.",
+    "fuentes": [
+      {
+        "titulo": "Foroutan y Zimbelman 2016, Mega-ripples in Iran (Icarus)",
+        "url": "https://profiles.si.edu/display/sro_139430"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "basalto": "Hay rocas volcánicas en partes del desierto, no en los kaluts.",
+      "dunas": "Yardangs (kaluts) y megarizaduras formadas por el viento.",
+      "sales": "Costras de sal en algunas zonas.",
+      "paleolago": "Los kaluts están tallados en sedimentos de un lago antiguo.",
+      "aislamiento": "Desierto sin poblaciones, de los más calientes del planeta."
+    }
+  },
+  {
+    "id": "dalangtan",
+    "nombre": "Playa salina Dalangtan",
+    "lugar": "Cuenca de Qaidam, Qinghai",
+    "pais": "China",
+    "tipo": "candidato",
+    "lat": 38.5,
+    "lon": 91.6,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 0,
+      "dunas": 1,
+      "sales": 1,
+      "hielo": 0.5,
+      "paleolago": 1,
+      "extremofilos": 0.5,
+      "cuevas": 0,
+      "aislamiento": 1
+    },
+    "resumen": "Playa salina hiperárida a casi 3 000 m, con baja presión, mucha radiación UV y sales parecidas a las de Marte, incluidos percloratos.",
+    "pruebas": "Sensores remotos de sales, estabilidad de sales hidratadas y pruebas de preparación de misiones.",
+    "fuentes": [
+      {
+        "titulo": "Kong et al. 2018, Dalangtan Saline Playa I (Astrobiology)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6205091"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "dunas": "Formas eólicas y yardangs en la cuenca de Qaidam.",
+      "sales": "Sulfatos, cloruros y percloratos, como en Marte.",
+      "hielo": "El suelo se congela en invierno.",
+      "paleolago": "Fondo de un lago salado que se secó.",
+      "extremofilos": "Pocos microbios adaptados a la sal.",
+      "aislamiento": "Meseta del Tíbet, lejos de las ciudades."
+    }
+  },
+  {
+    "id": "undara",
+    "nombre": "Tubos de lava de Undara",
+    "lugar": "Queensland",
+    "pais": "Australia",
+    "tipo": "candidato",
+    "lat": -18.2,
+    "lon": 144.6,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 0.5,
+      "dunas": 0,
+      "sales": 0,
+      "hielo": 0,
+      "paleolago": 0,
+      "extremofilos": 0,
+      "cuevas": 1,
+      "aislamiento": 0.7
+    },
+    "resumen": "Sistema de tubos de lava inflados, de los más grandes del mundo y mucho menos estudiado que los de Hawái o Lanzarote.",
+    "pruebas": "Cartografía de cuevas con láser y robots, y diseño de refugios bajo tierra.",
+    "fuentes": [
+      {
+        "titulo": "Sauro et al. 2020, Lava tubes on Earth, Moon and Mars (Earth-Science Reviews)",
+        "url": "https://cris.unibo.it/retrieve/bf298592-3a07-4d19-8979-599f91ae8131/2020%2bSauro%2bet%2bal%2bESR%2bLava%2btubes.pdf"
+      }
+    ],
+    "verificado": false,
+    "motivos": {
+      "basalto": "Flujo de lava basáltica de hace unos 190 000 años.",
+      "crateres": "El volcán Undara tiene cráter en la cima.",
+      "cuevas": "Tubos de lava inflados, de los más grandes del mundo.",
+      "aislamiento": "Zona rural de Queensland, con acceso controlado."
+    }
+  },
+  {
+    "id": "sanfrancisco",
+    "nombre": "Campo volcánico San Francisco (SP Crater)",
+    "lugar": "Arizona",
+    "pais": "EUA",
+    "tipo": "conocido",
+    "lat": 35.58,
+    "lon": -111.63,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 0,
+      "hielo": 0,
+      "paleolago": 0,
+      "extremofilos": 0,
+      "cuevas": 0.5,
+      "aislamiento": 0.5
+    },
+    "motivos": {
+      "basalto": "Cientos de conos de ceniza y flujos de lava basáltica.",
+      "crateres": "Conos con cráter, como SP Crater.",
+      "cuevas": "Tiene tubos de lava, como Lava River Cave.",
+      "aislamiento": "Desierto con caminos de terracería cerca de Flagstaff."
+    },
+    "resumen": "Campo volcánico que la NASA usa para probar trajes, rovers y caminatas de las misiones Artemis.",
+    "pruebas": "Ensayos de caminatas lunares, rovers presurizados y toma de muestras.",
+    "fuentes": [
+      {
+        "titulo": "Graff et al. 2023, Volcanic Field Sites for Artemis Testing and Training (NASA)",
+        "url": "https://ntrs.nasa.gov/citations/20220013521"
+      }
+    ],
+    "verificado": false
+  },
+  {
+    "id": "islandia",
+    "nombre": "Tierras altas de Islandia (Holuhraun)",
+    "lugar": "Norte de Vatnajökull",
+    "pais": "Islandia",
+    "tipo": "conocido",
+    "lat": 64.87,
+    "lon": -16.83,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 0.5,
+      "dunas": 0.5,
+      "sales": 0,
+      "hielo": 0.5,
+      "paleolago": 0,
+      "extremofilos": 0,
+      "cuevas": 0,
+      "aislamiento": 0.8
+    },
+    "motivos": {
+      "basalto": "Campo de lava basáltica de la erupción de Holuhraun (2014–2015).",
+      "crateres": "Cráteres a lo largo de la fisura eruptiva.",
+      "dunas": "Arenas volcánicas negras que mueve el viento.",
+      "hielo": "Junto al glaciar Vatnajökull; el suelo se congela gran parte del año.",
+      "aislamiento": "Tierras altas sin poblaciones; solo se llega en verano."
+    },
+    "resumen": "La tripulación de Artemis II entrenó geología aquí en 2024, en campos de lava muy jóvenes.",
+    "pruebas": "Entrenamiento de geología de campo y fotografía para astronautas.",
+    "fuentes": [
+      {
+        "titulo": "NASA 2024, Artemis II Crew geology training in Iceland",
+        "url": "https://www.nasa.gov/?p=936140"
+      },
+      {
+        "titulo": "Graff et al. 2023, Volcanic Field Sites for Artemis Testing and Training (NASA)",
+        "url": "https://ntrs.nasa.gov/citations/20220013521"
+      }
+    ],
+    "verificado": false
+  },
+  {
+    "id": "potrillo",
+    "nombre": "Campo volcánico Potrillo (Kilbourne Hole)",
+    "lugar": "Nuevo México",
+    "pais": "EUA",
+    "tipo": "conocido",
+    "lat": 31.97,
+    "lon": -106.97,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 1,
+      "dunas": 0.5,
+      "sales": 0,
+      "hielo": 0,
+      "paleolago": 0,
+      "extremofilos": 0,
+      "cuevas": 0,
+      "aislamiento": 0.7
+    },
+    "motivos": {
+      "basalto": "Campo de lava basáltica y conos de ceniza.",
+      "crateres": "Kilbourne Hole es un cráter tipo maar de casi 2 km.",
+      "dunas": "Arenas del desierto de Chihuahua alrededor del cráter.",
+      "aislamiento": "Desierto sin servicios, cerca de la frontera con México."
+    },
+    "resumen": "Campo volcánico en el desierto de Chihuahua, elegido por la NASA para pruebas y entrenamiento de Artemis.",
+    "pruebas": "Geología de cráteres volcánicos y pruebas de equipo en desierto.",
+    "fuentes": [
+      {
+        "titulo": "Graff et al. 2023, Volcanic Field Sites for Artemis Testing and Training (NASA)",
+        "url": "https://ntrs.nasa.gov/citations/20220013521"
+      }
+    ],
+    "verificado": false
+  },
+  {
+    "id": "mistastin",
+    "nombre": "Cráter Mistastin (Kamestastin)",
+    "lugar": "Labrador",
+    "pais": "Canadá",
+    "tipo": "conocido",
+    "lat": 55.88,
+    "lon": -63.31,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 0,
+      "hielo": 0.5,
+      "paleolago": 0,
+      "extremofilos": 0,
+      "cuevas": 0,
+      "aislamiento": 1
+    },
+    "motivos": {
+      "crateres": "Cráter de impacto con rocas fundidas por el impacto. Tiene anortosita, la roca clara que se espera en el polo sur lunar.",
+      "hielo": "Clima subártico: el suelo se congela gran parte del año.",
+      "aislamiento": "Norte de Labrador, sin caminos; se llega en avioneta."
+    },
+    "resumen": "Astronautas de Artemis II (Hansen y Koch) entrenaron aquí en 2023. Sus rocas se parecen a las del polo sur de la Luna.",
+    "pruebas": "Entrenamiento de geología de impactos para Artemis.",
+    "fuentes": [
+      {
+        "titulo": "SuperCluster, Artemis astronauts find lunar analog in meteorite impact crater",
+        "url": "https://www.supercluster.com/editorial/artemis-astronauts-find-lunar-analog-in-meteorite-impact-crater"
+      }
+    ],
+    "verificado": false
+  },
+  {
+    "id": "ries",
+    "nombre": "Cráter de Nördlinger Ries",
+    "lugar": "Baviera",
+    "pais": "Alemania",
+    "tipo": "conocido",
+    "lat": 48.88,
+    "lon": 10.56,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 0,
+      "hielo": 0,
+      "paleolago": 1,
+      "extremofilos": 0,
+      "cuevas": 0,
+      "aislamiento": 0.2
+    },
+    "motivos": {
+      "crateres": "Cráter de impacto de unos 24 km, con rocas fundidas por el impacto (suevita).",
+      "paleolago": "Después del impacto se formó un lago y quedaron sus sedimentos.",
+      "aislamiento": "Dentro del cráter está la ciudad de Nördlingen."
+    },
+    "resumen": "La ESA entrena aquí a sus astronautas en geología lunar y de impactos (programa PANGAEA).",
+    "pruebas": "Entrenamiento de geología de impactos y de toma de muestras.",
+    "fuentes": [
+      {
+        "titulo": "ESA, What is PANGAEA",
+        "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/CAVES_and_Pangaea/What_is_Pangaea"
+      }
+    ],
+    "verificado": false
+  },
+  {
+    "id": "lonar",
+    "nombre": "Cráter de Lonar",
+    "lugar": "Maharashtra",
+    "pais": "India",
+    "tipo": "conocido",
+    "lat": 19.98,
+    "lon": 76.51,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 0.5,
+      "hielo": 0,
+      "paleolago": 0.5,
+      "extremofilos": 0.5,
+      "cuevas": 0,
+      "aislamiento": 0.3
+    },
+    "motivos": {
+      "basalto": "Es uno de los pocos cráteres de impacto en basalto, como muchos de la Luna y Marte.",
+      "crateres": "Cráter de impacto de unos 1.8 km.",
+      "sales": "El lago es salino y alcalino.",
+      "paleolago": "Sedimentos del lago dentro del cráter.",
+      "extremofilos": "Microbios adaptados a agua alcalina.",
+      "aislamiento": "Junto al pueblo de Lonar."
+    },
+    "resumen": "Cráter de impacto en lava basáltica, como los de la Luna y Marte. Se estudia su alteración por agua caliente.",
+    "pruebas": "Estudio de cráteres en basalto y de minerales formados por agua tras el impacto.",
+    "fuentes": [
+      {
+        "titulo": "USGS, Lonar Lake, India: An impact crater in basalt",
+        "url": "https://pubs.usgs.gov/publication/70010158"
+      },
+      {
+        "titulo": "USGS, Hydrothermal alteration at the Lonar Lake impact structure: implications for Mars",
+        "url": "https://pubs.usgs.gov/publication/70202247"
+      }
+    ],
+    "verificado": false
+  },
+  {
+    "id": "bockfjord",
+    "nombre": "Complejo volcánico Bockfjord (Sverrefjell)",
+    "lugar": "Svalbard",
+    "pais": "Noruega",
+    "tipo": "conocido",
+    "lat": 79.43,
+    "lon": 13.33,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 0,
+      "dunas": 0,
+      "sales": 0,
+      "hielo": 1,
+      "paleolago": 0,
+      "extremofilos": 0,
+      "cuevas": 0,
+      "aislamiento": 1
+    },
+    "motivos": {
+      "basalto": "Volcanes basálticos que hicieron erupción bajo el hielo hace cerca de un millón de años. Tienen carbonatos parecidos a los del cráter Gusev en Marte.",
+      "hielo": "Ártico: permafrost y glaciares.",
+      "aislamiento": "Solo se llega en barco; sin poblaciones."
+    },
+    "resumen": "La NASA y otras agencias prueban aquí instrumentos de rovers marcianos (expediciones AMASE).",
+    "pruebas": "Pruebas de instrumentos de rovers y de toma de muestras en clima polar.",
+    "fuentes": [
+      {
+        "titulo": "Amundsen et al. 2011, Cryogenic origin for Mars analog carbonates in the Bockfjord Volcanic Complex (LPSC)",
+        "url": "https://ntrs.nasa.gov/citations/20110008112"
+      }
+    ],
+    "verificado": false
+  },
+  {
+    "id": "cratersmoon",
+    "nombre": "Craters of the Moon",
+    "lugar": "Idaho",
+    "pais": "EUA",
+    "tipo": "conocido",
+    "lat": 43.42,
+    "lon": -113.52,
+    "rasgos": {
+      "basalto": 1,
+      "crateres": 1,
+      "dunas": 0,
+      "sales": 0,
+      "hielo": 0,
+      "paleolago": 0,
+      "extremofilos": 0,
+      "cuevas": 1,
+      "aislamiento": 0.5
+    },
+    "motivos": {
+      "basalto": "Gran campo de lava basáltica de la llanura del río Snake.",
+      "crateres": "Conos de ceniza y de salpicadura con cráter.",
+      "cuevas": "Muchos tubos de lava accesibles.",
+      "aislamiento": "Monumento nacional con carretera y centro de visitantes."
+    },
+    "resumen": "Campo de lava basáltica donde el proyecto FINESSE de la NASA estudió terrenos volcánicos como los de la Luna.",
+    "pruebas": "Simulaciones de exploración en terreno basáltico y estudio de tubos de lava.",
+    "fuentes": [
+      {
+        "titulo": "Heldmann et al., FINESSE: Field Investigations to Enable Solar System Science and Exploration (NASA)",
+        "url": "https://ntrs.nasa.gov/api/citations/20190031834/downloads/20190031834.pdf"
+      }
+    ],
+    "verificado": false
+  },
+  {
+    "id": "hanksville",
+    "nombre": "Hanksville (Mars Desert Research Station)",
+    "lugar": "Utah",
+    "pais": "EUA",
+    "tipo": "conocido",
+    "lat": 38.41,
+    "lon": -110.79,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 0,
+      "dunas": 0.5,
+      "sales": 0.5,
+      "hielo": 0,
+      "paleolago": 1,
+      "extremofilos": 0,
+      "cuevas": 0,
+      "aislamiento": 0.6
+    },
+    "motivos": {
+      "dunas": "Arena y erosión por viento en todo el desierto.",
+      "sales": "Suelos con sulfatos y capas de evaporitas cerca.",
+      "paleolago": "Antiguos canales de río que hoy quedaron en alto, como los de la región Aeolis de Marte.",
+      "aislamiento": "Desierto con un pueblo pequeño cerca."
+    },
+    "resumen": "Sede de la estación de simulación MDRS. Tiene canales de río fosilizados y concreciones parecidas a las de Marte.",
+    "pruebas": "Simulaciones de vida en un hábitat marciano, caminatas y geología.",
+    "fuentes": [
+      {
+        "titulo": "Clarke y Stoker, Concretions in exhumed channels near Hanksville, Utah: implications for Mars",
+        "url": "https://ntrs.nasa.gov/api/citations/20110023235/downloads/20110023235.pdf"
+      }
+    ],
+    "verificado": false
+  },
+  {
+    "id": "kachchh",
+    "nombre": "Matanomadh, Kachchh",
+    "lugar": "Guyarat",
+    "pais": "India",
+    "tipo": "candidato",
+    "lat": 23.53,
+    "lon": 69.0,
+    "rasgos": {
+      "basalto": 0.5,
+      "crateres": 0,
+      "dunas": 0,
+      "sales": 1,
+      "hielo": 0,
+      "paleolago": 0.5,
+      "extremofilos": 0,
+      "cuevas": 0,
+      "aislamiento": 0.5
+    },
+    "motivos": {
+      "basalto": "La zona tiene rocas volcánicas de los traps del Decán.",
+      "sales": "Natrojarosita, un sulfato parecido a la jarosita que se encontró en Marte.",
+      "paleolago": "Sedimentos formados con agua en el pasado.",
+      "aislamiento": "Zona rural poco poblada."
+    },
+    "resumen": "Afloramiento con natrojarosita, mineral parecido a la jarosita de Marte. Es un candidato reciente.",
+    "pruebas": "Espectroscopía de sulfatos y entrenamiento para identificar minerales marcianos.",
+    "fuentes": [
+      {
+        "titulo": "Natrojarosite formed in the Matanomadh Formation, Kutch, India (American Mineralogist, 2024)",
+        "url": "https://www.citedrive.com/en/discovery/natrojarosite-formed-in-the-matanomadh-formation-kutch-india-a-na-analog-of-jarosite-on-mars"
+      }
+    ],
+    "verificado": false
+  }
+]
