@@ -69,11 +69,11 @@ export function mostrarFichaGeneral(contenedor, sitio) {
 function filaIndicador(clave, valor, sitio, clima, modelo, cuerpo) {
   const ind = modelo.indicadores[clave];
   if (ind.tipo === "rasgo") {
-    const v = sitio.rasgos[clave] ?? 0;
-    const texto = clave === "aislamiento" ? `${v}` : v === 1 ? "Sí" : v === 0.5 ? "En parte" : "No";
+    const v = sitio.rasgos[clave];
+    const texto = v == null ? "Sin datos" : clave === "aislamiento" ? `${v}` : v === 1 ? "Sí" : v === 0.5 ? "En parte" : "No";
     const motivo = sitio.motivos?.[clave] ?? "Las fuentes revisadas no lo reportan.";
     return `<li class="ind">
-      <div class="ind-cabeza"><b>${ind.nombre}</b><span class="ind-valor v${String(v).replace(".", "")}">${texto}</span><span class="ind-pct">${pct(valor)}</span></div>
+      <div class="ind-cabeza"><b>${ind.nombre}</b><span class="ind-valor ${v == null ? "sin-datos" : `v${String(v).replace(".", "")}`}">${texto}</span><span class="ind-pct">${pct(valor)}</span></div>
       <p>${esc(motivo)}</p>
       <p class="ind-como">${icono("libro", "ico-mini")} Calificado con las fuentes del sitio (1 = principal, 0.5 = en parte, 0 = no se reporta).</p>
     </li>`;
@@ -124,7 +124,7 @@ export function mostrarFicha(contenedor, sitio, clima, modelo, cuerpo, lugar = {
       <div class="puntaje-grande">
         <span>Parecido con ${NOMBRE_CUERPO[cuerpo]}</span>
         <b>${res.total}</b>
-        <small>${esc(res.nivel)}${lugar.pos ? ` · lugar ${lugar.pos} de ${lugar.total}` : ""}</small>
+        <small>${esc(res.nivel)}${res.cobertura < 1 ? ` · ${Math.round(res.cobertura * 100)} % de criterios evaluados` : ""}${lugar.pos ? ` · lugar ${lugar.pos} de ${lugar.total}` : ""}</small>
       </div>
       <figure class="radar-caja">
         <div id="radar"></div>
@@ -145,6 +145,7 @@ export function mostrarFicha(contenedor, sitio, clima, modelo, cuerpo, lugar = {
     <div class="calculo">
       <h4>${icono("grafica", "ico-mini")} Cómo se calculó el total</h4>
       <p class="formula-web">P = 100 × (${sumaTexto}) / ${Math.round(sumaPesos * 100)} % = <b>${res.total}</b></p>
+      ${res.cobertura < 1 ? `<p class="nota">Puntaje parcial: se evaluó ${Math.round(res.cobertura * 100)} % del peso total; los criterios sin datos se omiten.</p>` : ""}
       <p class="nota">Además, ningún sitio de la Tierra reproduce la gravedad${cuerpo === "luna" ? ", el vacío lunar" : ", la atmósfera de Marte"} ni la radiación del espacio.</p>
     </div>
 

@@ -12,6 +12,8 @@ const estado = { modo: "inicio", filtro: "todos", busqueda: "", seleccionado: nu
 const ES_CUERPO = (m) => m === "luna" || m === "marte";
 let datos;
 const mundosCreados = {};
+const esc = (texto) =>
+  String(texto).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
 const TEXTOS = {
   general: {
@@ -48,12 +50,13 @@ async function cargarJSON(ruta) {
 }
 
 async function cargarDatos() {
-  const [modelo, sitios, clima] = await Promise.all([
+  const [modelo, sitios, clima, pds] = await Promise.all([
     cargarJSON("data/modelo.json"),
     cargarJSON("data/sitios.json"),
     cargarJSON("data/clima.json"),
+    cargarJSON("data/pds.json"),
   ]);
-  return { modelo, sitios, clima: clima.sitios };
+  return { modelo, sitios, clima: clima.sitios, pds: pds.productos };
 }
 
 const sitioPorId = (id) => datos.sitios.find((s) => s.id === id);
@@ -88,12 +91,15 @@ function pintarLista(resultados) {
       const s = r.sitio;
       const etiqueta = s.tipo === "candidato" ? `<em class="mini-etq candidato">nuevo</em>` : `<em class="mini-etq">conocido</em>`;
       const derecha = cuerpo
-        ? `<span class="mini-barra"><span style="width:${r.total}%"></span></span><b>${r.total}</b>`
+        ? `<span class="mini-barra"><span style="width:${r.total}%"></span></span><b title="${r.cobertura < 1 ? `Puntaje parcial: ${Math.round(r.cobertura * 100)} % de criterios evaluados` : "Puntaje completo"}">${r.total}${r.cobertura < 1 ? "*" : ""}</b>`
         : etiqueta;
+      const cobertura = cuerpo && r.cobertura < 1
+        ? `<small>${Math.round(r.cobertura * 100)} % de criterios evaluados</small>`
+        : "";
       return `<li class="${s.id === estado.seleccionado ? "elegido" : ""}" style="--i:${i}">
-        <button type="button" data-id="${s.id}">
+        <button type="button" data-id="${esc(s.id)}">
           <span class="pos">${cuerpo ? i + 1 : icono("ubicacion", "ico-mini")}</span>
-          <span class="nombre">${s.nombre}<small>${s.lugar}, ${s.pais}${cuerpo && s.tipo === "candidato" ? " · candidato" : ""}</small></span>
+          <span class="nombre">${esc(s.nombre)}<small>${esc(s.lugar)}, ${esc(s.pais)}${cuerpo && s.tipo === "candidato" ? " · candidato" : ""}</small>${cobertura}</span>
           ${derecha}
         </button>
       </li>`;
@@ -112,10 +118,13 @@ function pintarElegido() {
   if (ES_CUERPO(estado.modo)) {
     const r = ranking(datos.sitios, datos.clima, datos.modelo, estado.modo);
     const pos = r.findIndex((x) => x.sitio.id === s.id);
-    extra = `<span class="elegido-dato">${r[pos].total} pts · lugar ${pos + 1} de ${r.length}</span>`;
+    const cobertura = r[pos].cobertura < 1
+      ? ` · ${Math.round(r[pos].cobertura * 100)} % de criterios evaluados`
+      : "";
+    extra = `<span class="elegido-dato">${r[pos].total} pts${cobertura} · lugar ${pos + 1} de ${r.length}</span>`;
   }
   caja.hidden = false;
-  caja.innerHTML = `${icono("ubicacion")}<div><b>${s.nombre}</b><small>${s.lugar}, ${s.pais}</small>${extra}</div>
+  caja.innerHTML = `${icono("ubicacion")}<div><b>${esc(s.nombre)}</b><small>${esc(s.lugar)}, ${esc(s.pais)}</small>${extra}</div>
     <a class="boton chico" href="#ficha">${icono("abajo")}<span>${ES_CUERPO(estado.modo) ? "Ver por qué" : "Ver ficha"}</span></a>`;
 }
 
@@ -305,6 +314,15 @@ function pintarCifras() {
   document.getElementById("c-paises").textContent = new Set(s.map((x) => x.pais)).size;
 }
 
+function pintarProductosPds() {
+  const caja = document.getElementById("pds-productos");
+  caja.innerHTML = datos.pds.length
+    ? datos.pds
+        .map((producto) => `<a href="${esc(producto.url)}" target="_blank" rel="noopener">${esc(producto.titulo)}</a>`)
+        .join(" · ")
+    : "No se encontraron productos PDS de Marte.";
+}
+
 function conectarControles() {
   document.querySelectorAll("[data-cuerpo]").forEach((b) =>
     b.addEventListener("click", () => {
@@ -341,6 +359,7 @@ async function iniciar() {
   crearMapa("mapa");
   conectarControles();
   pintarCifras();
+  pintarProductosPds();
   aplicarTextos();
   pintarParametros();
   pintarVerificacion();

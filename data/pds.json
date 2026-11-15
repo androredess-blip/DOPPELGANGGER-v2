@@ -1,0 +1,36 @@
+{
+  "fuente": "https://pds.nasa.gov/api/search/1/products",
+  "descargado": "2026-11-14",
+  "productos": [
+    {
+      "titulo": "Submission Information Package for the Atmospheric Retrievals for Mars Integrated from MRO-CRISM Bundle",
+      "tipo": "Product_SIP_Deep_Archive",
+      "id": "urn:nasa:pds:system_bundle:product_sip_deep_archive:mro-crism_atmos-db_v1.0_20241016::1.0",
+      "url": "https://pds.nasa.gov/api/search/1/products/urn%3Anasa%3Apds%3Asystem_bundle%3Aproduct_sip_deep_archive%3Amro-crism_atmos-db_v1.0_20241016%3A%3A1.0"
+    },
+    {
+      "titulo": "Submission Information Package for the Database of Diagenetic Features in the Clay-Rich Unit of Gale Crater, Mars",
+      "tipo": "Product_SIP_Deep_Archive",
+      "id": "urn:nasa:pds:system_bundle:product_sip_deep_archive:msl_gt_diagenesis_supplement_v1.1_20240209::1.0",
+      "url": "https://pds.nasa.gov/api/search/1/products/urn%3Anasa%3Apds%3Asystem_bundle%3Aproduct_sip_deep_archive%3Amsl_gt_diagenesis_supplement_v1.1_20240209%3A%3A1.0"
+    },
+    {
+      "titulo": "Submission Information Package for the Mars 2020 MEDA Bundle",
+      "tipo": "Product_SIP_Deep_Archive",
+      "id": "urn:nasa:pds:system_bundle:product_sip_deep_archive:mars2020_meda_v6.0_20241205::1.0",
+      "url": "https://pds.nasa.gov/api/search/1/products/urn%3Anasa%3Apds%3Asystem_bundle%3Aproduct_sip_deep_archive%3Amars2020_meda_v6.0_20241205%3A%3A1.0"
+    },
+    {
+      "titulo": "Submission Information Package for the Mars 2020 Perseverance Rover Mission SPICE Kernel Archive Bundle",
+      "tipo": "Product_SIP_Deep_Archive",
+      "id": "urn:nasa:pds:system_bundle:product_sip_deep_archive:mars2020.spice_v8.0_20231128::1.0",
+      "url": "https://pds.nasa.gov/api/search/1/products/urn%3Anasa%3Apds%3Asystem_bundle%3Aproduct_sip_deep_archive%3Amars2020.spice_v8.0_20231128%3A%3A1.0"
+    },
+    {
+      "titulo": "Submission Information Package for the Mars InSight Lander Document Archive",
+      "tipo": "Product_SIP_Deep_Archive",
+      "id": "urn:nasa:pds:system_bundle:product_sip_deep_archive:insight_documents_v2.0_20240903::1.0",
+      "url": "https://pds.nasa.gov/api/search/1/products/urn%3Anasa%3Apds%3Asystem_bundle%3Aproduct_sip_deep_archive%3Ainsight_documents_v2.0_20240903%3A%3A1.0"
+    }
+  ]
+}
