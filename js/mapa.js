@@ -12,6 +12,10 @@ function variable(nombre) {
   return getComputedStyle(document.documentElement).getPropertyValue(nombre).trim();
 }
 
+function textoSeguro(texto) {
+  return String(texto).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+}
+
 function colorPara(total) {
   if (total >= 70) return variable("--claro");
   if (total >= 50) return variable("--acento");
@@ -65,7 +69,7 @@ export function pintarSitios(resultados, seleccionado, alElegir, modo = "inicio"
         fillColor: s.tipo === "candidato" ? variable("--candidato") : variable("--acento"),
         fillOpacity: 0.95,
       });
-      m.bindTooltip(`${s.nombre} · ${s.pais}`);
+      m.bindTooltip(`${textoSeguro(s.nombre)} · ${textoSeguro(s.pais)}`);
       m.on("click", () => alElegir(s.id));
       capaSitios.addLayer(m);
       continue;
@@ -77,7 +81,7 @@ export function pintarSitios(resultados, seleccionado, alElegir, modo = "inicio"
       fillColor: colorPara(r.total),
       fillOpacity: 0.95,
     });
-    marcador.bindTooltip(`${s.nombre} · ${r.total}`);
+    marcador.bindTooltip(`${textoSeguro(s.nombre)} · ${r.total}`);
     marcador.on("click", () => alElegir(s.id));
     capaSitios.addLayer(marcador);
   }

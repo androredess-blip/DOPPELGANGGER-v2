@@ -48,6 +48,7 @@ export function calcular(sitio, clima, modelo, cuerpo) {
 
   let suma = 0;
   let pesoUsado = 0;
+  const pesoTotal = dimensiones.reduce((a, d) => a + (d.peso || 0), 0);
   for (const d of dimensiones) {
     if (d.valor == null || !d.peso) continue;
     suma += d.valor * d.peso;
@@ -55,14 +56,16 @@ export function calcular(sitio, clima, modelo, cuerpo) {
   }
 
   const total = pesoUsado ? Math.round((suma / pesoUsado) * 100) : 0;
-  return { total, nivel: nivelDe(total, modelo), dimensiones };
+  const cobertura = pesoTotal ? pesoUsado / pesoTotal : 0;
+  const nivel = cobertura < 1 - 1e-9 ? "Evaluación incompleta" : nivelDe(total, modelo);
+  return { total, nivel, cobertura, dimensiones };
 }
 
 // Ranking de todos los sitios para un cuerpo.
 export function ranking(sitios, climaPorSitio, modelo, cuerpo) {
   return sitios
     .map((s) => ({ sitio: s, ...calcular(s, climaPorSitio[s.id], modelo, cuerpo) }))
-    .sort((a, b) => b.total - a.total);
+    .sort((a, b) => b.cobertura - a.cobertura || b.total - a.total);
 }
 
 // Las dos dimensiones más fuertes y las dos más débiles (para la ficha).

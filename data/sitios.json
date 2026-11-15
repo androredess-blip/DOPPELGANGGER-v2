@@ -1029,5 +1029,149 @@
       }
     ],
     "verificado": false
+  },
+  {
+    "id": "uyuni",
+    "nombre": "Salar de Uyuni",
+    "lugar": "Potosí",
+    "pais": "Bolivia",
+    "tipo": "candidato",
+    "lat": -20.1338,
+    "lon": -67.4891,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 0,
+      "dunas": 0,
+      "sales": 1,
+      "hielo": 0,
+      "paleolago": 1,
+      "extremofilos": 0.5,
+      "cuevas": 0,
+      "aislamiento": 0.5
+    },
+    "motivos": {
+      "sales": "La costra de sal y las salmueras hacen del salar un buen entorno para estudiar minerales evaporíticos.",
+      "paleolago": "El salar ocupa una cuenca formada por antiguos lagos del Altiplano.",
+      "extremofilos": "Hay comunidades microbianas en ambientes salinos de la región; su presencia en el punto exacto requiere verificación.",
+      "aislamiento": "La gran altitud y la distancia de centros urbanos limitan el acceso, aunque el salar recibe visitantes."
+    },
+    "resumen": "Planicie salina de gran altitud formada en una cuenca de antiguos lagos. Es un candidato para comparar evaporitas y sedimentos lacustres con terrenos marcianos.",
+    "pruebas": "Observación de evaporitas, sedimentos de antiguos lagos y ambientes salinos extremos.",
+    "fuentes": [
+      {
+        "titulo": "NASA Worldview: observaciones satelitales del Salar de Uyuni",
+        "url": "https://worldview.earthdata.nasa.gov/index.html?v=-68.5,-21.1,-66.5,-19.1&t=2026-11-14-T17%3A17%3A02Z"
+      },
+      {
+        "titulo": "NASA Earthdata Search: catalogo de observaciones de la Tierra",
+        "url": "https://search.earthdata.nasa.gov/"
+      },
+      {
+        "titulo": "NASA GIBS: documentación de servicios de imágenes satelitales",
+        "url": "https://nasa-gibs.github.io/gibs-api-docs/"
+      }
+    ],
+    "verificado": false
+  },
+  {
+    "id": "namib",
+    "nombre": "Mar de Arena del Namib",
+    "lugar": "Desierto del Namib",
+    "pais": "Namibia",
+    "tipo": "candidato",
+    "lat": -24.8,
+    "lon": 15.0,
+    "rasgos": {
+      "basalto": 0,
+      "crateres": 0,
+      "dunas": 1,
+      "sales": 0.5,
+      "hielo": 0,
+      "paleolago": 0,
+      "extremofilos": 0.5,
+      "cuevas": 0,
+      "aislamiento": 0.5
+    },
+    "motivos": {
+      "dunas": "El mar de arena contiene extensos campos de dunas modeladas por el viento.",
+      "sales": "Hay salares y costras salinas en sectores costeros del Namib; la distribucion local debe comprobarse.",
+      "extremofilos": "Líquenes y otros organismos sobreviven en zonas hiperáridas del desierto.",
+      "aislamiento": "El ambiente es remoto, aunque algunas zonas cuentan con acceso turistico."
+    },
+    "resumen": "Desierto hiperárido con extensos campos de dunas. Es un candidato para comparar formas eólicas y ambientes secos con los de Marte.",
+    "pruebas": "Observación de dunas, transporte de polvo y supervivencia de organismos en condiciones áridas.",
+    "fuentes": [
+      {
+        "titulo": "NASA Worldview: observaciones satelitales del Mar de Arena del Namib",
+        "url": "https://worldview.earthdata.nasa.gov/index.html?v=14.0,-25.8,16.0,-23.8&t=2026-11-14-T17%3A17%3A02Z"
+      },
+      {
+        "titulo": "NASA Earthdata Search: catalogo de observaciones de la Tierra",
+        "url": "https://search.earthdata.nasa.gov/"
+      },
+      {
+        "titulo": "NASA GIBS: documentación de servicios de imágenes satelitales",
+        "url": "https://nasa-gibs.github.io/gibs-api-docs/"
+      }
+    ],
+    "verificado": false
+  },
+  {
+    "id": "cmr-c2532074471-amd-usapdc",
+    "nombre": "Don Juan Pond",
+    "lugar": "Valles Secos de McMurdo",
+    "pais": "Antártida",
+    "tipo": "candidato",
+    "lat": -77.55,
+    "lon": 161.35,
+    "rasgos": {
+      "basalto": null,
+      "crateres": null,
+      "dunas": null,
+      "sales": null,
+      "hielo": null,
+      "paleolago": null,
+      "extremofilos": null,
+      "cuevas": null,
+      "aislamiento": null
+    },
+    "motivos": {
+      "basalto": "Sin calificar automáticamente: CMR no proporciona una medición de este rasgo.",
+      "crateres": "Sin calificar automáticamente: CMR no proporciona una medición de este rasgo.",
+      "dunas": "Sin calificar automáticamente: CMR no proporciona una medición de este rasgo.",
+      "sales": "Sin calificar automáticamente: CMR no proporciona una medición de este rasgo.",
+      "hielo": "Sin calificar automáticamente: CMR no proporciona una medición de este rasgo.",
+      "paleolago": "Sin calificar automáticamente: CMR no proporciona una medición de este rasgo.",
+      "extremofilos": "Sin calificar automáticamente: CMR no proporciona una medición de este rasgo.",
+      "cuevas": "Sin calificar automáticamente: CMR no proporciona una medición de este rasgo.",
+      "aislamiento": "Sin calificar automáticamente: CMR no proporciona una medición de este rasgo."
+    },
+    "resumen": "Ubicación candidata detectada en metadatos de NASA Earthdata que describen explícitamente un ambiente análogo a Marte. La coordenada representa el centro de la cobertura del conjunto y requiere revisión.",
+    "pruebas": "Revisar el conjunto Earthdata y las imágenes GIBS; completar los rasgos geológicos y biológicos con fuentes revisadas.",
+    "fuentes": [
+      {
+        "titulo": "NASA Earthdata CMR: Formation and Characteristics of Brine-rich Water in the Dry Valleys, Antarctica",
+        "url": "https://cmr.earthdata.nasa.gov/search/collections.umm_json?concept_id=C2532074471-AMD_USAPDC"
+      },
+      {
+        "titulo": "NASA Earthdata Search",
+        "url": "https://search.earthdata.nasa.gov/search?q=Formation%20and%20Characteristics%20of%20Brine-rich%20Water%20in%20the%20Dry%20Valleys%2C%20Antarctica"
+      },
+      {
+        "titulo": "NASA Worldview: imágenes satelitales del sitio",
+        "url": "https://worldview.earthdata.nasa.gov/index.html?v=160.8500,-78.0500,161.8500,-77.0500"
+      },
+      {
+        "titulo": "NASA GIBS: documentación de visualizaciones satelitales",
+        "url": "https://nasa-gibs.github.io/gibs-api-docs/"
+      },
+      {
+        "titulo": "NASA PDS: datos de misiones a Marte para comparación",
+        "url": "https://pds.nasa.gov/api/search/1/products?keywords=Mars&limit=100"
+      }
+    ],
+    "verificado": false,
+    "cmr_concept_id": "C2532074471-AMD_USAPDC",
+    "coordenada_aproximada": true
   }
 ]

@@ -3,7 +3,7 @@
   "descargado": "2026-11-14",
   "sitios": {
     "atacama": {
-      "elev": 1261,
+      "elev": 1261.0,
       "T2M": 17.07,
       "T2M_MIN": -0.64,
       "T2M_MAX": 32.93,
@@ -60,7 +60,7 @@
     "lanzarote": {
       "elev": 26.63,
       "T2M": 20.12,
-      "T2M_MIN": 13,
+      "T2M_MIN": 13.0,
       "T2M_MAX": 28.47,
       "T2M_RANGE": 2.35,
       "PRECTOTCORR": 0.3,
@@ -204,7 +204,7 @@
       "elev": 2093.24,
       "T2M": 10.17,
       "T2M_MIN": -21.21,
-      "T2M_MAX": 37,
+      "T2M_MAX": 37.0,
       "T2M_RANGE": 14.18,
       "PRECTOTCORR": 1.02,
       "RH2M": 47.94,
@@ -230,7 +230,7 @@
       "T2M_RANGE": 15.04,
       "PRECTOTCORR": 0.63,
       "RH2M": 39.08,
-      "WS10M": 4,
+      "WS10M": 4.0,
       "ALLSKY_SFC_SW_DWN": 5.8987
     },
     "mistastin": {
@@ -249,7 +249,7 @@
       "T2M": 8.74,
       "T2M_MIN": -19.07,
       "T2M_MAX": 36.32,
-      "T2M_RANGE": 9,
+      "T2M_RANGE": 9.0,
       "PRECTOTCORR": 2.05,
       "RH2M": 81.27,
       "WS10M": 3.95,
@@ -309,6 +309,39 @@
       "RH2M": 58.6,
       "WS10M": 5.3,
       "ALLSKY_SFC_SW_DWN": 5.4509
+    },
+    "uyuni": {
+      "elev": 3692.19,
+      "T2M": 7.48,
+      "T2M_MIN": -14.47,
+      "T2M_MAX": 25.07,
+      "T2M_RANGE": 16.59,
+      "PRECTOTCORR": 0.91,
+      "RH2M": 42.84,
+      "WS10M": 2.82,
+      "ALLSKY_SFC_SW_DWN": 5.6482
+    },
+    "namib": {
+      "elev": 336.36,
+      "T2M": 20.31,
+      "T2M_MIN": 4.09,
+      "T2M_MAX": 42.99,
+      "T2M_RANGE": 12.65,
+      "PRECTOTCORR": 0.13,
+      "RH2M": 48.44,
+      "WS10M": 4.29,
+      "ALLSKY_SFC_SW_DWN": 6.6499
+    },
+    "cmr-c2532074471-amd-usapdc": {
+      "elev": 1416.84,
+      "T2M": -29.87,
+      "T2M_MIN": -55.97,
+      "T2M_MAX": -5.43,
+      "T2M_RANGE": 6.14,
+      "PRECTOTCORR": 0.25,
+      "RH2M": 67.49,
+      "WS10M": 8.06,
+      "ALLSKY_SFC_SW_DWN": 2.9993
     }
   }
 }
